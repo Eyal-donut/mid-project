@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-02-26T17:56:40.336Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="cCs9vc0F4FxC4XYD_JMx" version="20.8.23" type="github">
+<mxfile host="app.diagrams.net" modified="2023-02-26T18:03:56.506Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="LwbznQ9zs7PjpYvfXfeC" version="20.8.23" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1105" dy="578" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -96,7 +96,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Qg4CIemG1f3ecpETGvmm-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-43" target="Qg4CIemG1f3ecpETGvmm-52">
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.083;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-43" target="Qg4CIemG1f3ecpETGvmm-52">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-43" value="Game map" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
@@ -120,6 +120,9 @@
         <mxCell id="Qg4CIemG1f3ecpETGvmm-47" value="API" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-46">
           <mxGeometry x="10" y="29" width="40" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-49" target="Qg4CIemG1f3ecpETGvmm-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-49" value="Arena" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="390" y="920" width="311" height="110" as="geometry" />
         </mxCell>
@@ -131,6 +134,15 @@
         </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.021;entryY=0.759;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-52" target="Qg4CIemG1f3ecpETGvmm-50">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-52" target="Qg4CIemG1f3ecpETGvmm-77">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="880" />
+              <mxPoint x="720" y="930" />
+              <mxPoint x="842" y="930" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-52" value="Rivals generation" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="20" y="850" width="320" height="120" as="geometry" />
@@ -144,6 +156,9 @@
         <mxCell id="Qg4CIemG1f3ecpETGvmm-54" value="logic" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-53">
           <mxGeometry x="5" y="29" width="50" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.467;entryY=-0.025;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-63" target="Qg4CIemG1f3ecpETGvmm-101">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-63" value="Fight" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="391" y="1080" width="311" height="110" as="geometry" />
         </mxCell>
@@ -156,8 +171,13 @@
         <mxCell id="Qg4CIemG1f3ecpETGvmm-70" value="Trying to catch the pokemon" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-63">
           <mxGeometry x="20" y="59" width="170" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-66">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-66" value="Fighting functions" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="20" y="1020" width="335" height="170" as="geometry" />
+          <mxGeometry x="5" y="980" width="335" height="170" as="geometry" />
         </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-67" value="Attack: choosing an attack from the array&lt;br&gt;Run: exiting the fight" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-66">
           <mxGeometry x="30" y="30" width="240" height="40" as="geometry" />
@@ -169,19 +189,49 @@
           <mxGeometry x="-5" y="120" width="340" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-75" value="Mock API" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="330" y="1250" width="200" height="260" as="geometry" />
-        </mxCell>
-        <mxCell id="Qg4CIemG1f3ecpETGvmm-76" value="POST: create user" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-75">
-          <mxGeometry x="44" y="30" width="117" height="30" as="geometry" />
+          <mxGeometry x="740" y="880" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-77" value="PUT: update user data with avatar and pokemon" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-75">
           <mxGeometry x="32" y="80" width="141" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Qg4CIemG1f3ecpETGvmm-78" value="GET: get user" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-75">
-          <mxGeometry x="44" y="140" width="117" height="30" as="geometry" />
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-78" value="GET: get user (updated)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-75">
+          <mxGeometry x="44" y="150" width="117" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.429;entryY=-0.013;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-30" target="Qg4CIemG1f3ecpETGvmm-43">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-78" target="Qg4CIemG1f3ecpETGvmm-59">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="636" y="1050" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-87" value="Mock API" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="750" y="1150" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="Qg4CIemG1f3ecpETGvmm-87" source="Qg4CIemG1f3ecpETGvmm-88" target="Qg4CIemG1f3ecpETGvmm-89">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-88" value="PUT: update user data with avatar and pokemon" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-87">
+          <mxGeometry x="32" y="80" width="141" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-89" value="GET: get user (updated)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-87">
+          <mxGeometry x="44" y="150" width="117" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-65" target="Qg4CIemG1f3ecpETGvmm-88">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="646" y="1210" />
+              <mxPoint x="852" y="1210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.419;entryY=-0.011;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Qg4CIemG1f3ecpETGvmm-57" target="Qg4CIemG1f3ecpETGvmm-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-101" value="Back to Arena" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="401" y="1250" width="311" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
