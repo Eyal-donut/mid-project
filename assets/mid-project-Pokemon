@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-02-26T18:03:56.506Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="LwbznQ9zs7PjpYvfXfeC" version="20.8.23" type="github">
+<mxfile host="app.diagrams.net" modified="2023-02-26T18:05:14.509Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="ijcAixItOz2x-tUeF2S2" version="20.8.23" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1105" dy="578" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -126,8 +126,8 @@
         <mxCell id="Qg4CIemG1f3ecpETGvmm-49" value="Arena" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="390" y="920" width="311" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="Qg4CIemG1f3ecpETGvmm-50" value="Choosing an opponent to fight:&lt;br&gt;a screen showing all the pokemons" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-49">
-          <mxGeometry y="35" width="210" height="40" as="geometry" />
+        <mxCell id="Qg4CIemG1f3ecpETGvmm-50" value="Choosing an opponent to fight:&lt;br&gt;a screen showing all the pokemons,&amp;nbsp;&lt;br&gt;choosing a pokemon to fight with" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-49">
+          <mxGeometry x="-5" y="25" width="220" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Qg4CIemG1f3ecpETGvmm-59" value="Pokedex: updated with new pokemons" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="Qg4CIemG1f3ecpETGvmm-49">
           <mxGeometry x="210" y="30" width="73" height="70" as="geometry" />
