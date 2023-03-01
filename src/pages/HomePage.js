@@ -41,8 +41,8 @@ const HomePage = () => {
     if (chosenPokemonID === "back-btn") {
         setChoosePokemonDisplay(false)
         setStartWindowDisplay(true)
-    }
 
+    }
   };
 
   return (
