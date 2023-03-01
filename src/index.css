@@ -17,7 +17,7 @@ body, html {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   text-align: center;
   line-height: 1.6;
   background: var(--bgr-main)
@@ -26,7 +26,6 @@ body, html {
 a:visited{
   color: inherit;
 }
-
 
 ul {
   list-style: none;
@@ -48,4 +47,8 @@ ul {
   100% {transform: rotate(360deg);}
 }
 
-/* Project specific */
+@media(max-width:500px){
+  body,html {
+    font-size: 50%;
+  }
+}
