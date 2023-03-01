@@ -52,6 +52,7 @@
     width: 12rem;
     height: 12rem;
     margin: .5rem;
+
 }
 .pokemonImg.one {
     background: url(../assets/pokemons/1.png) no-repeat center center/cover;
@@ -62,6 +63,9 @@
 }
 .pokemonImg.three {
     background: url(../assets/pokemons/3.png) no-repeat center center/cover;
-
 }
+.grow {
+    background: blue;
+}
+
 
