@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import classes from "./HomePage.module.css";
 import StartWindow from "../Components/StartWindow";
 import LoginWindow from "../Components/LoginWindow";
 import CreateUserWindow from "../Components/CreateUserWindow";
+import ChoosePokemonWindow from "../Components/ChoosePokemonWindow";
 
 const HomePage = () => {
   const [isStartWindowDisplay, setStartWindowDisplay] = useState(true);
   const [isLoginWindowDisplay, setLoginWindowDisplay] = useState(false);
-  const [isCreateUserWindowDisplay, setCreateUserWindowDisplay] = useState(false);
+  const [isCreateUserWindowDisplay, setCreateUserWindowDisplay] =
+    useState(false);
+  const [isChoosePokemonDisplay, setChoosePokemonDisplay] = useState(false);
 
   const startClickHandler = (btnID) => {
     setStartWindowDisplay(false);
@@ -30,6 +32,19 @@ const HomePage = () => {
     }
   };
 
+  const handleUserCreated = () => {
+    setCreateUserWindowDisplay(false);
+    setChoosePokemonDisplay(true);
+  };
+
+  const HandleChosenPokemon = (chosenPokemonID) => {
+    if (chosenPokemonID === "back-btn") {
+        setChoosePokemonDisplay(false)
+        setStartWindowDisplay(true)
+    }
+
+  };
+
   return (
     <>
       <main className={classes.main}>
@@ -42,12 +57,15 @@ const HomePage = () => {
             <LoginWindow onBtnClick={loginClickHandler} />
           )}
           {isCreateUserWindowDisplay && (
-            <CreateUserWindow onBtnClick={createUserClickHandler} />
+            <CreateUserWindow
+              onBtnClick={createUserClickHandler}
+              onCreatedUser={handleUserCreated}
+            />
           )}
-
-          <Link to="/map">
-            <button>Game map Page</button>
-          </Link>
+          {isChoosePokemonDisplay && (
+            <ChoosePokemonWindow 
+            onPokemonClick={HandleChosenPokemon} />
+          )}
         </div>
       </main>
     </>

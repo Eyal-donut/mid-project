@@ -12,7 +12,7 @@ body, html {
 }
 
 #root {
-  font-size: 2rem;
+  font-size: 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -30,6 +30,16 @@ a:visited{
 
 ul {
   list-style: none;
+}
+
+input {
+  width: 15rem;
+  border-radius: 3px;
+  background: rgb(255, 255, 255, 0.7);
+
+}
+h1 {
+  font-size: 2.6rem;
 }
 
 .spinner {
