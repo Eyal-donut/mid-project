@@ -1,30 +1,43 @@
 .main {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    background: url(../assets/backgrounds/background.jpg) no-repeat center center/cover;
-    
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: url(../assets/backgrounds/background.jpg) no-repeat center
+    center/cover;
 }
 .cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-    background: var(--bgr-screenCover);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background: var(--bgr-screenCover);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.logo{
-    background: url(../assets/pokemon-logo.png) no-repeat center center/cover;
-    width: 40rem;
-    height: 20rem;
-    box-shadow: 0 1px 8px rgb(0,0,0,.25) ;
+.logo {
+  background: url(../assets/pokemon-logo.png) no-repeat center center/cover;
+  width: 40rem;
+  height: 20rem;
+}
 
+.button {
+  background: var(--pokemon-yellow);
+  border: 3px solid var(--pokemon-blue);
+  border-radius: 5px;
+  margin: 0.5rem;
+  width: 13rem;
+  height: 3rem;
+  cursor: pointer;
+  font-weight: 550;
+}
+.button:hover {
+  box-shadow: 0 1px 10px rgb(0, 0, 0, 0.25);
+}
 
+.h1 {
 }

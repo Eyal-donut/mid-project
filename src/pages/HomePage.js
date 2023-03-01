@@ -1,22 +1,29 @@
 import { Link } from "react-router-dom";
-import NestedWindow from "../Components/NestedWindow";
+import { useState } from "react";
 import classes from "./HomePage.module.css";
+import LoginWindow from "../Components/LoginWindow";
 
 const HomePage = () => {
+  const [isLoginWindowDisplay, setLoginWindowDisplay] = useState(true);
+
+  const clickHandler = (BtnID) => {
+    setLoginWindowDisplay(false);
+    if (BtnID === "login-btn") {
+    }
+  };
+
   return (
     <>
-    <main className={classes.main}>
-      <div className={classes.cover}>
-        <div className={classes.logo}/>
-        <NestedWindow>
-            <h1>hi</h1>
-        </NestedWindow>
-        <Link to="/map">
-          <button>Game map Page</button>
-        </Link>
-      </div>
-    </main>
-
+      <main className={classes.main}>
+        <div className={classes.cover}>
+          <div className={classes.logo} />
+          {isLoginWindowDisplay && <LoginWindow onBtnClick={clickHandler} />}
+          {/* If user */}
+          <Link to="/map">
+            <button>Game map Page</button>
+          </Link>
+        </div>
+      </main>
     </>
   );
 };
