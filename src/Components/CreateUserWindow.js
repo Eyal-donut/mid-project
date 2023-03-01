@@ -12,8 +12,7 @@ const CreateUserWindow = ({ onBtnClick, onCreatedUser }) => {
     /*on submit: 
     -run password validator. 
         If Valid:
-        -create user and update API
-        -call on createdUser in Home
+        //create user and update API
         */
        onCreatedUser()
   };
