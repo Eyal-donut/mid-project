@@ -1,41 +1,52 @@
 import NestedWindow from "./utils/NestedWindow";
-import classes from '../pages/HomePage.module.css'
-import { Link } from "react-router-dom";
+import classes from "../pages/HomePage.module.css";
 
-
-const LoginWindow = ({onBtnClick}) => {
-    const clickHandler = (e) => {
-        onBtnClick(e.target.id)
-    }
+const LoginWindow = ({ onBtnClick }) => {
+  const clickHandler = (e) => {
+    onBtnClick(e.target.id);
+  };
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    /*on submit: 
+    -get user from API. 
+        If exists:
+        - State management: setUserLoggedIn(true) setLoggedUser(userID) 
+        If not: show message:
+        - we didn't find your user in our system, please go back and create a new user or play without logging in.
+        */
+  };
 
   return (
     <>
       <NestedWindow>
         <h1 className={classes.h1}>Go catch 'em all!</h1>
+        <form onSubmit={formSubmitHandler}>
+          <ul>
+            <li>
+              <label htmlFor="username">Username: </label>
+              <input name="username" type="text" />
+            </li>
+            <li>
+              <label htmlFor="password">Password: </label>
+              <input name="password" type="password" />
+            </li>
+          </ul>
+        </form>
         <div className={classes.buttonsWrap}>
           <button
-            id="login-btn"
+            id="back-btn"
             className={classes.button}
             onClick={clickHandler}
           >
+            Back
+          </button>
+          <button className={classes.button} type="submit">
             Login
           </button>
-          <button
-            id="create-user-btn"
-            className={classes.button}
-            onClick={clickHandler}
-          >
-            Create user
-          </button>
-          <Link to="/map">
-            <button id="play-btn" className={classes.button}>
-              Play without login
-            </button>
-          </Link>
         </div>
-        <p>Create a user to automatically save your game progress!</p>
       </NestedWindow>
     </>
   );
 };
+
 export default LoginWindow;

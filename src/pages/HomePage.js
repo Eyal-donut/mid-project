@@ -1,14 +1,22 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import classes from "./HomePage.module.css";
+import StartWindow from "../Components/StartWindow";
 import LoginWindow from "../Components/LoginWindow";
 
 const HomePage = () => {
-  const [isLoginWindowDisplay, setLoginWindowDisplay] = useState(true);
+  const [isStartWindowDisplay, setStartWindowDisplay] = useState(true);
+  const [isLoginWindowDisplay, setLoginWindowDisplay] = useState(false);
 
-  const clickHandler = (BtnID) => {
-    setLoginWindowDisplay(false);
-    if (BtnID === "login-btn") {
+  const startClickHandler = (BtnID) => {
+    setStartWindowDisplay(false);
+    if (BtnID === "login-btn") setLoginWindowDisplay(true);
+  };
+
+  const loginClickHandler = (BtnID) => {
+    if (BtnID === "back-btn") {
+        setLoginWindowDisplay(false);
+        setStartWindowDisplay(true)
     }
   };
 
@@ -17,8 +25,12 @@ const HomePage = () => {
       <main className={classes.main}>
         <div className={classes.cover}>
           <div className={classes.logo} />
-          {isLoginWindowDisplay && <LoginWindow onBtnClick={clickHandler} />}
-          {/* If user */}
+          {isStartWindowDisplay && (
+            <StartWindow onBtnClick={startClickHandler} />
+          )}
+          {isLoginWindowDisplay && (
+            <LoginWindow onBtnClick={loginClickHandler} />
+          )}
           <Link to="/map">
             <button>Game map Page</button>
           </Link>
