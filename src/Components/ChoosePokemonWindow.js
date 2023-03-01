@@ -7,7 +7,7 @@ import choosePokemonSounds from "../assets/Audio/choosePokemonSounds.mp3";
 const ChoosePokemonWindow = ({ onPokemonClick }) => {
   const navigate = useNavigate();
 
-  const [playSound] = useSound(choosePokemonSounds, {
+  const [playSound, { stop }] = useSound(choosePokemonSounds, {
     sprite: {
       bulbasaur: [4, 779],
       squirtle: [1853, 2543],
@@ -19,9 +19,12 @@ const ChoosePokemonWindow = ({ onPokemonClick }) => {
   const clickHandler = (e) => {
     onPokemonClick(e.target.id);
     //!update user with pokemon
-    setTimeout(() => {
-      navigate("/map");
-    }, 800);
+    if (e.target.id !== "back-btn") {
+      console.log('hi')
+      // setTimeout(() => {
+      //   navigate("/map");
+      // }, 0);
+    }
   };
 
   const handleMouseEnter = (e) => {
@@ -39,6 +42,7 @@ const ChoosePokemonWindow = ({ onPokemonClick }) => {
   };
 
   const handleMouseLeave = (e) => {
+    stop();
     e.target.classList.remove("scaleAvatar");
   };
 
