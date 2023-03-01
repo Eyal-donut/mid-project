@@ -3,20 +3,30 @@ import { useState } from "react";
 import classes from "./HomePage.module.css";
 import StartWindow from "../Components/StartWindow";
 import LoginWindow from "../Components/LoginWindow";
+import CreateUserWindow from "../Components/CreateUserWindow";
 
 const HomePage = () => {
   const [isStartWindowDisplay, setStartWindowDisplay] = useState(true);
   const [isLoginWindowDisplay, setLoginWindowDisplay] = useState(false);
+  const [isCreateUserWindowDisplay, setCreateUserWindowDisplay] = useState(false);
 
-  const startClickHandler = (BtnID) => {
+  const startClickHandler = (btnID) => {
     setStartWindowDisplay(false);
-    if (BtnID === "login-btn") setLoginWindowDisplay(true);
+    if (btnID === "login-btn") setLoginWindowDisplay(true);
+    if (btnID === "create-user-btn") setCreateUserWindowDisplay(true);
   };
 
-  const loginClickHandler = (BtnID) => {
-    if (BtnID === "back-btn") {
-        setLoginWindowDisplay(false);
-        setStartWindowDisplay(true)
+  const loginClickHandler = (btnID) => {
+    setLoginWindowDisplay(false);
+    if (btnID === "back-btn") {
+      setStartWindowDisplay(true);
+    }
+  };
+
+  const createUserClickHandler = (btnID) => {
+    setCreateUserWindowDisplay(false);
+    if (btnID === "back-btn") {
+      setStartWindowDisplay(true);
     }
   };
 
@@ -31,6 +41,10 @@ const HomePage = () => {
           {isLoginWindowDisplay && (
             <LoginWindow onBtnClick={loginClickHandler} />
           )}
+          {isCreateUserWindowDisplay && (
+            <CreateUserWindow onBtnClick={createUserClickHandler} />
+          )}
+
           <Link to="/map">
             <button>Game map Page</button>
           </Link>
