@@ -1,4 +1,50 @@
-.wrapper {
-    width: 5rem;
+.pokedexLogoWrapper {
+    width: 7rem;
     height: 10rem;
+    position: absolute;
+    bottom: 1vh;
+    right:1vw;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.pokedexLogo {
+    width: 7rem;
+    height: 10rem;
+    background: url(../assets/pokedex.png) no-repeat center center/cover;
+    box-shadow: 0 1px 8px rgb(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.updateLogo {
+    width: 2rem;
+    height: 2rem;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right:0;
+    z-index: 4;
+    background: rgb(255, 255, 255, .9);
+    box-shadow: 0 1px 8px rgb(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.exclamationMark {
+    background: url(../assets/exclamation_mark.png) no-repeat center center/cover;
+    width: 75%;
+    height: 75%;
+    box-shadow: 0 1px 8px rgb(0, 0, 0, 0.25);
+    animation: upDown infinite alternate-reverse .4s; 
+
+}
+@keyframes upDown {
+    0% {transform: translateY(-10%);}
+    100% {transform: translateY(0);}
+  }

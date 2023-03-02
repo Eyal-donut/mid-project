@@ -26,7 +26,8 @@ body, html {
   height: 100vh;
   text-align: center;
   line-height: 1.6;
-  background: var(--bgr-main)
+  background: var(--bgr-main);
+  position: relative;
 }
 
 a:visited{

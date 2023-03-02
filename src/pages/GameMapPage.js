@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import classes from "./GameMap.module.css";
 import { useNavigate } from "react-router-dom";
 import { locationsArray } from "../Data/LocationsData";
+import Pokedex from "../Components/Pokedex";
 
 const GameMapPage = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const GameMapPage = () => {
 
   return (
     <>
-    
+      <Pokedex />
       <main className={classes.main}>
         <div className={classes.cover}>
           <h1 className={classes.h1}>Game Map</h1>
