@@ -96,7 +96,7 @@ button {
   border: 3px solid var(--pokemon-blue);
   border-radius: 5px;
   margin: 0.5rem;
-  width: 9.5rem;
+  width: 10rem;
   height: 3rem;
   cursor: pointer;
   font-weight: 550;
