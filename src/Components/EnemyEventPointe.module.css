@@ -2,11 +2,11 @@
     background: url(../assets/eventPointer.png) no-repeat center center/cover;
     width: 7rem;
     height: 7rem;
-    animation: upDown 1s .5s infinite alternate-reverse ;
+    animation: upDown infinite alternate-reverse .7s;
     cursor: pointer;
 }
 
 @keyframes upDown {
-    0% {transform: translateY(-10%);}
+    0% {transform: translateY(-2%);}
     100% {transform: translateY(0);}
   }

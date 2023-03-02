@@ -38,10 +38,10 @@ const LocationPage = () => {
 
 
   
-  const clickHandler = (e) => {
+  const clickHandler = (id) => {
 
     //set current enemy to what you clicked on
-    navigate(`${e.target.id}`)
+    navigate(`${id}`)
     
   }
 
@@ -62,7 +62,7 @@ const LocationPage = () => {
 
         {enemiesArray.map((enemy, index)=>
 
-        <EnemyEventPointer id={enemy.id} className={`enemy${index}`} />
+        <EnemyEventPointer id={enemy.id} identifier={enemy.id} className={`enemy${index}`} onBtnClick={clickHandler}/>
 
         )}
         

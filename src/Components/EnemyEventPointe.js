@@ -1,9 +1,13 @@
 import classes from "./EnemyEventPointe.module.css";
 
-const EnemyEventPointer = ({ className }) => {
+const EnemyEventPointer = ({ className, onBtnClick, id }) => {
+  const clickHandler = (e) => {
+    console.log(e.target.id)
+    onBtnClick(e.target.id)
+  }
   return (
     <>
-      <div className={`${classes.enemyEvent} ${className}`}></div>
+      <div className={`${classes.enemyEvent} ${className}`} onClick={clickHandler} id={id}></div>
     </>
   );
 };
