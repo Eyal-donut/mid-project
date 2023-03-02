@@ -1,29 +1,7 @@
 import { Link } from "react-router-dom";
 import classes from "./GameMap.module.css";
 import { useNavigate } from "react-router-dom";
-
-const locationsArray = [
-  {
-    name: "location 1",
-    id: "location-one",
-    className: `${classes.one}`,
-  },
-  {
-    name: "location 2",
-    id: "location-two",
-    className: `${classes.two}`,
-  },
-  {
-    name: "location 3",
-    id: "location-three",
-    className: `${classes.three}`,
-  },
-  {
-    name: "location 4",
-    id: "location-four",
-    className: `${classes.four}`,
-  },
-];
+import { locationsArray } from "../Data/LocationsData";
 
 const GameMapPage = () => {
   const navigate = useNavigate();
@@ -35,6 +13,7 @@ const GameMapPage = () => {
 
   return (
     <>
+    
       <main className={classes.main}>
         <div className={classes.cover}>
           <h1 className={classes.h1}>Game Map</h1>
