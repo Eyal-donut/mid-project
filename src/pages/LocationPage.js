@@ -8,6 +8,7 @@ import Pokedex from "../Components/Pokedex";
 // import { useEnemiesContext } from "../context/EnemiesContext";
 import { useActiveUSerContext } from "../context/ActiveUserContext";
 import useEnemiesArray from "../hooks/useEnemiesArray";
+import EnemyEventPointer from "../Components/EnemyEventPointe";
 
 //create a global Pokedex context containing: the isPokedexUpdated state, pokedexShownPokemons state, userPokemons state, isPokedexDisplay state
 
@@ -15,6 +16,7 @@ import useEnemiesArray from "../hooks/useEnemiesArray";
 //each enemy has the following qualities: strength, defense, skillPoints (will I hurt you or give you a chance to dodge) array of attacks(chosen randomly), health points (100), xp-reward, location, photo, location on the map (defined by className).
 
 const LocationPage = () => {
+  const params = useParams();
   const [currentEnemy, setCurrentEnemy]= useState({})
   const { currentLocation, setCurrentLocation } = useLocationContext();
   // const {enemiesArray, setEnemiesArray } = useEnemiesContext()
@@ -22,7 +24,6 @@ const LocationPage = () => {
   const {enemiesArray, setEnemiesArrayByLocationID} = useEnemiesArray(activeUser, params.locationID)
 
 
-  const params = useParams();
 
   
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const LocationPage = () => {
       setCurrentLocation(locationByID);
       setEnemiesArrayByLocationID()
   }, []);
+
 
   
   const clickHandler = (e) => {
@@ -57,6 +59,12 @@ const LocationPage = () => {
           <button>game map</button>
         </Link>
         <p>{currentLocation.description}</p>
+
+        {enemiesArray.map((enemy, index)=>
+
+        <EnemyEventPointer id={enemy.id} className={`enemy${index}`} />
+
+        )}
         
 
         {/* here it's not a current enemy, but map for enemies */}

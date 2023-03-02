@@ -1,0 +1,12 @@
+.enemyEvent {
+    background: url(../assets/eventPointer.png) no-repeat center center/cover;
+    width: 7rem;
+    height: 7rem;
+    animation: upDown 1s .5s infinite alternate-reverse ;
+    cursor: pointer;
+}
+
+@keyframes upDown {
+    0% {transform: translateY(-10%);}
+    100% {transform: translateY(0);}
+  }

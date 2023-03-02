@@ -1,4 +1,4 @@
-// import classes from "../pages/LocationPage.module.css";
+import classes from "../pages/LocationPage.module.css";
 import zero from "../assets/enemies/0.png";
 import one from "../assets/enemies/1.png";
 import two from "../assets/enemies/2.png";
@@ -54,17 +54,17 @@ export const enemiesData = [
   { name: "Weepinbell", id: 23, imageUrl: twentyThree },
 ];
 
-// export const testEnemy = {
-//   id: 0,
-//   number: "one",
-//   className: `${classes.one}`,
-//   name: "Onix",
-//   strength: 3,
-//   defense: 3,
-//   skillPoints: 3,
-//   attacks: ["speed", "fireball"],
-//   healthPoints: 100,
-//   xpReward: 5,
-//   location: "location-one",
-//   imageUrl: zero,
-// };
+ export const testEnemy = {
+   id: 0,
+   number: "one",
+   className: `${classes.one}`,
+   name: "Onix",
+   strength: 3,
+   defense: 3,
+   skillPoints: 3,
+   attacks: ["speed", "fireball"],
+   healthPoints: 100,
+   xpReward: 5,
+   location: "location-one",
+   imageUrl: zero,
+ };

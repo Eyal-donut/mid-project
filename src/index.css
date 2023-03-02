@@ -101,3 +101,34 @@ button {
   cursor: pointer;
   font-weight: 550;
 }
+
+.enemy0 {
+  position: absolute;
+  bottom: 2vh;
+  left:10vw
+}
+.enemy1 {
+  position: absolute;
+  bottom: 30vh;
+  left:5vw
+}
+.enemy3 {
+  position: absolute;
+  bottom: 50vh;
+  left:60vw
+}
+.enemy4 {
+  position: absolute;
+  bottom: 30vh;
+  left:50vw
+}
+.enemy5 {
+  position: absolute;
+  bottom: 10vh;
+  right:10vw
+}
+.enemy2 {
+  position: absolute;
+  bottom:55vh;
+  right:75vw
+}
