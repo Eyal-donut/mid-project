@@ -25,13 +25,11 @@ const LocationPage = () => {
           background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
         }}
       >
-        <h1>This is a location</h1>
-        <Link to={`/map/:locationID/${battleID}`}>
-          <button>Chosen Fight</button>
-        </Link>
+        <h1>{currentLocation.name}</h1>
         <Link to=".." relative="path">
           <button>game map</button>
         </Link>
+        <p>{currentLocation.description}</p>
       </main>
     </>
   );

@@ -9,7 +9,8 @@ export const locationsArray = [
       name: "The north",
       id: "location-one",
       className: `${classes.one}`,
-      imageUrl: imageUrlOne
+      imageUrl: imageUrlOne,
+      description: 'This area known to have many rock type Pokémons. Explore your surroundigs and try to catch them!'
     },
     {
       name: "Under the mountain",
