@@ -1,0 +1,51 @@
+.main {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: url(../assets/backgrounds/gameMap.jpg) no-repeat center center/cover;
+
+  }
+
+  .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background: var(--bgr-screenCover);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .location {
+    background: #EFEFEF;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .one {
+    position: absolute;
+    top: 8vh;
+    left: 12vw;
+  }
+  .three {
+    position: absolute;
+    top: 55vh;
+    left: 20vw;
+  }
+  .four {
+    position: absolute;
+    top: 70vh;
+    left: 65vw;
+  }
+  .two {
+    position: absolute;
+    top: 5vh;
+    left: 55vw;
+  }

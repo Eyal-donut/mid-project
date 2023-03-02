@@ -20,10 +20,9 @@ const ChoosePokemonWindow = ({ onPokemonClick }) => {
     onPokemonClick(e.target.id);
     //!update user with pokemon
     if (e.target.id !== "back-btn") {
-      console.log('hi')
-      // setTimeout(() => {
-      //   navigate("/map");
-      // }, 0);
+      setTimeout(() => {
+        navigate("/map");
+      }, 700);
     }
   };
 
@@ -49,7 +48,7 @@ const ChoosePokemonWindow = ({ onPokemonClick }) => {
   return (
     <>
       <NestedWindow>
-        <h1 className={classes.h1}>Choose your starting Pokémon</h1>
+        <h2 className={classes.h1}>Choose your starting Pokémon</h2>
         <div className={classes.wrapper}>
           <div
             id="bulbasaur"

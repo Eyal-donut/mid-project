@@ -19,7 +19,7 @@ const LoginWindow = ({ onBtnClick }) => {
   return (
     <>
       <NestedWindow>
-        <h1 className={classes.h1}>Login</h1>
+        <h2 className={classes.h1}>Login</h2>
         <form onSubmit={formSubmitHandler}>
           <ul>
             <li>

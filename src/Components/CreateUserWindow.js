@@ -7,7 +7,6 @@ const CreateUserWindow = ({ onBtnClick, onCreatedUser }) => {
     onBtnClick(e.target.id);
   };
   const formSubmitHandler = (e) => {
-    console.log('form submit')
     e.preventDefault();
     /*on submit: 
     -run password validator. 
@@ -20,7 +19,7 @@ const CreateUserWindow = ({ onBtnClick, onCreatedUser }) => {
   return (
     <>
       <NestedWindow>
-        <h1 className={classes.h1}>Create User</h1>
+        <h2 className={classes.h1}>Create User</h2>
         <form>
           <ul>
             <li>

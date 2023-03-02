@@ -11,7 +11,7 @@ const StartWindow = ({onBtnClick}) => {
   return (
     <>
       <NestedWindow>
-        <h1 className={classes.h1}>Go catch 'em all!</h1>
+        <h2 className={classes.h1}>Go catch 'em all!</h2>
         <div className={classes.buttonsWrap}>
           <button
             id="login-btn"

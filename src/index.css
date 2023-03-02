@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'pokemon';
+  src: url(./assets/pokemon_font.ttf);
+}
+
 html * {
   margin: 0;
   padding: 0;
@@ -68,4 +73,26 @@ h1 {
 .scaleAvatar {
   transform: scale(1.3);
   transition: .5s ease-in-out all;
+}
+
+h2 {
+  font-family: 'pokemon';
+  font-size: 4rem;
+  letter-spacing: .2rem;
+  /* text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff; */
+}
+
+h1 {
+  font-family: 'pokemon';
+  font-size: 8rem;
+  letter-spacing: .2rem;
+  color: var(--pokemon-yellow);
+  text-shadow: -1px -1px 0 var(--pokemon-blue), 1px -1px 0 var(--pokemon-blue), -1px 1px 0 var(--pokemon-blue), 1px 1px 0 var(--pokemon-blue);
+}
+h1.game-map {
+  margin-top: 18rem;
+}
+
+button {
+  cursor: pointer;
 }
