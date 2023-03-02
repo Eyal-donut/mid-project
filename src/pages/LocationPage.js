@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { locationsArray } from "../Data/LocationsData";
 import { useLocationContext } from "../context/CurrentLocationContext";
 import classes from "./LocationPage.module.css";
-import { testEnemy } from "../Data/EnemiesArray";
+import { testEnemy } from "../Data/enemiesData";
+import Pokedex from "../Components/Pokedex";
+import { useEnemiesContext } from "../context/EnemiesContext";
+import { useActiveUSerContext } from "../context/ActiveUserContext";
+import { testUser } from "../Data/UserData";
 
 // const [currentEnemy, setCurrentEnemy]= useState(testEnemy)
 //create a global Pokedex context containing: the isPokedexUpdated state, pokedexShownPokemons state, userPokemons state, isPokedexDisplay state
@@ -13,8 +17,9 @@ import { testEnemy } from "../Data/EnemiesArray";
 //each enemy has the following qualities: strength, defense, skillPoints (will I hurt you or give you a chance to dodge) array of attacks(chosen randomly), health points (100), xp-reward, location, photo, location on the map (defined by className).
 
 const LocationPage = () => {
-  const [currentEnemy, setCurrentEnemy] = useState(testEnemy);
   const { currentLocation, setCurrentLocation } = useLocationContext();
+  const {enemiesArray, setEnemiesArray } = useEnemiesContext()
+  const {activeUser, setActiveUser} = useActiveUSerContext()
 
   const params = useParams();
   const navigate = useNavigate();
@@ -23,19 +28,24 @@ const LocationPage = () => {
   useEffect(() => {
     const locationByID = locationsArray.find(
       (location) => location.id === params.locationID
-    );
-    setCurrentLocation(locationByID);
-  }, [params.locationID, setCurrentLocation]);
+      //!delete the next line after you did the log in stuff:
+      );
+      setCurrentLocation(locationByID);
+      setActiveUser(testUser);
+      setEnemiesArray(activeUser)
+
+  }, [params.locationID, setCurrentLocation, setActiveUser]);
 
   const clickHandler = (e) => {
+
     //set current enemy to what you clicked on
     navigate(`${e.target.id}`)
     
   }
 
-
   return (
     <>
+      <Pokedex/>
       <main
         className={classes.main}
         style={{
@@ -49,7 +59,7 @@ const LocationPage = () => {
         <p>{currentLocation.description}</p>
 
         {/* here it's not a current enemy, but map for enemies */}
-        <div className={`${classes.enemyEvent} ${currentEnemy.className}`} onClick={clickHandler} id={currentEnemy.id}/>
+        {/* <div className={`${classes.enemyEvent} ${currentEnemy.className}`} onClick={clickHandler} id={currentEnemy.id}/> */}
       </main>
     </>
   );

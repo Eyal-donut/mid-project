@@ -52,21 +52,21 @@ const ChoosePokemonWindow = ({ onPokemonClick }) => {
         <div className={classes.wrapper}>
           <div
             id="bulbasaur"
-            className={`${classes.pokemonImg} ${classes.two}`}
+            className={`${classes.pokemonImg} ${classes.twentyOne}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={clickHandler}
           />
           <div
             id="pikachu"
-            className={`${classes.pokemonImg} ${classes.one}`}
+            className={`${classes.pokemonImg} ${classes.twenty}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={clickHandler}
           />
           <div
             id="squirtle"
-            className={`${classes.pokemonImg} ${classes.three}`}
+            className={`${classes.pokemonImg} ${classes.twentyTwo}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={clickHandler}

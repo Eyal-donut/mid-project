@@ -1,16 +1,24 @@
 import { Link } from "react-router-dom";
 import { useLocationContext } from "../context/CurrentLocationContext";
+import {useEffect} from 'react'
 
 import classes from './BattlePage.module.css'
+import Pokedex from "../Components/Pokedex";
 
 const BattlePage = () => {
   const {currentLocation} = useLocationContext()
+
+  useEffect(() => {
+    //pokedex
+    
+  }, []);
 
 
 
 
   return (
     <>
+    <Pokedex/>
     <main
         className={classes.main}
         style={{

@@ -11,8 +11,6 @@ const Pokedex = () => {
   const [isPokedexUpdated, setPokedexUpdated] = useState(true);
   const [isPokedexDisplay, setPokedexDisplay] = useState(false);
 
-  console.log(showedPokemon);
-  console.log(setShowedPokemon);
 
   const clickHandler = () => {
     setPokedexUpdated(false);
