@@ -19,16 +19,27 @@
     justify-content: flex-start;
     align-items: center;
   }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   .location {
-    background: #EFEFEF;
-    width: 8rem;
-    height: 8rem;
+    background: url(../assets/pokeball.png) no-repeat center center/cover;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: translateY(10%);
+    animation: upDown infinite alternate-reverse 1s;
+    cursor: pointer;
   }
+
+
   .one {
     position: absolute;
     top: 8vh;
@@ -42,10 +53,40 @@
   .four {
     position: absolute;
     top: 70vh;
-    left: 65vw;
+    left: 55vw;
   }
   .two {
     position: absolute;
     top: 5vh;
     left: 55vw;
+  }
+
+  .h2 {
+    font-family: 'pokemon';
+    font-size: 4rem;
+    letter-spacing: .2rem;
+    color: var(--btn-bgr);
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    opacity: .85;
+  }
+
+  .h1 {
+    font-family: 'pokemon';
+    font-size: 8rem;
+    letter-spacing: .2rem;
+    color: var(--pokemon-yellow);
+    text-shadow: -1px -1px 0 var(--pokemon-blue), 1px -1px 0 var(--pokemon-blue), -1px 1px 0 var(--pokemon-blue), 1px 1px 0 var(--pokemon-blue);
+    margin-top: 18rem;
+  }
+
+  @keyframes upDown {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(10%);}
+  }
+
+  @media(max-width:500px) {
+    .h1 {
+        margin-top: 25rem;
+    }
+
   }

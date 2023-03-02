@@ -89,10 +89,15 @@ h1 {
   color: var(--pokemon-yellow);
   text-shadow: -1px -1px 0 var(--pokemon-blue), 1px -1px 0 var(--pokemon-blue), -1px 1px 0 var(--pokemon-blue), 1px 1px 0 var(--pokemon-blue);
 }
-h1.game-map {
-  margin-top: 18rem;
-}
+
 
 button {
+  background: var(--pokemon-yellow);
+  border: 3px solid var(--pokemon-blue);
+  border-radius: 5px;
+  margin: 0.5rem;
+  width: 8rem;
+  height: 3rem;
   cursor: pointer;
+  font-weight: 550;
 }
