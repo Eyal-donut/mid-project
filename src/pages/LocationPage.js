@@ -8,7 +8,6 @@ import Pokedex from "../Components/Pokedex";
 // import { useEnemiesContext } from "../context/EnemiesContext";
 import { useActiveUSerContext } from "../context/ActiveUserContext";
 import useEnemiesArray from "../hooks/useEnemiesArray";
-import Enemy from "../Components/Enemy";
 
 //create a global Pokedex context containing: the isPokedexUpdated state, pokedexShownPokemons state, userPokemons state, isPokedexDisplay state
 
