@@ -16,18 +16,21 @@ export const locationsArray = [
       name: "Under the mountain",
       id: "location-two",
       className: `${classes.two}`,
-      imageUrl: imageUrlTwo
+      imageUrl: imageUrlTwo,
+      description: 'This area known to have many fire type Pokémons. Explore your surroundigs and try to catch them!'
     },
     {
       name: "Pokéforest",
       id: "location-three",
       className: `${classes.three}`,
-      imageUrl: imageUrlThree
+      imageUrl: imageUrlThree,
+      description: 'This area known to have many grass and insect type Pokémons. Explore your surroundigs and try to catch them!'
     },
     {
       name: "Beach",
       id: "location-four",
       className: `${classes.four}`,
-      imageUrl: imageUrlFour
+      imageUrl: imageUrlFour,
+      description: 'This area known to have many water type Pokémons. Explore your surroundigs and try to catch them!'
     },
   ];

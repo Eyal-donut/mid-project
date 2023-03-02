@@ -33,7 +33,6 @@ const Pokedex = () => {
           {isPokedexUpdated && (
             <div className={classes.updateLogo}>
                 <div className={classes.exclamationMark}/>
-
             </div>
           )}
         </div>
