@@ -6,6 +6,7 @@ import CreateUserWindow from "../Components/CreateUserWindow";
 import ChoosePokemonWindow from "../Components/ChoosePokemonWindow";
 
 const HomePage = () => {
+  //! define global context and then use the isUserLogged state to determine if you show the start window or not 
   const [isStartWindowDisplay, setStartWindowDisplay] = useState(true);
   const [isLoginWindowDisplay, setLoginWindowDisplay] = useState(false);
   const [isCreateUserWindowDisplay, setCreateUserWindowDisplay] =

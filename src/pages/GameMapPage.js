@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from "./GameMap.module.css";
+import { useNavigate } from "react-router-dom";
 
 const locationsArray = [
   {
@@ -24,11 +25,12 @@ const locationsArray = [
   },
 ];
 
-
 const GameMapPage = () => {
-  
+  const navigate = useNavigate();
+
   const clickHandler = (e) => {
-    console.log(e.target.id);
+    //on click - set an array of monsters with a level according to the player's pokemon (no need to save them, because you'll generate every time you go to the location with useEffect, and then navigate to where you need.)
+    navigate(`/map/${e.target.id}`);
   };
 
   return (
@@ -39,7 +41,10 @@ const GameMapPage = () => {
 
           {locationsArray.map((location) => {
             return (
-              <div key={location.id} className={`${classes.wrapper} ${location.className}`}>
+              <div
+                key={location.id}
+                className={`${classes.wrapper} ${location.className}`}
+              >
                 <h2 className={classes.h2}>{location.name}</h2>
                 <div
                   id={location.id}
