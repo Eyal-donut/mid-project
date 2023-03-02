@@ -1,16 +1,29 @@
 import { Link } from "react-router-dom";
 import classes from "./GameMap.module.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { locationsArray } from "../Data/LocationsData";
 import Pokedex from "../Components/Pokedex";
 
+
+import { useActiveUSerContext } from "../context/ActiveUserContext";
+import { testUser } from "../Data/UserData";
+
+
 const GameMapPage = () => {
+  const {activeUser, setActiveUser} = useActiveUSerContext()
   const navigate = useNavigate();
 
+
   const clickHandler = (e) => {
-    //on click - set an array of monsters with a level according to the player's pokemon (no need to save them, because you'll generate every time you go to the location with useEffect, and then navigate to where you need.)
     navigate(`/map/${e.target.id}`);
   };
+
+  //!I will have to set the active user after registration! not here. this is just a test
+  useEffect(() => {
+    setActiveUser(testUser);
+  }, []);
+
 
   return (
     <>

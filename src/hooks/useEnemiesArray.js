@@ -1,18 +1,25 @@
 import { useActiveUSerContext } from "../context/ActiveUserContext";
-import { useEnemiesContext } from "../context/EnemiesContext";
-import { enemiesData } from "../Data/enemiesData";
+// import { useEnemiesContext } from "../context/EnemiesContext";
+import { enemiesData, testEnemy } from "../Data/enemiesData";
 
-const useEnemiesArray = (locationID, player) => {
+import { useState } from "react";
 
-  const { enemiesArray, setEnemiesArray } = useEnemiesContext();
-  const { activeUser } = useActiveUSerContext();
+const useEnemiesArray = (user, locationID) => {
+  const ENEMY_DIFF_FROM_PLAYER = 2;
+
+  const [enemiesArray, setEnemiesArray] = useState([]);
 
   const randomIntFromInterval = (min, max) => {
     let randomInt = Math.floor(Math.random() * (max - min + 1) + min);
     return randomInt <= 0 ? 1 : randomInt;
   };
-  const RandomLowerOrHigher = (playerQuality, num) =>
-    randomIntFromInterval(playerQuality - num, playerQuality + num);
+
+  const RandomLowerOrHigher = (playerQuality) => {
+    return randomIntFromInterval(
+      playerQuality - ENEMY_DIFF_FROM_PLAYER,
+      playerQuality + ENEMY_DIFF_FROM_PLAYER
+    );
+  };
 
   const tempArray = enemiesData.map(
     (enemy) =>
@@ -21,20 +28,28 @@ const useEnemiesArray = (locationID, player) => {
         name: enemy.name,
         imageUrl: enemy.imageUrl,
         health: 100,
-        strength: RandomLowerOrHigher(player.strength, 2),
-        defense: RandomLowerOrHigher(player.defense, 2),
-        skillPoints: RandomLowerOrHigher(player.defense, 2),
+        strength: RandomLowerOrHigher(user.strength),
+        defense: RandomLowerOrHigher(user.defense),
+        skillPoints: RandomLowerOrHigher(user.skillPoints),
         xpReward: randomIntFromInterval(1, 5),
       })
   );
 
-  if (locationID === "location-one") {
-    
-  }
-  if (locationID === "location-two") {
-  }
-  if (locationID === "location-three") {
-  }
-  if (locationID === "location-four") {
-  }
+  const filterByIDRange = (firstId, lastId) => {
+    return tempArray.filter((enemy) => enemy.id >= firstId && enemy.id <= lastId ) ;
+  };
+
+
+  const setEnemiesArrayByLocationID = () => {
+    if (locationID === "location-one") setEnemiesArray(filterByIDRange(0, 5));
+    if (locationID === "location-two") setEnemiesArray(filterByIDRange(6, 11));
+    if (locationID === "location-four")
+      setEnemiesArray(filterByIDRange(12, 17));
+    if (locationID === "location-three")
+      setEnemiesArray(filterByIDRange(18, 23));
+  };
+
+  return { enemiesArray, setEnemiesArrayByLocationID };
 };
+
+export default useEnemiesArray;

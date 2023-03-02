@@ -9,6 +9,7 @@ import Pokedex from "../Components/Pokedex";
 import { useEnemiesContext } from "../context/EnemiesContext";
 import { useActiveUSerContext } from "../context/ActiveUserContext";
 import { testUser } from "../Data/UserData";
+import useEnemiesArray from "../hooks/useEnemiesArray";
 
 // const [currentEnemy, setCurrentEnemy]= useState(testEnemy)
 //create a global Pokedex context containing: the isPokedexUpdated state, pokedexShownPokemons state, userPokemons state, isPokedexDisplay state
@@ -18,24 +19,30 @@ import { testUser } from "../Data/UserData";
 
 const LocationPage = () => {
   const { currentLocation, setCurrentLocation } = useLocationContext();
-  const {enemiesArray, setEnemiesArray } = useEnemiesContext()
+  // const {enemiesArray, setEnemiesArray } = useEnemiesContext()
   const {activeUser, setActiveUser} = useActiveUSerContext()
 
+
   const params = useParams();
+
+  const {enemiesArray, setEnemiesArrayByLocationID} = useEnemiesArray(activeUser, params.locationID)
+  
   const navigate = useNavigate();
+
+
 
 
   useEffect(() => {
     const locationByID = locationsArray.find(
       (location) => location.id === params.locationID
-      //!delete the next line after you did the log in stuff:
       );
       setCurrentLocation(locationByID);
-      setActiveUser(testUser);
-      setEnemiesArray(activeUser)
+      setEnemiesArrayByLocationID()
+  }, []);
 
-  }, [params.locationID, setCurrentLocation, setActiveUser]);
+  console.log(enemiesArray, '👽')
 
+  
   const clickHandler = (e) => {
 
     //set current enemy to what you clicked on
