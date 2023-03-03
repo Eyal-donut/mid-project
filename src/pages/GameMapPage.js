@@ -24,6 +24,7 @@ const GameMapPage = () => {
     setActiveUser(testUser);
   }, []);
 
+  console.log(activeUser, 'map page 😍')
 
   return (
     <>

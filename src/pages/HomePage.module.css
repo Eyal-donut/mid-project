@@ -54,15 +54,15 @@
     margin: .5rem;
 
 }
-.pokemonImg.twenty {
-    background: url(../assets/pokemons/20.png) no-repeat center center/cover;
+.pokemonImg.twentyFour {
+    background: url(../assets/pokemons/24.png) no-repeat center center/cover;
 }
-.pokemonImg.twentyOne {
-    background: url(../assets/pokemons/21.png) no-repeat center center/cover;
+.pokemonImg.twentyFive {
+    background: url(../assets/pokemons/25.png) no-repeat center center/cover;
 
 }
-.pokemonImg.twentyTwo {
-    background: url(../assets/pokemons/22.png) no-repeat center center/cover;
+.pokemonImg.twentySix {
+    background: url(../assets/pokemons/26.png) no-repeat center center/cover;
 }
 
 

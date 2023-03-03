@@ -1,0 +1,17 @@
+.fightingPokemon {
+    width: 20rem;
+    height: 20rem;
+}
+
+.enemy {
+    position: absolute;
+    bottom: 20vh;
+    right:6vw;
+}
+
+.player {
+    position: absolute;
+    bottom:13vh;
+    left:5vw;
+    transform: scaleX(-1);
+}

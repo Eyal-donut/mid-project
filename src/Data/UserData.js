@@ -1,6 +1,6 @@
-import twenty from '../assets/pokemons/20.png' 
-import twentyOne from '../assets/pokemons/21.png' 
-import twentyTwo from '../assets/pokemons/22.png' 
+import twentyFour from '../assets/pokemons/24.png' 
+import twentyFive from '../assets/pokemons/25.png' 
+import twentySix from '../assets/pokemons/26.png' 
 
 export const testUser = {
   id: 1,
@@ -11,14 +11,14 @@ export const testUser = {
   xpReward: 5,
   pokemons: [
     {
-      id: 20,
-      number: "twenty",
+      id: 24,
+      number: "twentyFour",
       strength: 3,
       defense: 3,
       skillPoints: 3,
       attacks: ["speed", "lighting"],
       healthPoints: 100,
-      imageUrl: twenty,
+      imageUrl: twentyFour,
     },
   ],
 };

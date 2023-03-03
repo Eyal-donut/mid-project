@@ -5,7 +5,7 @@ import { locationsArray } from "../Data/LocationsData";
 import { useLocationContext } from "../context/CurrentLocationContext";
 import classes from "./LocationPage.module.css";
 import Pokedex from "../Components/Pokedex";
-// import { useEnemiesContext } from "../context/EnemiesContext";
+import { useEnemiesContext } from "../context/EnemiesContext";
 import { useActiveUSerContext } from "../context/ActiveUserContext";
 import useEnemiesArray from "../hooks/useEnemiesArray";
 import EnemyEventPointer from "../Components/EnemyEventPointe";
@@ -16,16 +16,13 @@ import EnemyEventPointer from "../Components/EnemyEventPointe";
 //each enemy has the following qualities: strength, defense, skillPoints (will I hurt you or give you a chance to dodge) array of attacks(chosen randomly), health points (100), xp-reward, location, photo, location on the map (defined by className).
 
 const LocationPage = () => {
+  const {activeUser} = useActiveUSerContext()
   const params = useParams();
-  const [currentEnemy, setCurrentEnemy]= useState({})
   const { currentLocation, setCurrentLocation } = useLocationContext();
-  // const {enemiesArray, setEnemiesArray } = useEnemiesContext()
-  const {activeUser, setActiveUser} = useActiveUSerContext()
+  const {currentEnemy, setCurrentEnemy} = useEnemiesContext()
+
   const {enemiesArray, setEnemiesArrayByLocationID} = useEnemiesArray(activeUser, params.locationID)
 
-
-
-  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,13 +33,10 @@ const LocationPage = () => {
       setEnemiesArrayByLocationID()
   }, []);
 
-
-  
-  const clickHandler = (id) => {
-
-    //set current enemy to what you clicked on
-    navigate(`${id}`)
-    
+  const clickHandler = (clickedID) => {
+    console.log(clickedID)
+    setCurrentEnemy(enemiesArray.find((enemy)=> enemy.id === Number(clickedID)))
+    navigate(`${clickedID}`)
   }
 
   return (
@@ -62,7 +56,7 @@ const LocationPage = () => {
 
         {enemiesArray.map((enemy, index)=>
 
-        <EnemyEventPointer id={enemy.id} identifier={enemy.id} className={`enemy${index}`} onBtnClick={clickHandler}/>
+        <EnemyEventPointer key={`${enemy.name} ${enemy.id}` } id={enemy.id} identifier={enemy.id} className={`enemy${index}`} onBtnClick={clickHandler}/>
 
         )}
         

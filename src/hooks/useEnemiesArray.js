@@ -1,5 +1,5 @@
 import { useActiveUSerContext } from "../context/ActiveUserContext";
-// import { useEnemiesContext } from "../context/EnemiesContext";
+import { useEnemiesContext } from "../context/EnemiesContext";
 import { enemiesData, testEnemy } from "../Data/enemiesData";
 
 import { useState } from "react";
@@ -7,7 +7,8 @@ import { useState } from "react";
 const useEnemiesArray = (user, locationID) => {
   const ENEMY_DIFF_FROM_PLAYER = 2;
 
-  const [enemiesArray, setEnemiesArray] = useState([]);
+  // const [enemiesArray, setEnemiesArray] = useState([]);
+  const {enemiesArray, setEnemiesArray} = useEnemiesContext()
 
   const randomIntFromInterval = (min, max) => {
     let randomInt = Math.floor(Math.random() * (max - min + 1) + min);
