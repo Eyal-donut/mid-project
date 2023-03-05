@@ -1,6 +1,4 @@
-import classes from "../pages/LocationPage.module.css";
-
-export const enemiesData = [
+export const pokemonsData = [
   { name: "Onix", id: 0, imageUrl: 'https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/0.png'},
   { name: "Machoke", id: 1, imageUrl: 'https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/1.png' },
   { name: "Meowth", id: 2, imageUrl: 'https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/2.png' },
@@ -28,19 +26,8 @@ export const enemiesData = [
   { name: "Arbok", id: 21, imageUrl: 'https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/21.png' },
   { name: "Jigglypuff", id: 22, imageUrl: 'https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/22.png' },
   { name: "Weepinbell", id: 23, imageUrl: 'https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/23.png' },
+  {name: "Pikachu", id: 24, imageUrl:'https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/24.png' },
+  {name: "Bulbasaur", id: 25, imageUrl:'https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/25.png' },
+  {name: "Squirtle", id: 26, imageUrl:'https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/26.png' },
 ];
 
- export const testEnemy = {
-   id: 0,
-   number: "one",
-   className: `${classes.one}`,
-   name: "Onix",
-   strength: 3,
-   defense: 3,
-   skillPoints: 3,
-   attacks: ["speed", "fireball"],
-   healthPoints: 100,
-   xpReward: 5,
-   location: "location-one",
-   imageUrl: 'https://github.com/Eyal-donut/mid-project/blob/main/src/assets/all_pokemons/0.png',
- };

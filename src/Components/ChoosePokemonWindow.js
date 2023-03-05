@@ -18,13 +18,8 @@ const ChoosePokemonWindow = ({ onPokemonClick }) => {
 
   const clickHandler = (e) => {
     onPokemonClick(e.target.id);
-    //!update user with pokemon
     
-    if (e.target.id !== "back-btn") {
-      setTimeout(() => {
-        navigate("/map");
-      }, 700);
-    }
+  
   };
 
   const handleMouseEnter = (e) => {

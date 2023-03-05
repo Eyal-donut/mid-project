@@ -1,6 +1,6 @@
 import { useActiveUSerContext } from "../context/ActiveUserContext";
 import { useEnemiesContext } from "../context/EnemiesContext";
-import { enemiesData, testEnemy } from "../Data/enemiesData";
+import { pokemonsData } from "../Data/PokemonsData";
 
 import { useState } from "react";
 
@@ -22,7 +22,7 @@ const useEnemiesArray = (user, locationID) => {
     );
   };
 
-  const tempArray = enemiesData.map(
+  const tempArray = pokemonsData.map(
     (enemy) =>
       (enemy = {
         id: enemy.id,
