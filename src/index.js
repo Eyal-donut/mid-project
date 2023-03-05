@@ -5,20 +5,20 @@ import "./variables.css";
 import App from "./App";
 import { LocationProvider } from "./context/CurrentLocationContext";
 import { EnemiesProvider } from "./context/EnemiesContext";
-import { ActiveUserProvider } from "./context/ActiveUserContext";
 import { UsersProvider } from "./context/UsersContext";
+import { LoggedUserProvider } from "./context/LoggedUserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <UsersProvider>
-      <ActiveUserProvider>
+    <LoggedUserProvider>
+      <UsersProvider>
         <EnemiesProvider>
           <LocationProvider>
             <App />
           </LocationProvider>
         </EnemiesProvider>
-      </ActiveUserProvider>
-    </UsersProvider>
+      </UsersProvider>
+    </LoggedUserProvider>
   </React.StrictMode>
 );

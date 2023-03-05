@@ -6,20 +6,40 @@ import CreateUserWindow from "../Components/CreateUserWindow";
 import ChoosePokemonWindow from "../Components/ChoosePokemonWindow";
 import UsersDataBaseAPI from "../Data/API";
 import { useUsersContext } from "../context/UsersContext";
+import { pokemonsData } from "../Data/PokemonsData";
+import { useLoggedUsersContext } from "../context/LoggedUserContext";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const { setUsers, setKeys } = useUsersContext();
+  const { users, setUsers, keys, setKeys } = useUsersContext();
+  const {loggedUserKey, setLoggedUserKey, loggedUser, setLoggedUser} = useLoggedUsersContext()
+
+  const navigate = useNavigate()
 
   const getAllUsersAndSetUsersContext = async () => {
     const fetchedUsers = await UsersDataBaseAPI.getAllUsers();
-    setUsers(fetchedUsers)
+    setUsers(fetchedUsers);
     const keys = UsersDataBaseAPI.getKeys(fetchedUsers);
-    setKeys(keys)
+    setKeys(keys);
   };
+
+
+  const addUserAndUpdateKeysContext = async (userName, password) => {
+    try {
+      const response = await UsersDataBaseAPI.users.post(".json", {userName, password})
+      setLoggedUserKey(response.data.name)
+      setKeys((prev)=> [...prev, response.data.name])
+      
+    } catch (error) {
+      console.log("Error adding user", error)
+    }
+  }
+
 
   useEffect(() => {
     getAllUsersAndSetUsersContext();
   }, []);
+
 
   //! define global context and then use the isUserLogged state to determine if you show the start window or not
   const [isStartWindowDisplay, setStartWindowDisplay] = useState(true);
@@ -27,8 +47,6 @@ const HomePage = () => {
   const [isCreateUserWindowDisplay, setCreateUserWindowDisplay] =
     useState(false);
   const [isChoosePokemonDisplay, setChoosePokemonDisplay] = useState(false);
-
-  const [newUser, setNewUser] = useState({});
 
   const startClickHandler = (btnID) => {
     setStartWindowDisplay(false);
@@ -51,27 +69,33 @@ const HomePage = () => {
     if (btnID === "back-btn") {
       setStartWindowDisplay(true);
     } else {
-      setNewUser({ userName, password });
       setChoosePokemonDisplay(true);
+      addUserAndUpdateKeysContext(userName, password)
+      setLoggedUser({userName, password})
     }
   };
 
-  const HandleChosenPokemon = (chosenPokemonID) => {
-    if (chosenPokemonID === "back-btn") {
+  const HandleChosenPokemon = (chosenPokemonName) => {
+    if (chosenPokemonName === "back-btn") {
       setChoosePokemonDisplay(false);
       setStartWindowDisplay(true);
+    } else {
+      const chosenPokemon = pokemonsData.find((pokemon)=> pokemon.name.toLowerCase()  === chosenPokemonName)
+      const updatedData = {
+        ...loggedUser, 
+        pokemons: {
+          [chosenPokemon.id] : {
+            name: chosenPokemon.name,
+            // attacks: {attack1: chosenPokemon.attacks[0], attack2: chosenPokemon.attacks[1]}, If you have time add all pokemons attacks...
+            strength: 3,
+            defense: 3,
+            skillPoints: 3,
+          }
+        }
+      }
+      UsersDataBaseAPI.editUser(updatedData, loggedUserKey)
+      navigate("/map");
     }
-    if (chosenPokemonID === "pikachu") {
-    }
-    if (chosenPokemonID === "bulbasaur") {
-    }
-    if (chosenPokemonID === "squirtle") {
-    }
-    // if (e.target.id !== "back-btn") {
-    //   setTimeout(() => {
-    //     navigate("/map");
-    //   }, 700);
-    // }
   };
 
   return (

@@ -36,11 +36,13 @@ const UsersDataBaseAPI = {
       .post(".json", newUser)
       .then((response) => {
         console.log("User added successfully");
+        localStorage.setItem('addedKey', JSON.stringify(response.data.name))
       })
       .catch((error) => {
         console.error("Error adding user", error);
       });
   },
+
   async editUser(updatedData, id) {
     this.users
       .put(`/${id}.json`, updatedData)
@@ -51,6 +53,7 @@ const UsersDataBaseAPI = {
         console.error("Error updating user:", error);
       });
   },
+
   getKeys(users) {
     const keys = Object.keys(users);
     const newKeys = [];
@@ -59,7 +62,7 @@ const UsersDataBaseAPI = {
         newKeys.push(keys[i]);
       }
     }
-    return newKeys
+    return newKeys;
   },
 };
 

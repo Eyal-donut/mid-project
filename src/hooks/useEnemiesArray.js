@@ -1,4 +1,3 @@
-import { useActiveUSerContext } from "../context/ActiveUserContext";
 import { useEnemiesContext } from "../context/EnemiesContext";
 import { pokemonsData } from "../Data/PokemonsData";
 

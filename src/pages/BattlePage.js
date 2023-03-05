@@ -1,20 +1,18 @@
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-
+import React, {useState } from "react";
 import classes from "./BattlePage.module.css";
 import Pokedex from "../Components/Pokedex";
 import { useLocationContext } from "../context/CurrentLocationContext";
 import { useEnemiesContext } from "../context/EnemiesContext";
-import { useActiveUSerContext } from "../context/ActiveUserContext";
 import PlayerFighter from "../Components/PlayerFighter";
 import EnemyFighter from "../Components/EnemyFighter";
 import Button from "../Components/Button";
+import { testUser } from "../Data/UserData";
 
 const BattlePage = () => {
-  const { activeUser } = useActiveUSerContext();
   const { currentLocation } = useLocationContext();
   const { currentEnemy } = useEnemiesContext();
-  const [currentPokemon, setCurrentPokemon] = useState(activeUser.pokemons[0]);
+  const [currentPokemon, setCurrentPokemon] = useState(testUser.pokemons[0]);
   const [isBattleActive, setBattleActive] = useState(true);
 
   //battle managment states

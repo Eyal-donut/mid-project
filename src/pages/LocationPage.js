@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { locationsArray } from "../Data/LocationsData";
 import { useLocationContext } from "../context/CurrentLocationContext";
 import classes from "./LocationPage.module.css";
 import Pokedex from "../Components/Pokedex";
 import { useEnemiesContext } from "../context/EnemiesContext";
-import { useActiveUSerContext } from "../context/ActiveUserContext";
 import useEnemiesArray from "../hooks/useEnemiesArray";
 import EnemyEventPointer from "../Components/EnemyEventPointe";
+import { testUser } from "../Data/UserData";
+
 
 //create a global Pokedex context containing: the isPokedexUpdated state, pokedexShownPokemons state, userPokemons state, isPokedexDisplay state
 
@@ -16,12 +17,11 @@ import EnemyEventPointer from "../Components/EnemyEventPointe";
 //each enemy has the following qualities: strength, defense, skillPoints (will I hurt you or give you a chance to dodge) array of attacks(chosen randomly), health points (100), xp-reward, location, photo, location on the map (defined by className).
 
 const LocationPage = () => {
-  const {activeUser} = useActiveUSerContext()
   const params = useParams();
   const { currentLocation, setCurrentLocation } = useLocationContext();
   const {currentEnemy, setCurrentEnemy} = useEnemiesContext()
 
-  const {enemiesArray, setEnemiesArrayByLocationID} = useEnemiesArray(activeUser, params.locationID)
+  const {enemiesArray, setEnemiesArrayByLocationID} = useEnemiesArray(testUser, params.locationID)
 
   const navigate = useNavigate();
 
@@ -34,7 +34,6 @@ const LocationPage = () => {
   }, []);
 
   const clickHandler = (clickedID) => {
-    console.log(clickedID)
     setCurrentEnemy(enemiesArray.find((enemy)=> enemy.id === Number(clickedID)))
     navigate(`${clickedID}`)
   }
