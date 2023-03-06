@@ -32,37 +32,42 @@ export const useBattleSequence = ({ sequence }) => {
           (async () => {
             setInSequence(true);
             setAnnouncerMessage(`${attacker.name} has chosen to attack!`);
-            
+
             await waitFunction(1000);
-            
+
             turn === 0
-            ? setPlayerAnimation("attack")
-            : setEnemyAnimation("attack");
+              ? setPlayerAnimation("attack")
+              : setEnemyAnimation("attack");
             await waitFunction(100);
-            
+
             turn === 0
-            ? setPlayerAnimation("static")
-            : setEnemyAnimation("static");
+              ? setPlayerAnimation("static")
+              : setEnemyAnimation("static");
             await waitFunction(500);
-            
+
             turn === 0
-            ? setEnemyAnimation("damage")
-            : setPlayerAnimation("damage");
+              ? setEnemyAnimation("damage")
+              : setPlayerAnimation("damage");
             await waitFunction(750);
-            
+
             turn === 0
-            ? setEnemyAnimation("static")
+              ? setEnemyAnimation("static")
               : setPlayerAnimation("static");
-              
-              setAnnouncerMessage(`${receiver.name} felt that!`);
-              
+
+            setAnnouncerMessage(`${receiver.name} felt that!`);
+
             turn === 0
-            ? setEnemyHealth((hp)=> (hp - damage > 0 ?  h - damage : 0 ))
-            : setPlayerHealth((hp)=> (hp - damage > 0 ?  h - damage : 0 ))
+              ? setEnemyHealth((hp) => (hp - damage > 0 ? hp - damage : 0))
+              : setPlayerHealth((hp) => (hp - damage > 0 ? hp - damage : 0));
 
             await waitFunction(2000);
 
-            
+            setAnnouncerMessage(`Now it's ${receiver.name} turn!`);
+
+            await waitFunction(1500)
+
+            setTurn(turn === 0 ? 1 : 0);
+            setInSequence(false)
           })();
 
           break;
