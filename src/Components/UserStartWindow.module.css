@@ -1,0 +1,27 @@
+  .button {
+    background: var(--pokemon-yellow);
+    border: 3px solid var(--pokemon-blue);
+    border-radius: 5px;
+    margin: 0.5rem;
+    width: 12rem;
+    min-height: 5rem;
+    cursor: pointer;
+    font-weight: 550;
+  }
+  .button:hover {
+    box-shadow: 0 1px 10px rgb(0, 0, 0, 0.25);
+  }
+  
+  .buttonsWrap {
+      display: flex;
+      margin-top: 15rem
+  }
+  .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  
+  
+  

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import classes from "./HomePage.module.css";
 import StartWindow from "../Components/StartWindow";
 import LoginWindow from "../Components/LoginWindow";
+import UserStartWindow from "../Components/UserStartWindow";
 import CreateUserWindow from "../Components/CreateUserWindow";
 import ChoosePokemonWindow from "../Components/ChoosePokemonWindow";
 import UsersDataBaseAPI from "../Data/API";
@@ -11,10 +12,18 @@ import { useLoggedUsersContext } from "../context/LoggedUserContext";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const { users, setUsers, keys, setKeys } = useUsersContext();
-  const {loggedUserKey, setLoggedUserKey, loggedUser, setLoggedUser} = useLoggedUsersContext()
+  const { setUsers, setKeys } = useUsersContext();
+  const { loggedUserKey, setLoggedUserKey, loggedUser, setLoggedUser } =
+    useLoggedUsersContext();
 
-  const navigate = useNavigate()
+  const [isStartWindowDisplay, setStartWindowDisplay] = useState(true);
+  const [isUserStartWindowDisplay, setUserStartWindowDisplay] = useState(false);
+  const [isLoginWindowDisplay, setLoginWindowDisplay] = useState(false);
+  const [isCreateUserWindowDisplay, setCreateUserWindowDisplay] =
+    useState(false);
+  const [isChoosePokemonDisplay, setChoosePokemonDisplay] = useState(false);
+
+  const navigate = useNavigate();
 
   const getAllUsersAndSetUsersContext = async () => {
     const fetchedUsers = await UsersDataBaseAPI.getAllUsers();
@@ -23,30 +32,41 @@ const HomePage = () => {
     setKeys(keys);
   };
 
-
   const addUserAndUpdateKeysContext = async (userName, password) => {
     try {
-      const response = await UsersDataBaseAPI.users.post(".json", {userName, password})
-      setLoggedUserKey(response.data.name)
-      setKeys((prev)=> [...prev, response.data.name])
-      
+      const response = await UsersDataBaseAPI.users.post(".json", {
+        userName,
+        password,
+      });
+      setLoggedUserKey(response.data.name);
+      setKeys((prev) => [...prev, response.data.name]);
     } catch (error) {
-      console.log("Error adding user", error)
+      console.log("Error adding user", error);
     }
-  }
-
+  };
 
   useEffect(() => {
     getAllUsersAndSetUsersContext();
   }, []);
 
+  useEffect(() => {
+    const localStorageLoggedUserKey = JSON.parse(
+      localStorage.getItem("loggedUserKey")
+    );
+    if (localStorageLoggedUserKey) {
+      setLoggedUserKey(localStorageLoggedUserKey);
+      setStartWindowDisplay(false);
+      setUserStartWindowDisplay(true);
+    }
+  }, []);
 
-  //! define global context and then use the isUserLogged state to determine if you show the start window or not
-  const [isStartWindowDisplay, setStartWindowDisplay] = useState(true);
-  const [isLoginWindowDisplay, setLoginWindowDisplay] = useState(false);
-  const [isCreateUserWindowDisplay, setCreateUserWindowDisplay] =
-    useState(false);
-  const [isChoosePokemonDisplay, setChoosePokemonDisplay] = useState(false);
+  const logoutClickHandler = () => {
+    setUserStartWindowDisplay(false)
+    setStartWindowDisplay(true)
+    localStorage.removeItem("loggedUserKey")
+    setLoggedUserKey('')
+    
+  }
 
   const startClickHandler = (btnID) => {
     setStartWindowDisplay(false);
@@ -58,10 +78,8 @@ const HomePage = () => {
 
   const loginClickHandler = (btnID) => {
     setLoginWindowDisplay(false);
-    if (btnID === "back-btn") {
-      setStartWindowDisplay(true);
-    }
-    //if btn ID === login....
+    if (btnID === "back-btn") setStartWindowDisplay(true);
+    else navigate("/map");
   };
 
   const createUserClickHandler = (btnID, userName, password) => {
@@ -70,8 +88,8 @@ const HomePage = () => {
       setStartWindowDisplay(true);
     } else {
       setChoosePokemonDisplay(true);
-      addUserAndUpdateKeysContext(userName, password)
-      setLoggedUser({userName, password})
+      addUserAndUpdateKeysContext(userName, password);
+      setLoggedUser({ userName, password });
     }
   };
 
@@ -80,20 +98,22 @@ const HomePage = () => {
       setChoosePokemonDisplay(false);
       setStartWindowDisplay(true);
     } else {
-      const chosenPokemon = pokemonsData.find((pokemon)=> pokemon.name.toLowerCase()  === chosenPokemonName)
+      const chosenPokemon = pokemonsData.find(
+        (pokemon) => pokemon.name.toLowerCase() === chosenPokemonName
+      );
       const updatedData = {
-        ...loggedUser, 
+        ...loggedUser,
         pokemons: {
-          [chosenPokemon.id] : {
+          [chosenPokemon.id]: {
             name: chosenPokemon.name,
             // attacks: {attack1: chosenPokemon.attacks[0], attack2: chosenPokemon.attacks[1]}, If you have time add all pokemons attacks...
             strength: 3,
             defense: 3,
             skillPoints: 3,
-          }
-        }
-      }
-      UsersDataBaseAPI.editUser(updatedData, loggedUserKey)
+          },
+        },
+      };
+      UsersDataBaseAPI.editUser(updatedData, loggedUserKey);
       navigate("/map");
     }
   };
@@ -103,6 +123,7 @@ const HomePage = () => {
       <main className={classes.main}>
         <div className={classes.cover}>
           <div className={classes.logo} />
+          {isUserStartWindowDisplay && <UserStartWindow onBtnClick={logoutClickHandler}/>}
           {isStartWindowDisplay && (
             <StartWindow onBtnClick={startClickHandler} />
           )}

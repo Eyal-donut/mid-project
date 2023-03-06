@@ -1,10 +1,8 @@
 import NestedWindow from "./utils/NestedWindow";
 import classes from "../pages/HomePage.module.css";
-import { useRef, useState, useReducer } from "react";
-import { useUsersContext } from "../context/UsersContext";
+import { useRef, useState } from "react";
 
 const CreateUserWindow = ({ onBtnClick }) => {
-  const { users, keys } = useUsersContext();
   const [isInvalidPassword, setInvalidPassword] = useState(false);
   const [isInvalidUserName, setInvalidUsername] = useState(false);
 
