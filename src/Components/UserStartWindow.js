@@ -2,9 +2,9 @@ import classes from "./UserStartWindow.module.css";
 import { Link } from "react-router-dom";
 
 const UserStartWindow = ({onBtnClick}) => {
-  
-  const clickHandler = (e) => {
-    onBtnClick(e.target.id)
+
+  const clickHandler = () => {
+    onBtnClick()
   };
 
   return (
