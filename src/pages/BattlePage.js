@@ -11,6 +11,7 @@ import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 import BattleAnnouncer from "../Components/BattleAnnouncer";
 import { useBattleSequence } from "../hooks/useBattleSequence";
 import { useAIOpponent } from "../hooks/useAIOpponent";
+import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
 
 const BattlePage = () => {
   const { currentLocation } = useLocationContext();
@@ -18,6 +19,9 @@ const BattlePage = () => {
   const { currentPokemon } = useCurrentPokemonContext();
 
   const [sequence, setSequence] = useState({});
+  const [winner, setWinner] = useState();
+  const [isBattleStarted, setBattleStarted] = useState(false);
+  const [isGameOver, setGameOver] = useState(false);
 
   const {
     turn,
@@ -31,6 +35,11 @@ const BattlePage = () => {
 
   const aiChoice = useAIOpponent(turn);
 
+  const onGameEnd = (winner) => {
+    setWinner(winner);
+    setGameOver(true);
+  };
+
   useEffect(() => {
     localStorage.setItem(
       "localStorageCurrentEnemy",
@@ -38,48 +47,105 @@ const BattlePage = () => {
     );
   }, [currentEnemy]);
 
-
   useEffect(() => {
     if (aiChoice && turn === 1 && !inSequence) {
       setSequence({ turn, mode: aiChoice });
     }
   }, [turn, aiChoice, inSequence]);
 
-  const [isBattleActive, setBattleActive] = useState(true);
-
-  const clickHandler = (btnId) => {};
+  useEffect(() => {
+    if (playerHealth === 0 || enemyHealth === 0) {
+      (async () => {
+        await waitFunction(1000);
+        onGameEnd(playerHealth === 0 ? currentEnemy : currentPokemon);
+      })();
+    }
+  }, [playerHealth, enemyHealth, onGameEnd]);
 
   return (
     <>
-      {!isBattleActive && <Pokedex />}
-      <main
-        className={classes.main}
-        style={{
-          background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
-        }}
-      >
-        <h1>
-          {currentPokemon.name} VS {currentEnemy.name}
-        </h1>
-        <BattleAnnouncer
-          message={announcerMessage || `What should ${currentPokemon.name} do?`}
-        />
-        <PlayerFighter
-          className={classes[playerAnimation]}
-          imageUrl={currentPokemon.imageUrl}
-          name={currentPokemon.name}
-          value={playerHealth}
-          maxValue={currentPokemon.maxHealth}
-        />
-        <EnemyFighter
-          className={classes[enemyAnimation]}
-          imageUrl={currentEnemy.imageUrl}
-          name={currentEnemy.name}
-          value={enemyHealth}
-          maxValue={currentEnemy.maxHealth}
-        />
+      {!isBattleStarted && (
+        <main
+          className={classes.main}
+          style={{
+            background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
+          }}
+        >
+          <Pokedex />
+          <h1>{currentEnemy.name} has appeared!</h1>
 
-        {isBattleActive && (
+          <BattleAnnouncer
+            message={
+              `Check out your Pokédex for details!`
+            }
+          />
+
+          <EnemyFighter
+            className={classes[enemyAnimation]}
+            imageUrl={currentEnemy.imageUrl}
+            name={currentEnemy.name}
+            value={enemyHealth}
+            maxValue={currentEnemy.maxHealth}
+            level={currentEnemy.level}
+          />
+
+          <footer className={classes.preFightFooter}>
+            <div className={classes.btnWrapper}>
+              
+              <Button
+                text="Battle!"
+                id="cath-pokemon"
+                onBtnClick={(()=> {})}
+                className={classes.utilInactive}
+              ></Button>
+              <Link to=".." relative="path">
+                <Button
+                  text="Leave"
+                  id="leave-fight"
+                  className={classes.utilActive}
+                ></Button>
+              </Link>
+            </div>
+          </footer>
+        </main>
+      )}
+
+      {isBattleStarted && (
+        <main
+          className={classes.main}
+          style={{
+            background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
+          }}
+        >
+          <h1>
+            {currentPokemon.name} VS {currentEnemy.name}
+          </h1>
+
+          <BattleAnnouncer
+            message={
+              announcerMessage || `What should ${currentPokemon.name} do?`
+            }
+          />
+
+          <PlayerFighter
+            className={classes[playerAnimation]}
+            imageUrl={currentPokemon.imageUrl}
+            name={currentPokemon.name}
+            value={playerHealth}
+            maxValue={currentPokemon.maxHealth}
+            level={currentPokemon.level}
+
+          />
+          <EnemyFighter
+            className={classes[enemyAnimation]}
+            imageUrl={currentEnemy.imageUrl}
+            name={currentEnemy.name}
+            value={enemyHealth}
+            maxValue={currentEnemy.maxHealth}
+            level={currentEnemy.level}
+
+          />
+
           <footer className={classes.footer}>
             <Button
               text={`Use ${currentPokemon.attacks.attack1}`}
@@ -104,20 +170,19 @@ const BattlePage = () => {
                 <Button
                   text="Leave fight"
                   id="leave-fight"
-                  onBtnClick={clickHandler}
                   className={classes.utilActive}
                 ></Button>
               </Link>
               <Button
                 text="Catch Pokémon!"
                 id="cath-pokemon"
-                onBtnClick={clickHandler}
+                onBtnClick={(()=> {})}
                 className={classes.utilInactive}
               ></Button>
             </div>
           </footer>
-        )}
-      </main>
+        </main>
+      )}
     </>
   );
 };

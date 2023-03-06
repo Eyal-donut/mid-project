@@ -1,11 +1,11 @@
 import FighterInfo from "./FighterInfo";
 import classes from "./FightingPokemon.module.css";
 
-const FightingPokemon = ({ imageUrl, className, name, infoClassName, value, maxValue }) => {
+const FightingPokemon = ({ imageUrl, className, name, infoClassName, value, maxValue, level }) => {
   return (
     <>
       <div className={`${classes.pokemonAndInfoWrap} ${className}`}>
-        <FighterInfo name={name} infoClassName={infoClassName} value={value} maxValue={maxValue} />
+        <FighterInfo level={level} name={name} infoClassName={infoClassName} value={value} maxValue={maxValue} />
         <div
           className={classes.fightingPokemon}
           style={{

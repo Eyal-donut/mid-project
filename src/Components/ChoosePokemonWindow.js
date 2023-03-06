@@ -1,11 +1,9 @@
 import NestedWindow from "./utils/NestedWindow";
 import classes from "../pages/HomePage.module.css";
 import useSound from "use-sound";
-import { useNavigate } from "react-router-dom";
 import choosePokemonSounds from "../assets/Audio/choosePokemonSounds.mp3";
 
 const ChoosePokemonWindow = ({ onPokemonClick }) => {
-  const navigate = useNavigate();
 
   const [playSound, { stop }] = useSound(choosePokemonSounds, {
     sprite: {

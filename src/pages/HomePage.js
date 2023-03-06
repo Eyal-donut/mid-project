@@ -135,10 +135,10 @@ const HomePage = () => {
           attack1: chosenPokemon.attacks[0],
           attack2: chosenPokemon.attacks[1],
         },
-        strength: 3,
-        defense: 3,
-        level: 1,
-        health: 100,
+        strength: 50,
+        defense: 30,
+        level: 40,
+        health: 20,
         maxHealth: 100,
       };
 

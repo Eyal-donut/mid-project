@@ -3,7 +3,7 @@ import { pokemonsData } from "../Data/PokemonsData";
 
 
 const useEnemiesArray = (user, locationID) => {
-  const ENEMY_DIFF_FROM_PLAYER = 2;
+  const ENEMY_DIFF_FROM_PLAYER = 10;
 
   const {enemiesArray, setEnemiesArray} = useEnemiesContext()
 
@@ -25,7 +25,7 @@ const useEnemiesArray = (user, locationID) => {
         id: enemy.id,
         name: enemy.name,
         imageUrl: enemy.imageUrl,
-        health: 100,
+        health: 20,
         maxHealth:100,
         strength: RandomLowerOrHigher(user.strength),
         defense: RandomLowerOrHigher(user.defense),

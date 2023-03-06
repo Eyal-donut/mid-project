@@ -15,8 +15,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
   flex-wrap: wrap;
+}
+
+.preFightFooter {
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
 }
 
 .attackActive {
