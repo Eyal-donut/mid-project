@@ -32,6 +32,24 @@ const HomePage = () => {
     setUsers(fetchedUsers);
     const keys = UsersDataBaseAPI.getKeys(fetchedUsers);
     setKeys(keys);
+
+    if (loggedUserKey.length > 0) {
+      for (const key in fetchedUsers) {
+        if (
+          key === loggedUserKey
+        ) {
+          setLoggedUserKey(key);
+          setLoggedUser(fetchedUsers[key]);
+          setCurrentPokemon(fetchedUsers[key].pokemons.first);
+          localStorage.setItem("loggedUserKey", JSON.stringify(key));
+          localStorage.setItem("loggedUser", JSON.stringify(fetchedUsers[key]));
+          localStorage.setItem(
+            "currentPokemon",
+            JSON.stringify(fetchedUsers[key].pokemons.first)
+          );
+        }
+      }
+    }
   };
 
   const addUserAndUpdateKeysContext = async (userName, password) => {
@@ -50,10 +68,10 @@ const HomePage = () => {
 
   useEffect(() => {
     getAllUsersAndSetUsersContext();
-  }, [getAllUsersAndSetUsersContext]);
+  }, []);
 
   useEffect(() => {
-    const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey")
+    const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey");
     if (localStorageLoggedUserKey) {
       setLoggedUserKey(localStorageLoggedUserKey);
       setStartWindowDisplay(false);
@@ -121,20 +139,23 @@ const HomePage = () => {
         strength: 3,
         defense: 3,
         skillPoints: 3,
-      }
+      };
 
       const updatedData = {
         ...loggedUser,
         pokemons: {
           first: {
-            ...chosenPokemonObject
+            ...chosenPokemonObject,
           },
         },
       };
       setCurrentPokemon({
-        ...chosenPokemonObject
+        ...chosenPokemonObject,
       });
-      localStorage.setItem("currentPokemon", JSON.stringify(chosenPokemonObject));
+      localStorage.setItem(
+        "currentPokemon",
+        JSON.stringify(chosenPokemonObject)
+      );
       UsersDataBaseAPI.editUser(updatedData, loggedUserKey);
       setLoggedUser({ ...updatedData });
       localStorage.setItem("loggedUser", JSON.stringify({ ...updatedData }));
