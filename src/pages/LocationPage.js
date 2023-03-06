@@ -5,7 +5,7 @@ import { locationsArray } from "../Data/LocationsData";
 import { useLocationContext } from "../context/CurrentLocationContext";
 import classes from "./LocationPage.module.css";
 import Pokedex from "../Components/Pokedex";
-import { useEnemiesContext } from "../context/EnemiesContext";
+import { useEnemiesContext } from "../context/EnemiesContext ";
 import useEnemiesArray from "../hooks/useEnemiesArray";
 import EnemyEventPointer from "../Components/EnemyEventPointe";
 import { testUser } from "../Data/UserData";

@@ -10,11 +10,13 @@ import { useUsersContext } from "../context/UsersContext";
 import { pokemonsData } from "../Data/PokemonsData";
 import { useLoggedUsersContext } from "../context/LoggedUserContext";
 import { useNavigate } from "react-router-dom";
+import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 
 const HomePage = () => {
   const { setUsers, setKeys } = useUsersContext();
   const { loggedUserKey, setLoggedUserKey, loggedUser, setLoggedUser } =
     useLoggedUsersContext();
+  const { setCurrentPokemon } = useCurrentPokemonContext();
 
   const [isStartWindowDisplay, setStartWindowDisplay] = useState(true);
   const [isUserStartWindowDisplay, setUserStartWindowDisplay] = useState(false);
@@ -39,6 +41,7 @@ const HomePage = () => {
         password,
       });
       setLoggedUserKey(response.data.name);
+      localStorage.setItem("loggedUserKey", response.data.name);
       setKeys((prev) => [...prev, response.data.name]);
     } catch (error) {
       console.log("Error adding user", error);
@@ -47,12 +50,10 @@ const HomePage = () => {
 
   useEffect(() => {
     getAllUsersAndSetUsersContext();
-  }, []);
+  }, [getAllUsersAndSetUsersContext]);
 
   useEffect(() => {
-    const localStorageLoggedUserKey = JSON.parse(
-      localStorage.getItem("loggedUserKey")
-    );
+    const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey")
     if (localStorageLoggedUserKey) {
       setLoggedUserKey(localStorageLoggedUserKey);
       setStartWindowDisplay(false);
@@ -61,12 +62,15 @@ const HomePage = () => {
   }, []);
 
   const logoutClickHandler = () => {
-    setUserStartWindowDisplay(false)
-    setStartWindowDisplay(true)
-    localStorage.removeItem("loggedUserKey")
-    setLoggedUserKey('')
-    
-  }
+    setUserStartWindowDisplay(false);
+    setStartWindowDisplay(true);
+    localStorage.removeItem("loggedUserKey");
+    localStorage.removeItem("loggedUser");
+    localStorage.removeItem("currentPokemon");
+    setLoggedUserKey("");
+    setLoggedUser({});
+    setCurrentPokemon({});
+  };
 
   const startClickHandler = (btnID) => {
     setStartWindowDisplay(false);
@@ -90,6 +94,10 @@ const HomePage = () => {
       setChoosePokemonDisplay(true);
       addUserAndUpdateKeysContext(userName, password);
       setLoggedUser({ userName, password });
+      localStorage.setItem(
+        "loggedUser",
+        JSON.stringify({ userName, password })
+      );
     }
   };
 
@@ -101,19 +109,35 @@ const HomePage = () => {
       const chosenPokemon = pokemonsData.find(
         (pokemon) => pokemon.name.toLowerCase() === chosenPokemonName
       );
+
+      const chosenPokemonObject = {
+        id: chosenPokemon.id,
+        name: chosenPokemon.name,
+        imageUrl: chosenPokemon.imageUrl,
+        attacks: {
+          attack1: chosenPokemon.attacks[0],
+          attack2: chosenPokemon.attacks[1],
+        },
+        strength: 3,
+        defense: 3,
+        skillPoints: 3,
+      }
+
       const updatedData = {
         ...loggedUser,
         pokemons: {
-          [chosenPokemon.id]: {
-            name: chosenPokemon.name,
-            // attacks: {attack1: chosenPokemon.attacks[0], attack2: chosenPokemon.attacks[1]}, If you have time add all pokemons attacks...
-            strength: 3,
-            defense: 3,
-            skillPoints: 3,
+          first: {
+            ...chosenPokemonObject
           },
         },
       };
+      setCurrentPokemon({
+        ...chosenPokemonObject
+      });
+      localStorage.setItem("currentPokemon", JSON.stringify(chosenPokemonObject));
       UsersDataBaseAPI.editUser(updatedData, loggedUserKey);
+      setLoggedUser({ ...updatedData });
+      localStorage.setItem("loggedUser", JSON.stringify({ ...updatedData }));
       navigate("/map");
     }
   };
@@ -123,7 +147,9 @@ const HomePage = () => {
       <main className={classes.main}>
         <div className={classes.cover}>
           <div className={classes.logo} />
-          {isUserStartWindowDisplay && <UserStartWindow onBtnClick={logoutClickHandler}/>}
+          {isUserStartWindowDisplay && (
+            <UserStartWindow onBtnClick={logoutClickHandler} />
+          )}
           {isStartWindowDisplay && (
             <StartWindow onBtnClick={startClickHandler} />
           )}

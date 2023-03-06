@@ -3,12 +3,14 @@ import classes from "../pages/HomePage.module.css";
 import { useRef, useState } from "react";
 import { useUsersContext } from "../context/UsersContext";
 import { useLoggedUsersContext } from "../context/LoggedUserContext";
+import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 
 const LoginWindow = ({ onBtnClick }) => {
   const [isLoginFailed, setLoginFailed] = useState(false);
 
   const { users } = useUsersContext();
-  const { loggedUserKEy ,setLoggedUserKey } = useLoggedUsersContext();
+  const { loggedUserKEy ,setLoggedUserKey, setLoggedUser } = useLoggedUsersContext();
+  const {setCurrentPokemon} = useCurrentPokemonContext()
 
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
@@ -21,7 +23,11 @@ const LoginWindow = ({ onBtnClick }) => {
           users[key].userName === userNameRef.current.value
         ) {
           setLoggedUserKey(key);
+          setLoggedUser(users[key])
+          setCurrentPokemon(users[key].pokemons.first)
           localStorage.setItem("loggedUserKey", JSON.stringify(key))
+          localStorage.setItem("loggedUser", JSON.stringify(users[key]))
+          localStorage.setItem("currentPokemon", JSON.stringify(users[key].pokemons.first))
           onBtnClick(e.target.id)
         } else {
           setLoginFailed(true);

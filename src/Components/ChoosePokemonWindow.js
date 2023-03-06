@@ -18,8 +18,6 @@ const ChoosePokemonWindow = ({ onPokemonClick }) => {
 
   const clickHandler = (e) => {
     onPokemonClick(e.target.id);
-    
-  
   };
 
   const handleMouseEnter = (e) => {
