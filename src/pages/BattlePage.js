@@ -32,6 +32,14 @@ const BattlePage = () => {
   const aiChoice = useAIOpponent(turn);
 
   useEffect(() => {
+    localStorage.setItem(
+      "localStorageCurrentEnemy",
+      JSON.stringify(currentEnemy)
+    );
+  }, [currentEnemy]);
+
+
+  useEffect(() => {
     if (aiChoice && turn === 1 && !inSequence) {
       setSequence({ turn, mode: aiChoice });
     }

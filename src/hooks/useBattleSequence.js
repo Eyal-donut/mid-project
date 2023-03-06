@@ -17,8 +17,8 @@ export const useBattleSequence = (sequence) => {
   const [playerHealth, setPlayerHealth] = useState(currentPokemon.maxHealth);
   const [announcerMessage, setAnnouncerMessage] = useState("");
 
-  const [playerAnimation, setPlayerAnimation] = useState("static");
-  const [enemyAnimation, setEnemyAnimation] = useState("static");
+  const [playerAnimation, setPlayerAnimation] = useState("playerStatic");
+  const [enemyAnimation, setEnemyAnimation] = useState("enemyStatic");
 
   useEffect(() => {
      const { mode, turn } = sequence;
@@ -48,8 +48,8 @@ export const useBattleSequence = (sequence) => {
             await waitFunction(500);
 
             turn === 0
-              ? setEnemyAnimation("damage")
-              : setPlayerAnimation("damage");
+              ? setEnemyAnimation("enemyDamage")
+              : setPlayerAnimation("playerDamage");
             await waitFunction(750);
 
             turn === 0

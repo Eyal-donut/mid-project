@@ -8,7 +8,6 @@ export const useAIOpponent = turn => {
             const options = ['attack', 'specialAttack', 'heal']
             setAIChoice(options[Math.floor(Math.random() * options.length)])
         }
-        
     }, [turn]);
 
     return aiChoice

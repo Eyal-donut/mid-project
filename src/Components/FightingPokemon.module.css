@@ -13,7 +13,7 @@
   position: absolute;
   bottom: 13vh;
   left: 2vw;
-  transform: scaleX(-1);
+  /* transform: scaleX(-1); */
 }
 
 .pokemonAndInfoWrap {

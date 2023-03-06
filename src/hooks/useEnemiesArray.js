@@ -1,7 +1,6 @@
 import { useEnemiesContext } from "../context/EnemiesContext ";
 import { pokemonsData } from "../Data/PokemonsData";
 
-import { useState } from "react";
 
 const useEnemiesArray = (user, locationID) => {
   const ENEMY_DIFF_FROM_PLAYER = 2;
@@ -30,7 +29,7 @@ const useEnemiesArray = (user, locationID) => {
         maxHealth:100,
         strength: RandomLowerOrHigher(user.strength),
         defense: RandomLowerOrHigher(user.defense),
-        level: RandomLowerOrHigher(user.skillPoints),
+        level: RandomLowerOrHigher(user.level),
       })
   );
 
