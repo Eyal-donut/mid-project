@@ -9,6 +9,7 @@ import EnemyFighter from "../Components/EnemyFighter";
 import Button from "../Components/Button";
 import { testUser } from "../Data/UserData";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
+import BattleAnnouncer from "../Components/BattleAnnouncer";
 
 // const ACTIONS = {
 
@@ -26,9 +27,18 @@ const BattlePage = () => {
   const { currentEnemy } = useEnemiesContext();
   const { currentPokemon } = useCurrentPokemonContext();
 
+
+
+
   const [isBattleActive, setBattleActive] = useState(true);
 
   //battle managment states
+  const [enemyHealth, setEnemyHealth] = useState(currentEnemy.maxHealth)
+  const [playerHealth, setPlayerHealth] = useState(currentPokemon.maxHealth)
+  const [announcerMessage, setAnnouncerMessage] = useState('')
+
+
+  
   const [isPlayerAttacking, setPlayerAttacking] = useState(true);
   const [isDodge, setIsDodge] = useState(false);
   const [isBattleWon, setBattleWon] = useState(false);
@@ -51,22 +61,27 @@ const BattlePage = () => {
           background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
         }}
       >
-        <h1>let's fucking go!</h1>
+        <h1>{currentPokemon.name} VS {currentEnemy.name}</h1>
         <PlayerFighter
+          // className={classes.playerAttack}
           imageUrl={currentPokemon.imageUrl}
           name={currentPokemon.name}
-          value={currentPokemon.health}
+          value={playerHealth}
           maxValue={currentPokemon.maxHealth}
         />
         <EnemyFighter
+        // className={classes.enemy}
           imageUrl={currentEnemy.imageUrl}
           name={currentEnemy.name}
-          value={currentEnemy.health}
+          value={enemyHealth}
           maxValue={currentEnemy.maxHealth}
         />
 
         {isBattleActive && (
           <footer className={classes.footer}>
+          <BattleAnnouncer message={
+            announcerMessage || `What should ${currentPokemon.name} do?`
+          }/>
             <Button
               text={`Use ${currentPokemon.attacks.attack1}`}
               id="attack-one"
@@ -78,7 +93,7 @@ const BattlePage = () => {
               }
             />
             <Button
-              text={`Use ${currentPokemon.attacks.attack2}`}
+              text={`Use finish move - ${currentPokemon.attacks.attack2}`}
               id="attack-two"
               onBtnClick={clickHandler}
               className={

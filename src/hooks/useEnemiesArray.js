@@ -6,7 +6,6 @@ import { useState } from "react";
 const useEnemiesArray = (user, locationID) => {
   const ENEMY_DIFF_FROM_PLAYER = 2;
 
-  // const [enemiesArray, setEnemiesArray] = useState([]);
   const {enemiesArray, setEnemiesArray} = useEnemiesContext()
 
   const randomIntFromInterval = (min, max) => {
@@ -31,15 +30,13 @@ const useEnemiesArray = (user, locationID) => {
         maxHealth:100,
         strength: RandomLowerOrHigher(user.strength),
         defense: RandomLowerOrHigher(user.defense),
-        skillPoints: RandomLowerOrHigher(user.skillPoints),
-        xpReward: randomIntFromInterval(1, 5),
+        level: RandomLowerOrHigher(user.skillPoints),
       })
   );
 
   const filterByIDRange = (firstId, lastId) => {
     return tempArray.filter((enemy) => enemy.id >= firstId && enemy.id <= lastId ) ;
   };
-
 
   const setEnemiesArrayByLocationID = () => {
     if (locationID === "location-one") setEnemiesArray(filterByIDRange(0, 5));

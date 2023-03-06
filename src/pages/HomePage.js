@@ -33,21 +33,19 @@ const HomePage = () => {
     const keys = UsersDataBaseAPI.getKeys(fetchedUsers);
     setKeys(keys);
 
-    if (loggedUserKey.length > 0) {
-      for (const key in fetchedUsers) {
-        if (
-          key === loggedUserKey
-        ) {
-          setLoggedUserKey(key);
-          setLoggedUser(fetchedUsers[key]);
-          setCurrentPokemon(fetchedUsers[key].pokemons.first);
-          localStorage.setItem("loggedUserKey", JSON.stringify(key));
-          localStorage.setItem("loggedUser", JSON.stringify(fetchedUsers[key]));
-          localStorage.setItem(
-            "currentPokemon",
-            JSON.stringify(fetchedUsers[key].pokemons.first)
-          );
-        }
+    const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey")
+    for (const key in fetchedUsers) {
+      if (key === localStorageLoggedUserKey) {
+        console.log("ih");
+        setLoggedUserKey(key);
+        setLoggedUser(fetchedUsers[key]);
+        setCurrentPokemon(fetchedUsers[key].pokemons.first);
+        localStorage.setItem("loggedUserKey", JSON.stringify(key));
+        localStorage.setItem("loggedUser", JSON.stringify(fetchedUsers[key]));
+        localStorage.setItem(
+          "currentPokemon",
+          JSON.stringify(fetchedUsers[key].pokemons.first)
+        );
       }
     }
   };
@@ -139,9 +137,9 @@ const HomePage = () => {
         },
         strength: 3,
         defense: 3,
-        skillPoints: 3,
-        health:100,
-        maxHealth:100,
+        level: 1,
+        health: 100,
+        maxHealth: 100,
       };
 
       const updatedData = {
