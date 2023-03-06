@@ -2,6 +2,10 @@
   width: 100vw;
   height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .footer {
@@ -17,7 +21,7 @@
 
 .attackActive {
   width: 11rem;
-  height: 13vh;
+  height: 11vh;
   border: 2px solid #151414;
   cursor: pointer;
   background: var(--active-green);
@@ -27,7 +31,7 @@
 }
 .attackInactive {
   width: 11rem;
-  height: 13vh;
+  height: 11vh;
   border: 2px solid #151414;
   cursor: pointer;
   background: var(--btn-bgr);
@@ -45,7 +49,7 @@
 
 .utilActive {
   width: 12rem;
-  height: 5rem;
+  height: 5.3vh;
   margin: 0.1rem;
   background: var(--active-green);
   border: 2px solid #151414;
@@ -54,7 +58,7 @@
 }
 .utilInactive {
   width: 12rem;
-  height: 5rem;
+  height: 5.3vh;
   margin: 0.1rem;
   background: var(--btn-bgr);
   border: 2px solid #151414;
@@ -64,28 +68,25 @@
 .attackInactive:hover,
 .utilInactive:hover,
 .utilActive:hover {
-  box-shadow: 0 8px 20px rgb(0, 0, 0, 0.4);
+  box-shadow: 8px 20px 20px rgb(0, 0, 0, 0.4);
 }
 
 
 .announcer{
-  width: 50rem;
-  height: 13vh;
-  background: var(--btn-bgr);
-  margin: 0 .1rem;
+  width: 74rem;
+  max-width: 70vw;
+  height: 11vh;
+  background: rgb(196, 191, 191, .5);
+  margin: 0 .2rem;
   border-radius: 5px;
   border: 2px solid #151414;
-  font-size: 2.4rem;
+  font-size: 2rem;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
-
-
-
-
-
 
 .static {
   transform: translateX(0px);
@@ -102,7 +103,7 @@
   transform: translateX(-100px);
 }
 
-.magic {
+.specialAttack {
   transition: 0.2s;
   transform: translateY(-25px);
   animation: shake 0.5s infinite;

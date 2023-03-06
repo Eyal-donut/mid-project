@@ -25,9 +25,10 @@
 
 .infoWrapper {
   width: 17rem;
-  height: 4.5rem;
-  background: var(--btn-bgr);
+  height: 4.8rem;
+  background: rgb(196, 191, 191, .6);
   box-shadow: 0 8px 20px rgb(0, 0, 0, 0.4);
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;

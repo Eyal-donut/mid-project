@@ -86,25 +86,25 @@ export const pokemonsData = [
       "https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/13.png",
   },
   {
-    name: "Tentacruel",
+    name: "Vaporeon",
     id: 14,
     imageUrl:
       "https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/14.png",
   },
   {
-    name: "Vaporeon",
+    name: "Lapras",
     id: 15,
     imageUrl:
       "https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/15.png",
   },
   {
-    name: "Lapras",
+    name: "Dragonair",
     id: 16,
     imageUrl:
       "https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/16.png",
   },
   {
-    name: "Dragonair",
+    name: "Tentacruel",
     id: 17,
     imageUrl:
       "https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/17.png",

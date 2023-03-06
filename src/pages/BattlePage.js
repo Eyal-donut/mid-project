@@ -62,6 +62,9 @@ const BattlePage = () => {
         }}
       >
         <h1>{currentPokemon.name} VS {currentEnemy.name}</h1>
+        <BattleAnnouncer message={
+            announcerMessage || `What should ${currentPokemon.name} do?`
+          }/>
         <PlayerFighter
           // className={classes.playerAttack}
           imageUrl={currentPokemon.imageUrl}
@@ -79,9 +82,7 @@ const BattlePage = () => {
 
         {isBattleActive && (
           <footer className={classes.footer}>
-          <BattleAnnouncer message={
-            announcerMessage || `What should ${currentPokemon.name} do?`
-          }/>
+          
             <Button
               text={`Use ${currentPokemon.attacks.attack1}`}
               id="attack-one"
@@ -93,7 +94,7 @@ const BattlePage = () => {
               }
             />
             <Button
-              text={`Use finish move - ${currentPokemon.attacks.attack2}`}
+              text={`Use Special Move - ${currentPokemon.attacks.attack2}`}
               id="attack-two"
               onBtnClick={clickHandler}
               className={
