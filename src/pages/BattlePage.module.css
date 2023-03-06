@@ -112,8 +112,8 @@
 
 .playerSpecialAttack {
   transition: 0.2s;
-  transform: translateY(-25px) scaleX(-1);
-  animation: shake 0.5s infinite;
+  transform: scaleX(-1) translateY(-25px);
+  animation: playerShake 0.5s infinite;
 }
 
 .enemySpecialAttack {
@@ -133,12 +133,47 @@
   animation: flash 0.3s 0.3s infinite;
 }
 
+@keyframes playerShake {
+  0% {
+    transform: scaleX(-1) translate(1px, 1px) rotate(0deg) translateY(-25px);
+  }
+  10% {
+    transform:  scaleX(-1) translate(-1px, -2px) rotate(-1deg) translateY(-25px);
+  }
+  20% {
+    transform: scaleX(-1) translate(-3px, 0px) rotate(1deg) translateY(-25px);
+  }
+  30% {
+    transform: scaleX(-1) translate(3px, 2px) rotate(0deg) translateY(-25px);
+  }
+  40% {
+    transform: scaleX(-1) translate(1px, -1px) rotate(1deg) translateY(-25px);
+  }
+  50% {
+    transform: scaleX(-1) translate(-1px, 2px) rotate(-1deg) translateY(-25px);
+  }
+  60% {
+    transform: scaleX(-1) translate(-3px, 1px) rotate(0deg) translateY(-25px);
+  }
+  70% {
+    transform: scaleX(-1) translate(3px, 1px) rotate(-1deg) translateY(-25px);
+  }
+  80% {
+    transform: scaleX(-1) translate(-1px, -1px) rotate(1deg) translateY(-25px);
+  }
+  90% {
+    transform: scaleX(-1) translate(1px, 2px) rotate(0deg) translateY(-25px);
+  }
+  100% {
+    transform: scaleX(-1) translate(1px, -2px) rotate(-1deg) translateY(-25px);
+  }
+}
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg) translateY(-25px);
   }
   10% {
-    transform: translate(-1px, -2px) rotate(-1deg) translateY(-25px);
+    transform:  translate(-1px, -2px) rotate(-1deg) translateY(-25px);
   }
   20% {
     transform: translate(-3px, 0px) rotate(1deg) translateY(-25px);

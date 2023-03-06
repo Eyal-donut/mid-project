@@ -90,13 +90,13 @@ const BattlePage = () => {
             <Button
               text={`Use Special Move - ${currentPokemon.attacks.attack2}`}
               id="attack-two"
-              onBtnClick={clickHandler}
+              onBtnClick={() => setSequence({ turn, mode: "specialAttack" })}
               className={classes.attackActive}
             />
             <Button
               text="Heal"
               id="heal"
-              onBtnClick={clickHandler}
+              onBtnClick={() => setSequence({ turn, mode: "heal" })}
               className={classes.attackActive}
             />
             <div className={classes.btnWrapper}>
