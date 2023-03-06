@@ -12,7 +12,7 @@ import { testUser } from "../Data/UserData";
 
 //create a global Pokedex context containing: the isPokedexUpdated state, pokedexShownPokemons state, userPokemons state, isPokedexDisplay state
 
-//after choosing a location - generate array of enemies, with the level according to player level(player level- avg of his pokemons)
+//adapt player level to be dynamic (player level- avg of his pokemons)
 //each enemy has the following qualities: strength, defense, skillPoints (will I hurt you or give you a chance to dodge) array of attacks(chosen randomly), health points (100), xp-reward, location, photo, location on the map (defined by className).
 
 const LocationPage = () => {

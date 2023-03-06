@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, {useState } from "react";
+import React, { useState } from "react";
 import classes from "./BattlePage.module.css";
 import Pokedex from "../Components/Pokedex";
 import { useLocationContext } from "../context/CurrentLocationContext";
@@ -10,13 +10,23 @@ import Button from "../Components/Button";
 import { testUser } from "../Data/UserData";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 
+// const ACTIONS = {
+
+// }
+
+// const reducer = (state, {type, payload}) => {
+//   switch(type) {
+//     case ACTIONS
+//   }
+
+// }
+
 const BattlePage = () => {
   const { currentLocation } = useLocationContext();
   const { currentEnemy } = useEnemiesContext();
-  const {currentPokemon} = useCurrentPokemonContext()
+  const { currentPokemon } = useCurrentPokemonContext();
 
   const [isBattleActive, setBattleActive] = useState(true);
-
 
   //battle managment states
   const [isPlayerAttacking, setPlayerAttacking] = useState(true);
@@ -30,8 +40,7 @@ const BattlePage = () => {
   // }, []);
   //! When I use use effect here the site crashes...
 
-  const clickHandler = (btnId) => {
-  };
+  const clickHandler = (btnId) => {};
 
   return (
     <>
@@ -43,8 +52,18 @@ const BattlePage = () => {
         }}
       >
         <h1>let's fucking go!</h1>
-        <PlayerFighter imageUrl={currentPokemon.imageUrl} />
-        <EnemyFighter imageUrl={currentEnemy.imageUrl} />
+        <PlayerFighter
+          imageUrl={currentPokemon.imageUrl}
+          name={currentPokemon.name}
+          value={currentPokemon.health}
+          maxValue={currentPokemon.maxHealth}
+        />
+        <EnemyFighter
+          imageUrl={currentEnemy.imageUrl}
+          name={currentEnemy.name}
+          value={currentEnemy.health}
+          maxValue={currentEnemy.maxHealth}
+        />
 
         {isBattleActive && (
           <footer className={classes.footer}>
@@ -79,14 +98,14 @@ const BattlePage = () => {
               }
             />
             <div className={classes.btnWrapper}>
-            <Link to='..' relative="path">
-              <Button
-                text="Leave fight"
-                id="leave-fight"
-                onBtnClick={clickHandler}
-                className={classes.utilActive}
-              ></Button>
-            </Link>
+              <Link to=".." relative="path">
+                <Button
+                  text="Leave fight"
+                  id="leave-fight"
+                  onBtnClick={clickHandler}
+                  className={classes.utilActive}
+                ></Button>
+              </Link>
               <Button
                 text="Catch Pokémon!"
                 id="cath-pokemon"

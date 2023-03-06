@@ -28,6 +28,7 @@ const useEnemiesArray = (user, locationID) => {
         name: enemy.name,
         imageUrl: enemy.imageUrl,
         health: 100,
+        maxHealth:100,
         strength: RandomLowerOrHigher(user.strength),
         defense: RandomLowerOrHigher(user.defense),
         skillPoints: RandomLowerOrHigher(user.skillPoints),

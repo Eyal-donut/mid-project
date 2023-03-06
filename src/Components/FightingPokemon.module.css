@@ -1,17 +1,61 @@
 .fightingPokemon {
-    width: 20rem;
-    height: 20rem;
+  width: 20rem;
+  height: 20rem;
 }
 
 .enemy {
-    position: absolute;
-    bottom: 20vh;
-    right:6vw;
+  position: absolute;
+  bottom: 20vh;
+  right: 2vw;
 }
 
 .player {
-    position: absolute;
-    bottom:13vh;
-    left:5vw;
-    transform: scaleX(-1);
+  position: absolute;
+  bottom: 13vh;
+  left: 2vw;
+  transform: scaleX(-1);
+}
+
+.pokemonAndInfoWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoWrapper {
+  width: 17rem;
+  height: 4.5rem;
+  background: var(--btn-bgr);
+  box-shadow: 0 8px 20px rgb(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  padding: .5rem 0;
+  font-weight: 550;
+}
+
+.playerInfo {
+  transform: scaleX(-1);
+}
+
+.barWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.barMax {
+  width: 14rem;
+  height: 2rem;
+  background: white;
+  border-radius: 5px;
+}
+
+.barValue {
+    height: 2rem;
+    background: rgb(15, 128, 15);
+    border-radius: 5px;
 }

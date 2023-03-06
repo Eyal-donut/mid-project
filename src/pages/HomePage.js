@@ -99,6 +99,7 @@ const HomePage = () => {
   };
 
   const loginClickHandler = (btnID) => {
+    //login logic is managed in the loginWindow component
     setLoginWindowDisplay(false);
     if (btnID === "back-btn") setStartWindowDisplay(true);
     else navigate("/map");
@@ -139,6 +140,8 @@ const HomePage = () => {
         strength: 3,
         defense: 3,
         skillPoints: 3,
+        health:100,
+        maxHealth:100,
       };
 
       const updatedData = {
