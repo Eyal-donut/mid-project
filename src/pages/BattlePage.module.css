@@ -88,11 +88,18 @@
 
 }
 
-.static {
+.playerStatic {
+  transform: translateX(0px) scaleX(-1);
+  transform: translateY(0px) scaleX(-1);
+  transition: 0.5s;
+}
+
+.enemyStatic {
   transform: translateX(0px);
   transform: translateY(0px);
   transition: 0.5s;
 }
+
 
 .playerAttack {
   transition: 0.1s;
@@ -103,7 +110,13 @@
   transform: translateX(-100px);
 }
 
-.specialAttack {
+.playerSpecialAttack {
+  transition: 0.2s;
+  transform: translateY(-25px) scaleX(-1);
+  animation: shake 0.5s infinite;
+}
+
+.enemySpecialAttack {
   transition: 0.2s;
   transform: translateY(-25px);
   animation: shake 0.5s infinite;

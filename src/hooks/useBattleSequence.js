@@ -5,7 +5,9 @@ import { attack, specialAttack, heal } from "../helpers/FightFunctions";
 import { useState, useEffect } from "react";
 import { waitFunction } from "./useTypedMessage/waitFunction";
 
-export const useBattleSequence = ({ sequence }) => {
+
+
+export const useBattleSequence = (sequence) => {
   const { currentEnemy } = useEnemiesContext();
   const { currentPokemon } = useCurrentPokemonContext();
 
@@ -19,7 +21,7 @@ export const useBattleSequence = ({ sequence }) => {
   const [enemyAnimation, setEnemyAnimation] = useState("static");
 
   useEffect(() => {
-    const { mode, turn } = sequence;
+     const { mode, turn } = sequence;
 
     if (mode) {
       const attacker = turn === 0 ? currentPokemon : currentEnemy;
@@ -36,13 +38,13 @@ export const useBattleSequence = ({ sequence }) => {
             await waitFunction(1000);
 
             turn === 0
-              ? setPlayerAnimation("attack")
-              : setEnemyAnimation("attack");
+              ? setPlayerAnimation("playerAttack")
+              : setEnemyAnimation("EnemyAttack");
             await waitFunction(100);
 
             turn === 0
-              ? setPlayerAnimation("static")
-              : setEnemyAnimation("static");
+              ? setPlayerAnimation("playerStatic")
+              : setEnemyAnimation("enemyStatic");
             await waitFunction(500);
 
             turn === 0
@@ -51,8 +53,8 @@ export const useBattleSequence = ({ sequence }) => {
             await waitFunction(750);
 
             turn === 0
-              ? setEnemyAnimation("static")
-              : setPlayerAnimation("static");
+              ? setEnemyAnimation("enemyStatic")
+              : setPlayerAnimation("playerStatic");
 
             setAnnouncerMessage(`${receiver.name} felt that!`);
 
