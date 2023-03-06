@@ -10,7 +10,6 @@ import useEnemiesArray from "../hooks/useEnemiesArray";
 import EnemyEventPointer from "../Components/EnemyEventPointe";
 import { testUser } from "../Data/UserData";
 
-
 //create a global Pokedex context containing: the isPokedexUpdated state, pokedexShownPokemons state, userPokemons state, isPokedexDisplay state
 
 //after choosing a location - generate array of enemies, with the level according to player level(player level- avg of his pokemons)
@@ -19,28 +18,33 @@ import { testUser } from "../Data/UserData";
 const LocationPage = () => {
   const params = useParams();
   const { currentLocation, setCurrentLocation } = useLocationContext();
-  const {currentEnemy, setCurrentEnemy} = useEnemiesContext()
+  const { setCurrentEnemy } = useEnemiesContext();
 
-  const {enemiesArray, setEnemiesArrayByLocationID} = useEnemiesArray(testUser, params.locationID)
+  const { enemiesArray, setEnemiesArrayByLocationID } = useEnemiesArray(
+    testUser,
+    params.locationID
+  );
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const locationByID = locationsArray.find(
       (location) => location.id === params.locationID
-      );
-      setCurrentLocation(locationByID);
-      setEnemiesArrayByLocationID()
+    );
+    setCurrentLocation(locationByID);
+    setEnemiesArrayByLocationID();
   }, []);
 
   const clickHandler = (clickedID) => {
-    setCurrentEnemy(enemiesArray.find((enemy)=> enemy.id === Number(clickedID)))
-    navigate(`${clickedID}`)
-  }
+    setCurrentEnemy(
+      enemiesArray.find((enemy) => enemy.id === Number(clickedID))
+    );
+    navigate(`${clickedID}`);
+  };
 
   return (
     <>
-      <Pokedex/>
+      <Pokedex />
       <main
         className={classes.main}
         style={{
@@ -53,15 +57,15 @@ const LocationPage = () => {
         </Link>
         <p>{currentLocation.description}</p>
 
-        {enemiesArray.map((enemy, index)=>
-
-        <EnemyEventPointer key={`${enemy.name} ${enemy.id}` } id={enemy.id} identifier={enemy.id} className={`enemy${index}`} onBtnClick={clickHandler}/>
-
-        )}
-        
-
-        {/* here it's not a current enemy, but map for enemies */}
-        {/* <div className={`${classes.enemyEvent} ${currentEnemy.className}`} onClick={clickHandler} id={currentEnemy.id}/> */}
+        {enemiesArray.map((enemy, index) => (
+          <EnemyEventPointer
+            key={`${enemy.name} ${enemy.id}`}
+            id={enemy.id}
+            identifier={enemy.id}
+            className={`enemy${index}`}
+            onBtnClick={clickHandler}
+          />
+        ))}
       </main>
     </>
   );
