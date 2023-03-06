@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: hidden;
 }
 
 .footer {
@@ -63,7 +64,6 @@
   background: var(--active-green);
   border: 2px solid #151414;
   box-shadow: 0 8px 20px rgb(0, 0, 0, 0.4);
-
 }
 .utilInactive {
   width: 12rem;
@@ -80,13 +80,12 @@
   box-shadow: 8px 20px 20px rgb(0, 0, 0, 0.4);
 }
 
-
-.announcer{
+.announcer {
   width: 74rem;
   max-width: 70vw;
   height: 11vh;
-  background: rgb(196, 191, 191, .5);
-  margin: 0 .2rem;
+  background: rgb(196, 191, 191, 0.5);
+  margin: 0 0.2rem;
   border-radius: 5px;
   border: 2px solid #151414;
   font-size: 2rem;
@@ -94,12 +93,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .playerStatic {
   transform: scaleX(-1) translateX(0px);
-  transform: scaleX(-1) translateY(0px) ;
+  transform: scaleX(-1) translateY(0px);
   transition: 0.5s;
 }
 
@@ -108,7 +106,6 @@
   transform: translateY(0px);
   transition: 0.5s;
 }
-
 
 .playerAttack {
   transition: 0.1s;
@@ -141,13 +138,51 @@
   opacity: 1;
   animation: flash 0.3s 0.3s infinite;
 }
+.catchPokemon {
+  opacity: 1;
+  animation: flash 0.3s 0.3s infinite;
+}
+
+.cought {
+  display: none;
+}
+
+.pokeball {
+  background: url("../assets/pokeball.png") no-repeat center center/cover;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  bottom: -10vh;
+  right: 30vw;
+  animation: spin 1s linear forwards;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: translate(1, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(2rem, -7rem) rotate(360deg);
+  }
+  50% {
+    transform: translate(3rem, -14rem) rotate(720deg);
+  }
+  75% {
+    transform: translate(4rem, -23rem) rotate(1080deg);
+  }
+  100% {
+    transform: translate(5rem, -30rem) rotate(1420deg);
+  }
+}
+
 
 @keyframes playerShake {
   0% {
     transform: scaleX(-1) translate(1px, 1px) rotate(0deg) translateY(-25px);
   }
   10% {
-    transform:  scaleX(-1) translate(-1px, -2px) rotate(-1deg) translateY(-25px);
+    transform: scaleX(-1) translate(-1px, -2px) rotate(-1deg) translateY(-25px);
   }
   20% {
     transform: scaleX(-1) translate(-3px, 0px) rotate(1deg) translateY(-25px);
@@ -182,7 +217,7 @@
     transform: translate(1px, 1px) rotate(0deg) translateY(-25px);
   }
   10% {
-    transform:  translate(-1px, -2px) rotate(-1deg) translateY(-25px);
+    transform: translate(-1px, -2px) rotate(-1deg) translateY(-25px);
   }
   20% {
     transform: translate(-3px, 0px) rotate(1deg) translateY(-25px);

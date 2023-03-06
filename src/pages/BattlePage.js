@@ -12,6 +12,7 @@ import BattleAnnouncer from "../Components/BattleAnnouncer";
 import { useBattleSequence } from "../hooks/useBattleSequence";
 import { useAIOpponent } from "../hooks/useAIOpponent";
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
+import BattleWinnerPage from "./BattleWinnerPage";
 
 const BattlePage = () => {
   const { currentLocation } = useLocationContext();
@@ -20,8 +21,18 @@ const BattlePage = () => {
 
   const [sequence, setSequence] = useState({});
   const [winner, setWinner] = useState();
-  const [isBattleStarted, setBattleStarted] = useState(false);
+  const [isBattleStarted, setIsBattleStarted] = useState(false);
   const [isGameOver, setGameOver] = useState(false);
+  const [isPlayerWinner, setIsPlayerWinner] = useState(false);
+
+  const onBattleClick = () => {
+    setIsBattleStarted(true);
+  };
+
+  const onGameEnd = (winner) => {
+    setWinner(winner);
+    setGameOver(true);
+  };
 
   const {
     turn,
@@ -35,16 +46,8 @@ const BattlePage = () => {
 
   const aiChoice = useAIOpponent(turn);
 
-  const onGameEnd = (winner) => {
-    setWinner(winner);
-    setGameOver(true);
-  };
-
   useEffect(() => {
-    localStorage.setItem(
-      "localStorageCurrentEnemy",
-      JSON.stringify(currentEnemy)
-    );
+    localStorage.setItem("currentEnemy", JSON.stringify(currentEnemy));
   }, [currentEnemy]);
 
   useEffect(() => {
@@ -62,129 +65,129 @@ const BattlePage = () => {
     }
   }, [playerHealth, enemyHealth, onGameEnd]);
 
-  return (
-    <>
-      {!isBattleStarted && (
-        <main
-          className={classes.main}
-          style={{
-            background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
-          }}
-        >
-          <Pokedex />
-          <h1>{currentEnemy.name} has appeared!</h1>
+  useEffect(() => {
+    if (winner === currentPokemon) {
+      setIsPlayerWinner(true);
+    }
+  }, [winner, setIsPlayerWinner]);
 
-          <BattleAnnouncer
-            message={
-              `Check out your Pokédex for details!`
-            }
-          />
+  if (!isPlayerWinner && !isGameOver) {
+    return (
+      <>
+        {!isBattleStarted && (
+          <main
+            className={classes.main}
+            style={{
+              background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
+            }}
+          >
+            <Pokedex />
+            <h1>{currentEnemy.name} has appeared!</h1>
 
-          <EnemyFighter
-            className={classes[enemyAnimation]}
-            imageUrl={currentEnemy.imageUrl}
-            name={currentEnemy.name}
-            value={enemyHealth}
-            maxValue={currentEnemy.maxHealth}
-            level={currentEnemy.level}
-          />
-
-          <footer className={classes.preFightFooter}>
-            <div className={classes.btnWrapper}>
-              
-              <Button
-                text="Battle!"
-                id="cath-pokemon"
-                onBtnClick={(()=> {})}
-                className={classes.utilInactive}
-              ></Button>
-              <Link to=".." relative="path">
+            <BattleAnnouncer message={`Check out your Pokédex for details!`} />
+            <EnemyFighter
+              className={classes[enemyAnimation]}
+              imageUrl={currentEnemy.imageUrl}
+              name={currentEnemy.name}
+              value={enemyHealth}
+              maxValue={currentEnemy.maxHealth}
+              level={currentEnemy.level}
+            />
+            <footer className={classes.preFightFooter}>
+              <div className={classes.btnWrapper}>
                 <Button
-                  text="Leave"
-                  id="leave-fight"
-                  className={classes.utilActive}
+                  text="Battle!"
+                  id="battle"
+                  onBtnClick={onBattleClick}
+                  className={classes.utilInactive}
                 ></Button>
-              </Link>
-            </div>
-          </footer>
-        </main>
-      )}
+                <Link to=".." relative="path">
+                  <Button
+                    text="Leave"
+                    id="leave-fight"
+                    className={classes.utilActive}
+                  ></Button>
+                </Link>
+              </div>
+            </footer>
+          </main>
+        )}
 
-      {isBattleStarted && (
-        <main
-          className={classes.main}
-          style={{
-            background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
-          }}
-        >
-          <h1>
-            {currentPokemon.name} VS {currentEnemy.name}
-          </h1>
+        {isBattleStarted && (
+          <main
+            className={classes.main}
+            style={{
+              background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
+            }}
+          >
+            <h1>
+              {currentPokemon.name} VS {currentEnemy.name}
+            </h1>
 
-          <BattleAnnouncer
-            message={
-              announcerMessage || `What should ${currentPokemon.name} do?`
-            }
-          />
-
-          <PlayerFighter
-            className={classes[playerAnimation]}
-            imageUrl={currentPokemon.imageUrl}
-            name={currentPokemon.name}
-            value={playerHealth}
-            maxValue={currentPokemon.maxHealth}
-            level={currentPokemon.level}
-
-          />
-          <EnemyFighter
-            className={classes[enemyAnimation]}
-            imageUrl={currentEnemy.imageUrl}
-            name={currentEnemy.name}
-            value={enemyHealth}
-            maxValue={currentEnemy.maxHealth}
-            level={currentEnemy.level}
-
-          />
-
-          <footer className={classes.footer}>
-            <Button
-              text={`Use ${currentPokemon.attacks.attack1}`}
-              id="attack-one"
-              onBtnClick={() => setSequence({ turn, mode: "attack" })}
-              className={classes.attackActive}
+            <BattleAnnouncer
+              message={
+                announcerMessage || `What should ${currentPokemon.name} do?`
+              }
             />
-            <Button
-              text={`Use Special Move - ${currentPokemon.attacks.attack2}`}
-              id="attack-two"
-              onBtnClick={() => setSequence({ turn, mode: "specialAttack" })}
-              className={classes.attackActive}
+            <PlayerFighter
+              className={classes[playerAnimation]}
+              imageUrl={currentPokemon.imageUrl}
+              name={currentPokemon.name}
+              value={playerHealth}
+              maxValue={currentPokemon.maxHealth}
+              level={currentPokemon.level}
             />
-            <Button
-              text="Heal"
-              id="heal"
-              onBtnClick={() => setSequence({ turn, mode: "heal" })}
-              className={classes.attackActive}
+            <EnemyFighter
+              className={classes[enemyAnimation]}
+              imageUrl={currentEnemy.imageUrl}
+              name={currentEnemy.name}
+              value={enemyHealth}
+              maxValue={currentEnemy.maxHealth}
+              level={currentEnemy.level}
             />
-            <div className={classes.btnWrapper}>
-              <Link to=".." relative="path">
-                <Button
-                  text="Leave fight"
-                  id="leave-fight"
-                  className={classes.utilActive}
-                ></Button>
-              </Link>
+            <footer className={classes.footer}>
               <Button
-                text="Catch Pokémon!"
-                id="cath-pokemon"
-                onBtnClick={(()=> {})}
-                className={classes.utilInactive}
-              ></Button>
-            </div>
-          </footer>
-        </main>
-      )}
-    </>
-  );
+                text={`Use ${currentPokemon.attacks.attack1}`}
+                id="attack-one"
+                onBtnClick={() => setSequence({ turn, mode: "attack" })}
+                className={classes.attackActive}
+              />
+              <Button
+                text={`Use Special Move - ${currentPokemon.attacks.attack2}`}
+                id="special-attack"
+                onBtnClick={() => setSequence({ turn, mode: "specialAttack" })}
+                className={classes.attackActive}
+              />
+              <Button
+                text="Heal"
+                id="heal"
+                onBtnClick={() => setSequence({ turn, mode: "heal" })}
+                className={classes.attackActive}
+              />
+              <div className={classes.btnWrapper}>
+                <Link to=".." relative="path">
+                  <Button
+                    text="Leave fight"
+                    id="leave-fight"
+                    className={classes.utilActive}
+                  ></Button>
+                </Link>
+                <Button
+                  text="Catch Pokémon!"
+                  id="cath-pokemon"
+                  onBtnClick={() => {}}
+                  className={classes.utilInactive}
+                ></Button>
+              </div>
+            </footer>
+          </main>
+        )}
+      </>
+    );
+  }
+  if (isGameOver && isPlayerWinner) {
+    return <BattleWinnerPage />;
+  }
 };
 
 export default BattlePage;
