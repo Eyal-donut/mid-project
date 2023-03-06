@@ -39,7 +39,7 @@ export const useBattleSequence = (sequence) => {
 
             turn === 0
               ? setPlayerAnimation("playerAttack")
-              : setEnemyAnimation("EnemyAttack");
+              : setEnemyAnimation("enemyAttack");
             await waitFunction(100);
 
             turn === 0
