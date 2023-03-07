@@ -5,13 +5,12 @@
 
 //if not: filter out from pokemondata
 import { pokemonsData } from "../Data/PokemonsData";
-import UsersDataBaseAPI from "../Data/API";
 
 
 export const setLocalStoragePokemonsData = () => {
-  const localStorageEnemiesArray = JSON.parse(
-    localStorage.getItem("enemiesArray")
-  );
+  const localStorageEnemiesArray = 
+    localStorage.getItem("pokemonsData")
+
   if (!localStorageEnemiesArray) {
     localStorage.setItem("pokemonsData", JSON.stringify(pokemonsData))
   }
@@ -19,21 +18,21 @@ export const setLocalStoragePokemonsData = () => {
 
 //this is a right direction, but it doesn't yet work, nor it is implemented anywhere in the app
 
-const filterPokemonsByUserData = async () => {
-    let filtered = [];
-    const fetchedUsers = await UsersDataBaseAPI.getAllUsers();
+// const filterPokemonsByUserData = async () => {
+//     let filtered = [];
+//     const fetchedUsers = await UsersDataBaseAPI.getAllUsers();
 
-    const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey");
-    for (const key in fetchedUsers) {
-      if (key === localStorageLoggedUserKey) {
-        const pokemonsObj = fetchedUsers[key].pokemons;
+//     const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey");
+//     for (const key in fetchedUsers) {
+//       if (key === localStorageLoggedUserKey) {
+//         const pokemonsObj = fetchedUsers[key].pokemons;
 
-        for (const k in pokemonsObj) {
-          filtered = pokemonsData.filter((pokemon) => pokemon.id !== k);
-        }
-      }
-    }
-    console.log(filtered);
-    localStorage.setItem("pokemonsData", JSON.stringify(filtered));
-  };
+//         for (const k in pokemonsObj) {
+//           filtered = pokemonsData.filter((pokemon) => pokemon.id !== k);
+//         }
+//       }
+//     }
+//     console.log(filtered);
+//     localStorage.setItem("pokemonsData", JSON.stringify(filtered));
+//   };
 

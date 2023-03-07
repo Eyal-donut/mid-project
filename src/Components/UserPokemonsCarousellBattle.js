@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import Modal from "./utils/Modal";
 import PokedexModal from "./utils/PokedexModal";
 import PokemonCard from "./PokemonCard";
 import classes from "./UserPokemonsCarousell.module.css";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 
-const UserPokemonsCarousel = ({header, children}) => {
+const UserPokemonsCarouselBattle = ({header}) => {
   const [currentDisplayed, setCurrentDisplayed] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const {
@@ -63,9 +62,11 @@ const UserPokemonsCarousel = ({header, children}) => {
           id="left"
           onClick={clickHandler}
         ></div>
-        {children}
+        <button className={classes.chooseButton} onClick={HandleChoosePokemon}>
+          {currentDisplayed.name}, I choose you!
+        </button>
       </PokedexModal>
     </>
   );
 };
-export default UserPokemonsCarousel;
+export default UserPokemonsCarouselBattle;

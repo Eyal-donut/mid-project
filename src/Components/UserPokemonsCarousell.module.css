@@ -2,7 +2,7 @@
   background: url(../assets/arrowRight.png) no-repeat center center/cover;
   position: absolute;
   top: 50%;
-  right: 0.5rem;
+  right: 7rem;
   transform: translateY(-50%);
   width: 5rem;
   height: 5rem;
@@ -12,15 +12,14 @@
   background: url(../assets/arrowLeft.png) no-repeat center center/cover;
   position: absolute;
   top: 50%;
-  left: 0.5rem;
+  left: 3.5rem;
   transform: translateY(-50%);
   width: 5rem;
   height: 5rem;
   cursor: pointer;
 }
 
-.button {
-    width: 20rem;
-    height: 4.5rem;
-    
+.chooseButton {
+  width: 20rem;
+  height: 3.5rem;
 }

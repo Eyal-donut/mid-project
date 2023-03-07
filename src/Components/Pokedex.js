@@ -1,31 +1,32 @@
 import classes from "./Pokedex.module.css";
 import { useState } from "react";
 import PokedexModal from "./utils/PokedexModal";
+import { usePokedexContext } from "../context/PokedexContext";
+import UserPokemonsCarousel from "./UserPokemonsCarousell";
 
 const Pokedex = () => {
-  
-
-  //just to restart the update active and display states, to do a draft:
-  const [isPokedexUpdated, setPokedexUpdated] = useState(true);
-  const [isPokedexDisplay, setPokedexDisplay] = useState(true);
+  const {
+    isPokedexDisplay,
+    setPokedexDisplay,
+    isPokedexUpdated,
+    setPokedexUpdated,
+  } = usePokedexContext();
 
   const clickHandler = () => {
+    setPokedexDisplay(true);
     setPokedexUpdated(false);
   };
-  //create a global Pokedex context containing: the isPokedexUpdated state, pokedexShownPokemons state, userPokemons state, isPokedexDisplay state
+
   return (
     <>
       {isPokedexDisplay && (
-        <PokedexModal>
-          <div className={classes.pokedex}>
-            <div className={classes.showedPokemon}></div>
-          </div>
-        </PokedexModal>
+        <UserPokemonsCarousel>
+          <button onClick={(()=>{setPokedexDisplay(false)})}>Back</button>
+        </UserPokemonsCarousel>
       )}
       {!isPokedexDisplay && (
-        <div className={classes.pokedexLogoWrapper}>
-          {/* update active is an arrow going up and down when there's an update in the pokedex. */}
-          <div className={classes.pokedexLogo} onClick={clickHandler}>
+        <div className={classes.pokedexLogoWrapper} onClick={clickHandler}>
+          <div className={classes.pokedexLogo}>
             {isPokedexUpdated && (
               <div className={classes.updateLogo}>
                 <div className={classes.exclamationMark} />

@@ -14,7 +14,7 @@ import { useAIOpponent } from "../hooks/useAIOpponent";
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
 import BattleWinnerPage from "./BattleWinnerPage";
 import { useBattleContext } from "../context/BattleContext";
-import UserPokemonsCarousel from "../Components/UserPokemonsCarousell";
+import UserPokemonsCarouselBattle from "../Components/UserPokemonsCarousellBattle";
 
 const BattlePage = () => {
   const { currentLocation } = useLocationContext();
@@ -96,10 +96,7 @@ const BattlePage = () => {
               background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
             }}
           >
-            {isChoosePokemon && (
-              <UserPokemonsCarousel header="Choose Pokémon" />
-            )}
-
+            {isChoosePokemon && <UserPokemonsCarouselBattle />}
             <Pokedex />
             <h1>{currentEnemy.name} has appeared!</h1>
 

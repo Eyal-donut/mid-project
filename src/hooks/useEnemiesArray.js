@@ -1,10 +1,11 @@
 import { useEnemiesContext } from "../context/EnemiesContext ";
 
-
 const useEnemiesArray = (user, locationID) => {
   const ENEMY_DIFF_FROM_PLAYER = 10;
+  const ENEMY_HEALTH = 10;
+  const ENEMY_MAX_HEALTH = 10;
 
-  const {enemiesArray, setEnemiesArray} = useEnemiesContext()
+  const { enemiesArray, setEnemiesArray } = useEnemiesContext();
 
   const randomIntFromInterval = (min, max) => {
     let randomInt = Math.floor(Math.random() * (max - min + 1) + min);
@@ -18,15 +19,17 @@ const useEnemiesArray = (user, locationID) => {
     );
   };
 
-  const localStoragePokemonsData = JSON.parse(localStorage.getItem("pokemonsData"))
+  const localStoragePokemonsData = JSON.parse(
+    localStorage.getItem("pokemonsData")
+  );
   const tempArray = localStoragePokemonsData.map(
     (enemy) =>
       (enemy = {
         id: enemy.id,
         name: enemy.name,
         imageUrl: enemy.imageUrl,
-        health: 50,
-        maxHealth:50,
+        health: ENEMY_HEALTH,
+        maxHealth: ENEMY_MAX_HEALTH,
         attacks: {
           attack1: enemy.attacks[0],
           attack2: enemy.attacks[1],
@@ -38,7 +41,9 @@ const useEnemiesArray = (user, locationID) => {
   );
 
   const filterByIDRange = (firstId, lastId) => {
-    return tempArray.filter((enemy) => enemy.id >= firstId && enemy.id <= lastId ) ;
+    return tempArray.filter(
+      (enemy) => enemy.id >= firstId && enemy.id <= lastId
+    );
   };
 
   const setEnemiesArrayByLocationID = () => {
@@ -50,7 +55,7 @@ const useEnemiesArray = (user, locationID) => {
       setEnemiesArray(filterByIDRange(18, 23));
   };
 
-  return { enemiesArray, setEnemiesArrayByLocationID,  };
+  return { enemiesArray, setEnemiesArrayByLocationID };
 };
 
 export default useEnemiesArray;

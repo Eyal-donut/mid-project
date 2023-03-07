@@ -1,5 +1,14 @@
 .imageUrl{
-    width: 20rem;
-    height: 20rem;
+    width: 17rem;
+    height: 17rem;
     transition: all .3s ease-in-out;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4rem;
+    padding-right: 3rem;
 }

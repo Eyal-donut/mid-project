@@ -8,18 +8,21 @@ import Pokedex from "../Components/Pokedex";
 import { useEnemiesContext } from "../context/EnemiesContext ";
 import useEnemiesArray from "../hooks/useEnemiesArray";
 import EnemyEventPointer from "../Components/EnemyEventPointe";
-import { testUser } from "../Data/UserData";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 
-//create a global Pokedex context containing: the isPokedexUpdated state, pokedexShownPokemons state, userPokemons state, isPokedexDisplay state
-
 const LocationPage = () => {
+  const currentPokemonFromLocalStorage = JSON.parse(
+    localStorage.getItem("currentPokemon")
+  );
+
   const params = useParams();
   const { currentLocation, setCurrentLocation } = useLocationContext();
   const { setCurrentEnemy } = useEnemiesContext();
-  const { currentPokemon } = useCurrentPokemonContext();
+  const { currentPokemon, setCurrentPokemon } = useCurrentPokemonContext();
 
-  //change that, so enemy is adapted to the avg pokemons level of the user, and not the current pokemon
+  useEffect(() => {
+    setCurrentPokemon(currentPokemonFromLocalStorage);
+  }, [setCurrentPokemon, currentPokemonFromLocalStorage]);
 
   const { enemiesArray, setEnemiesArrayByLocationID } = useEnemiesArray(
     currentPokemon,
@@ -34,7 +37,7 @@ const LocationPage = () => {
     );
     setCurrentLocation(locationByID);
     setEnemiesArrayByLocationID();
-  }, []);
+  }, [setCurrentLocation, setEnemiesArrayByLocationID]);
 
   const clickHandler = (clickedID) => {
     setCurrentEnemy(
@@ -42,8 +45,6 @@ const LocationPage = () => {
     );
     navigate(`${clickedID}`);
   };
-
-
 
   return (
     <>

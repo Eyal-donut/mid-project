@@ -13,6 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 import { setLocalStoragePokemonsData } from "../helpers/LocalStorageManagement";
 
+const PLAYER_POKEMON_HEALTH = 50;
+const PLAYER_POKEMON_MAX_HEALTH = 50;
+
 const HomePage = () => {
   const { setUsers, setKeys } = useUsersContext();
   const { loggedUserKey, setLoggedUserKey, loggedUser, setLoggedUser } =
@@ -34,20 +37,27 @@ const HomePage = () => {
     const keys = UsersDataBaseAPI.getKeys(fetchedUsers);
     setKeys(keys);
 
-    const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey")
-    for (const key in fetchedUsers) {
-      if (key === localStorageLoggedUserKey) {
-        setLoggedUserKey(key);
-        setLoggedUser(fetchedUsers[key]);
-        setCurrentPokemon(fetchedUsers[key].pokemons.first);
-        localStorage.setItem("loggedUserKey", JSON.stringify(key));
-        localStorage.setItem("loggedUser", JSON.stringify(fetchedUsers[key]));
-        localStorage.setItem(
-          "currentPokemon",
-          JSON.stringify(fetchedUsers[key].pokemons.first)
-        );
-      }
-    }
+    const localStorageLoggedUserKey = JSON.parse(
+      localStorage.getItem("loggedUserKey")
+    );
+    console.log(localStorageLoggedUserKey);
+
+    const foundKey = Object.keys(fetchedUsers).find(
+      (key) => key === localStorageLoggedUserKey
+    );
+
+    setLoggedUserKey(foundKey);
+    setLoggedUser(fetchedUsers[foundKey]);
+    setCurrentPokemon(fetchedUsers[foundKey].pokemons.first);
+    localStorage.setItem("loggedUserKey", JSON.stringify(foundKey));
+    localStorage.setItem("loggedUser", JSON.stringify(fetchedUsers[foundKey]));
+    localStorage.setItem(
+      "currentPokemon",
+      JSON.stringify(fetchedUsers[foundKey].pokemons.first)
+    );
+    console.log(
+      "restarted local storage and set states: loggedUserKey, loggedUser, currentPokemon"
+    );
   };
 
   const addUserAndUpdateKeysContext = async (userName, password) => {
@@ -57,7 +67,7 @@ const HomePage = () => {
         password,
       });
       setLoggedUserKey(response.data.name);
-      localStorage.setItem("loggedUserKey", response.data.name);
+      localStorage.setItem("loggedUserKey", JSON.stringify(response.data.name));
       setKeys((prev) => [...prev, response.data.name]);
     } catch (error) {
       console.log("Error adding user", error);
@@ -66,9 +76,8 @@ const HomePage = () => {
 
   useEffect(() => {
     getAllUsersAndSetUsersContext();
-    setLocalStoragePokemonsData()
-    
-  }, []);
+    setLocalStoragePokemonsData();
+  }, [setLocalStoragePokemonsData, getAllUsersAndSetUsersContext]);
 
   useEffect(() => {
     const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey");
@@ -85,7 +94,8 @@ const HomePage = () => {
     localStorage.removeItem("loggedUserKey");
     localStorage.removeItem("loggedUser");
     localStorage.removeItem("currentPokemon");
-    localStorage.removeItem("pokemonsData")
+    localStorage.removeItem("pokemonsData");
+    localStorage.removeItem("currentEnemy")
     setLoggedUserKey("");
     setLoggedUser({});
     setCurrentPokemon({});
@@ -141,8 +151,8 @@ const HomePage = () => {
         strength: 50,
         defense: 30,
         level: 40,
-        health: 20,
-        maxHealth: 100,
+        health: PLAYER_POKEMON_HEALTH,
+        maxHealth: PLAYER_POKEMON_MAX_HEALTH,
       };
 
       const updatedData = {

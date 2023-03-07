@@ -1,17 +1,12 @@
 import { Link } from "react-router-dom";
 import classes from "./GameMap.module.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { locationsArray } from "../Data/LocationsData";
 import Pokedex from "../Components/Pokedex";
 
-import { testUser } from "../Data/UserData";
-
 
 const GameMapPage = () => {
-  const [activeUser, setActiveUser] = useState(testUser)
   const navigate = useNavigate();
-
 
   const clickHandler = (e) => {
     navigate(`/map/${e.target.id}`);
