@@ -1,0 +1,5 @@
+.imageUrl{
+    width: 20rem;
+    height: 20rem;
+    transition: all .3s ease-in-out;
+}

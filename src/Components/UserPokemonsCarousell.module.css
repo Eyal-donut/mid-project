@@ -1,0 +1,20 @@
+.arrowRight {
+  background: url(../assets/arrowRight.png) no-repeat center center/cover;
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+}
+.arrowLeft {
+  background: url(../assets/arrowLeft.png) no-repeat center center/cover;
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+}
