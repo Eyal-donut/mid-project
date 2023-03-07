@@ -1,5 +1,4 @@
 import { useEnemiesContext } from "../context/EnemiesContext ";
-import { pokemonsData } from "../Data/PokemonsData";
 
 
 const useEnemiesArray = (user, locationID) => {
@@ -19,7 +18,8 @@ const useEnemiesArray = (user, locationID) => {
     );
   };
 
-  const tempArray = pokemonsData.map(
+  const localStoragePokemonsData = JSON.parse(localStorage.getItem("pokemonsData"))
+  const tempArray = localStoragePokemonsData.map(
     (enemy) =>
       (enemy = {
         id: enemy.id,
@@ -46,7 +46,7 @@ const useEnemiesArray = (user, locationID) => {
       setEnemiesArray(filterByIDRange(18, 23));
   };
 
-  return { enemiesArray, setEnemiesArrayByLocationID };
+  return { enemiesArray, setEnemiesArrayByLocationID,  };
 };
 
 export default useEnemiesArray;

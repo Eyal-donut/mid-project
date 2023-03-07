@@ -11,6 +11,7 @@ import { pokemonsData } from "../Data/PokemonsData";
 import { useLoggedUsersContext } from "../context/LoggedUserContext";
 import { useNavigate } from "react-router-dom";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
+import { setLocalStoragePokemonsData } from "../helpers/LocalStorageManagement";
 
 const HomePage = () => {
   const { setUsers, setKeys } = useUsersContext();
@@ -36,7 +37,6 @@ const HomePage = () => {
     const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey")
     for (const key in fetchedUsers) {
       if (key === localStorageLoggedUserKey) {
-        console.log("ih");
         setLoggedUserKey(key);
         setLoggedUser(fetchedUsers[key]);
         setCurrentPokemon(fetchedUsers[key].pokemons.first);
@@ -66,7 +66,9 @@ const HomePage = () => {
 
   useEffect(() => {
     getAllUsersAndSetUsersContext();
-  }, []);
+    setLocalStoragePokemonsData()
+    
+  }, [loggedUser]);
 
   useEffect(() => {
     const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey");
@@ -83,6 +85,7 @@ const HomePage = () => {
     localStorage.removeItem("loggedUserKey");
     localStorage.removeItem("loggedUser");
     localStorage.removeItem("currentPokemon");
+    localStorage.removeItem("pokemonsData")
     setLoggedUserKey("");
     setLoggedUser({});
     setCurrentPokemon({});

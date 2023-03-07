@@ -2,7 +2,7 @@ import { useLocationContext } from "../context/CurrentLocationContext";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 import { useEnemiesContext } from "../context/EnemiesContext ";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -13,8 +13,12 @@ import EnemyFighter from "../Components/EnemyFighter";
 import Button from "../Components/Button";
 import PokeballCatch from "../Components/PokeballCatch";
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
+import { useCatchPokemonAndUpdateUser } from "../hooks/useCatchPokemon";
 
 const BattleWinnerPage = () => {
+  const { removePokemonFromEnemies, updateUserPokemons } =
+    useCatchPokemonAndUpdateUser();
+
   const { currentLocation } = useLocationContext();
   const { currentEnemy } = useEnemiesContext();
   const { currentPokemon } = useCurrentPokemonContext();
@@ -22,17 +26,19 @@ const BattleWinnerPage = () => {
   const [isCatchPokemon, setIsCatchPokemon] = useState(false);
   const [isEnemyDisplay, setIsEnemyDisplay] = useState(true);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onCatchClick = () => {
     (async () => {
+      updateUserPokemons();
+      removePokemonFromEnemies();
       setIsCatchPokemon(true);
+      await waitFunction(500);
       setEnemyAnimation("catchPokemon");
       await waitFunction(2000);
-      setIsEnemyDisplay(false)
+      setIsEnemyDisplay(false);
       await waitFunction(1000);
-      navigate(`/map/${currentLocation.id}`)
-      
+      navigate(`/map/${currentLocation.id}`);
     })();
   };
 
