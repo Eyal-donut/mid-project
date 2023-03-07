@@ -83,6 +83,7 @@ h2 {
   font-family: 'pokemon';
   font-size: 4rem;
   letter-spacing: .2rem;
+  line-height: 1.2;
   /* text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff; */
 }
 

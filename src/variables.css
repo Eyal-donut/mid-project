@@ -5,5 +5,6 @@
     --pokemon-yellow: #FFCC00;
     --pokemon-red: #C12B36;
     --btn-bgr: #c4bfbf;
+    --btn-bgr-opacity: rgb(196, 191, 191, 0.8);
     --active-green: rgb(91, 141, 91, .8);
 }

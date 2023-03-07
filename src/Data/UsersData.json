@@ -1,8 +1,20 @@
 {
   "users": {
-    "-NPnMWgaUKi_Aek_AHcG": {
-      "password": "dsjfkshfjs",
-      "userName": "sdkjfhsdfsdjf"
+    "\"-NPr0gXnGbGX3x5JCAku\"": {
+      "password": "123456",
+      "pokemons": {
+        "22": {
+          "defense": 6,
+          "health": 5,
+          "id": 22,
+          "imageUrl": "https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/all_pokemons/22.png",
+          "level": 6,
+          "maxHealth": 5,
+          "name": "Jigglypuff",
+          "strength": 5
+        }
+      },
+      "userName": "test"
     }
   }
 }

@@ -24,7 +24,7 @@
   position: absolute;
   bottom: 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 1rem;
 }
@@ -36,7 +36,7 @@
   cursor: pointer;
   background: var(--active-green);
   margin: 0.1rem;
-  box-shadow: 0 8px 20px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 8px 8px rgb(0, 0, 0, 0.4);
   margin: 0.5rem 0.1rem;
 }
 .attackInactive {
@@ -44,7 +44,7 @@
   height: 11vh;
   border: 2px solid #151414;
   cursor: pointer;
-  background: var(--btn-bgr);
+  background:  var(--btn-bgr-opacity);
   margin: 0.5rem 0.1rem;
 }
 
@@ -69,7 +69,7 @@
   width: 12rem;
   height: 5.3vh;
   margin: 0.1rem;
-  background: var(--btn-bgr);
+  background: var(--btn-bgr-opacity);
   border: 2px solid #151414;
 }
 

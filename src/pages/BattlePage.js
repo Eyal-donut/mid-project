@@ -14,21 +14,27 @@ import { useAIOpponent } from "../hooks/useAIOpponent";
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
 import BattleWinnerPage from "./BattleWinnerPage";
 import { useBattleContext } from "../context/BattleContext";
+import ChoosePokemonWindow from "../Components/ChoosePokemonWindow";
+import ChooseFightingPokemon from "../Components/ChooseUserPokemons";
 
 const BattlePage = () => {
   const { currentLocation } = useLocationContext();
   const { currentEnemy } = useEnemiesContext();
   const { currentPokemon } = useCurrentPokemonContext();
-  const {isBattleStarted, setIsBattleStarted} = useBattleContext()
+  const { isBattleStarted, setIsBattleStarted } = useBattleContext();
 
   const [sequence, setSequence] = useState({});
   const [winner, setWinner] = useState();
-  // const [isBattleStarted, setIsBattleStarted] = useState(false);
   const [isGameOver, setGameOver] = useState(false);
   const [isPlayerWinner, setIsPlayerWinner] = useState(false);
+  const [isChoosePokemon, setIsChoosePokemon] = useState(false);
 
   const onBattleClick = () => {
     setIsBattleStarted(true);
+  };
+
+  const choosePokemonClick = () => {
+    setIsChoosePokemon(true);
   };
 
   const onGameEnd = (winner) => {
@@ -73,9 +79,9 @@ const BattlePage = () => {
     }
   }, [winner, setIsPlayerWinner]);
 
-  useEffect(()=> {
-    setIsBattleStarted(false)
-  },[setIsBattleStarted])
+  useEffect(() => {
+    setIsBattleStarted(false);
+  }, [setIsBattleStarted]);
 
   if (!isPlayerWinner && !isGameOver) {
     return (
@@ -87,6 +93,8 @@ const BattlePage = () => {
               background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
             }}
           >
+            {/* {isChoosePokemon && <ChooseFightingPokemon/>} */}
+
             <Pokedex />
             <h1>{currentEnemy.name} has appeared!</h1>
 
@@ -99,21 +107,27 @@ const BattlePage = () => {
               level={currentEnemy.level}
             />
             <footer className={classes.preFightFooter}>
-              <div className={classes.btnWrapper}>
+              {/* <div className={classes.btnWrapper}> */}
+              <Button
+                text="Battle!"
+                id="battle"
+                onBtnClick={onBattleClick}
+                className={classes.attackInactive}
+              ></Button>
+              <Button
+                text="Choose your Pokémon!"
+                id="choose-pokemon"
+                onBtnClick={choosePokemonClick}
+                className={classes.attackInactive}
+              ></Button>
+              <Link to=".." relative="path">
                 <Button
-                  text="Battle!"
-                  id="battle"
-                  onBtnClick={onBattleClick}
-                  className={classes.utilInactive}
+                  text="Leave"
+                  id="leave-fight"
+                  className={classes.attackInactive}
                 ></Button>
-                <Link to=".." relative="path">
-                  <Button
-                    text="Leave"
-                    id="leave-fight"
-                    className={classes.utilActive}
-                  ></Button>
-                </Link>
-              </div>
+              </Link>
+              {/* </div> */}
             </footer>
           </main>
         )}
