@@ -16,18 +16,17 @@ import BattleWinnerPage from "./BattleWinnerPage";
 import { useBattleContext } from "../context/BattleContext";
 import UserPokemonsCarousel from "../Components/UserPokemonsCarousell";
 
-
 const BattlePage = () => {
   const { currentLocation } = useLocationContext();
   const { currentEnemy } = useEnemiesContext();
-  const { currentPokemon } = useCurrentPokemonContext();
+  const { currentPokemon, isChoosePokemon, setIsChoosePokemon } =
+    useCurrentPokemonContext();
   const { isBattleStarted, setIsBattleStarted } = useBattleContext();
 
   const [sequence, setSequence] = useState({});
   const [winner, setWinner] = useState();
   const [isGameOver, setGameOver] = useState(false);
   const [isPlayerWinner, setIsPlayerWinner] = useState(false);
-  const [isChoosePokemon, setIsChoosePokemon] = useState(false);
 
   const onBattleClick = () => {
     setIsBattleStarted(true);
@@ -57,6 +56,10 @@ const BattlePage = () => {
   useEffect(() => {
     localStorage.setItem("currentEnemy", JSON.stringify(currentEnemy));
   }, [currentEnemy]);
+
+  useEffect(() => {
+    setIsChoosePokemon(false);
+  }, []);
 
   useEffect(() => {
     if (aiChoice && turn === 1 && !inSequence) {
@@ -93,7 +96,9 @@ const BattlePage = () => {
               background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
             }}
           >
-            {isChoosePokemon && <UserPokemonsCarousel/>}
+            {isChoosePokemon && (
+              <UserPokemonsCarousel header="Choose Pokémon" />
+            )}
 
             <Pokedex />
             <h1>{currentEnemy.name} has appeared!</h1>
@@ -191,12 +196,6 @@ const BattlePage = () => {
                     className={classes.utilActive}
                   ></Button>
                 </Link>
-                <Button
-                  text="Catch Pokémon!"
-                  id="cath-pokemon"
-                  onBtnClick={() => {}}
-                  className={classes.utilInactive}
-                ></Button>
               </div>
             </footer>
           </main>

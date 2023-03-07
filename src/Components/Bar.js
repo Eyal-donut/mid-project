@@ -5,7 +5,7 @@ const Bar = ({label, value, maxValue }) => {
     <div className={classes.barWrapper}>
       <p>{label}</p>
       <div className={classes.barMax}>
-        <div className={classes.barValue} style={{width: `${(value/maxValue)*100}%`}}></div>
+        <div className={classes.barValue} style={{width: `${(value/maxValue)*100}%`, maxWidth: '100%'}}></div>
       </div>
     </div>
   );
