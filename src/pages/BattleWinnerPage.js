@@ -37,7 +37,7 @@ const BattleWinnerPage = () => {
       setEnemyAnimation("catchPokemon");
       await waitFunction(2000);
       setIsEnemyDisplay(false);
-      await waitFunction(1000);
+      await waitFunction(700);
       navigate(`/map/${currentLocation.id}`);
     })();
   };

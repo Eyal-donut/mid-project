@@ -16,7 +16,7 @@ import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 const LocationPage = () => {
   const params = useParams();
   const { currentLocation, setCurrentLocation } = useLocationContext();
-  const { currentEnemy, setCurrentEnemy } = useEnemiesContext();
+  const { setCurrentEnemy } = useEnemiesContext();
   const { currentPokemon } = useCurrentPokemonContext();
 
   //change that, so enemy is adapted to the avg pokemons level of the user, and not the current pokemon

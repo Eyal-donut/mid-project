@@ -8,20 +8,23 @@ import { EnemiesProvider } from "./context/EnemiesContext ";
 import { UsersProvider } from "./context/UsersContext";
 import { LoggedUserProvider } from "./context/LoggedUserContext";
 import { CurrentPokemonProvider } from "./context/CurrentPokemonContext";
+import { BattleProvider } from "./context/BattleContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <CurrentPokemonProvider>
-      <LoggedUserProvider>
-        <UsersProvider>
-          <EnemiesProvider>
-            <LocationProvider>
-              <App />
-            </LocationProvider>
-          </EnemiesProvider>
-        </UsersProvider>
-      </LoggedUserProvider>
-    </CurrentPokemonProvider>
+    <BattleProvider>
+      <CurrentPokemonProvider>
+        <LoggedUserProvider>
+          <UsersProvider>
+            <EnemiesProvider>
+              <LocationProvider>
+                <App />
+              </LocationProvider>
+            </EnemiesProvider>
+          </UsersProvider>
+        </LoggedUserProvider>
+      </CurrentPokemonProvider>
+    </BattleProvider>
   </React.StrictMode>
 );

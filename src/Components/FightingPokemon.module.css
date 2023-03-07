@@ -9,6 +9,12 @@
   right: 2vw;
 }
 
+.enemyBeforeStart {
+  position: absolute;
+  bottom: 20vh;
+  right: 30vw;
+}
+
 .player {
   position: absolute;
   bottom: 13vh;

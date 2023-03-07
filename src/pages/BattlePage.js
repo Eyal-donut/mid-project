@@ -13,15 +13,17 @@ import { useBattleSequence } from "../hooks/useBattleSequence";
 import { useAIOpponent } from "../hooks/useAIOpponent";
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
 import BattleWinnerPage from "./BattleWinnerPage";
+import { useBattleContext } from "../context/BattleContext";
 
 const BattlePage = () => {
   const { currentLocation } = useLocationContext();
   const { currentEnemy } = useEnemiesContext();
   const { currentPokemon } = useCurrentPokemonContext();
+  const {isBattleStarted, setIsBattleStarted} = useBattleContext()
 
   const [sequence, setSequence] = useState({});
   const [winner, setWinner] = useState();
-  const [isBattleStarted, setIsBattleStarted] = useState(false);
+  // const [isBattleStarted, setIsBattleStarted] = useState(false);
   const [isGameOver, setGameOver] = useState(false);
   const [isPlayerWinner, setIsPlayerWinner] = useState(false);
 
@@ -71,6 +73,10 @@ const BattlePage = () => {
     }
   }, [winner, setIsPlayerWinner]);
 
+  useEffect(()=> {
+    setIsBattleStarted(false)
+  },[setIsBattleStarted])
+
   if (!isPlayerWinner && !isGameOver) {
     return (
       <>
@@ -86,7 +92,6 @@ const BattlePage = () => {
 
             <BattleAnnouncer message={`Check out your Pokédex for details!`} />
             <EnemyFighter
-              className={classes[enemyAnimation]}
               imageUrl={currentEnemy.imageUrl}
               name={currentEnemy.name}
               value={enemyHealth}
