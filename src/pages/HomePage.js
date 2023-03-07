@@ -68,7 +68,7 @@ const HomePage = () => {
     getAllUsersAndSetUsersContext();
     setLocalStoragePokemonsData()
     
-  }, [loggedUser]);
+  }, []);
 
   useEffect(() => {
     const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey");
