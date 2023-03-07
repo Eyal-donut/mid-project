@@ -1,13 +1,13 @@
 import classes from "./Modal.module.css";
-import PokedexNestedWindow from './PokedexNestedWindow'
+import NestedWindow from "./NestedWindow";
 
 const Modal = ({children}) => {
   return (
     <>
       <div className={classes.screenCover}>
-        <PokedexNestedWindow>
+        <NestedWindow>
         {children}
-        </PokedexNestedWindow>
+        </NestedWindow>
       </div>
     </>
   );

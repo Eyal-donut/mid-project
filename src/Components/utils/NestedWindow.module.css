@@ -1,7 +1,9 @@
+
 .wrapper {
-  width: 90vw;
-  max-width: 50rem;
-  height: 65vh;
+  width: 95vw;
+  max-width: 43rem;
+  height: 75vh;
+  min-height: 60rem;
   background: var(--bgr-nestedWindow);
   box-shadow: 0 1px 8px rgb(0, 0, 0, 0.25);
   display: flex;
@@ -9,6 +11,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 4rem;
-  border: 1rem solid black;
-  border-radius: 15px;
+  border-radius: 25px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: centery;
 }

@@ -1,10 +1,10 @@
 import classes from "./PokedexNestedWindow.module.css";
 
-const NestedWindow = ({children}) => {
+const PokedexNestedWindow = ({children}) => {
   return (
       <div className={classes.wrapper}>
         {children}
       </div>
   );
 };
-export default NestedWindow;
+export default PokedexNestedWindow;

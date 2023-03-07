@@ -1,16 +1,13 @@
 import classes from "./Pokedex.module.css";
 import { useState } from "react";
-import Modal from "./utils/Modal";
+import PokedexModal from "./utils/PokedexModal";
 
 const Pokedex = () => {
-  const [showedPokemon, setShowedPokemon] = useState(
-    "start it with your current pokemon"
-  );
+  
 
   //just to restart the update active and display states, to do a draft:
   const [isPokedexUpdated, setPokedexUpdated] = useState(true);
-  const [isPokedexDisplay, setPokedexDisplay] = useState(false);
-
+  const [isPokedexDisplay, setPokedexDisplay] = useState(true);
 
   const clickHandler = () => {
     setPokedexUpdated(false);
@@ -19,22 +16,24 @@ const Pokedex = () => {
   return (
     <>
       {isPokedexDisplay && (
-        <Modal>
+        <PokedexModal>
           <div className={classes.pokedex}>
             <div className={classes.showedPokemon}></div>
           </div>
-        </Modal>
+        </PokedexModal>
       )}
-      <div className={classes.pokedexLogoWrapper}>
-        {/* update active is an arrow going up and down when there's an update in the pokedex. */}
-        <div className={classes.pokedexLogo} onClick={clickHandler}>
-          {isPokedexUpdated && (
-            <div className={classes.updateLogo}>
-                <div className={classes.exclamationMark}/>
-            </div>
-          )}
+      {!isPokedexDisplay && (
+        <div className={classes.pokedexLogoWrapper}>
+          {/* update active is an arrow going up and down when there's an update in the pokedex. */}
+          <div className={classes.pokedexLogo} onClick={clickHandler}>
+            {isPokedexUpdated && (
+              <div className={classes.updateLogo}>
+                <div className={classes.exclamationMark} />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
