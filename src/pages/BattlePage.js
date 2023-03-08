@@ -17,6 +17,7 @@ import { useBattleContext } from "../context/BattleContext";
 import UserPokemonsCarouselBattle from "../Components/UserPokemonsCarousellBattle";
 import { useLoggedUsersContext } from "../context/LoggedUserContext";
 import Pokeball from "../Components/Pokeball";
+import BattleLooserPage from "./BattleLooserPage";
 
 const BattlePage = () => {
   const { currentLocation, setCurrentLocation } = useLocationContext();
@@ -34,7 +35,7 @@ const BattlePage = () => {
   const [sequence, setSequence] = useState({});
   const [winner, setWinner] = useState();
   const [isGameOver, setGameOver] = useState(false);
-  const [isPlayerWinner, setIsPlayerWinner] = useState(false);
+  // const [isPlayerWinner, setIsPlayerWinner] = useState(false);
 
   const onBattleClick = () => {
     (async () => {
@@ -73,12 +74,22 @@ const BattlePage = () => {
     setLoggedUser(JSON.parse(localStorage.getItem("loggedUser")));
     setIsBattleStarted(false);
     setIsChoosePokemon(false);
+
+    return () => {
+      setWinner()
+      setGameOver(false)
+      // setIsPlayerWinner(false)
+    };
+
   }, [
     setCurrentLocation,
     setCurrentPokemon,
     setCurrentEnemy,
     setIsBattleStarted,
     setIsChoosePokemon,
+    setWinner,
+    setGameOver,
+    // setIsPlayerWinner
   ]);
 
   useEffect(() => {
@@ -96,13 +107,13 @@ const BattlePage = () => {
     }
   }, [playerHealth, enemyHealth, onGameEnd]);
 
-  useEffect(() => {
-    if (winner === currentPokemon) {
-      setIsPlayerWinner(true);
-    }
-  }, [winner, setIsPlayerWinner]);
+  // useEffect(() => {
+  //   if (winner === currentPokemon) {
+  //     setIsPlayerWinner(true);
+  //   }
+  // }, [winner, setIsPlayerWinner]);
 
-  if (!isPlayerWinner && !isGameOver) {
+  if (!isGameOver) {
     return (
       <>
         {!isBattleStarted && (
@@ -223,8 +234,11 @@ const BattlePage = () => {
       </>
     );
   }
-  if (isGameOver && isPlayerWinner) {
+  if (isGameOver && winner === currentPokemon) {
     return <BattleWinnerPage />;
+  }
+  if (isGameOver && winner === currentEnemy) {
+    return <BattleLooserPage/>;
   }
 };
 
