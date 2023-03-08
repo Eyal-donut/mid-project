@@ -16,22 +16,34 @@ import BattleWinnerPage from "./BattleWinnerPage";
 import { useBattleContext } from "../context/BattleContext";
 import UserPokemonsCarouselBattle from "../Components/UserPokemonsCarousellBattle";
 import { useLoggedUsersContext } from "../context/LoggedUserContext";
+import Pokeball from "../Components/Pokeball";
 
 const BattlePage = () => {
   const { currentLocation, setCurrentLocation } = useLocationContext();
   const { currentEnemy, setCurrentEnemy } = useEnemiesContext();
-  const { currentPokemon, setCurrentPokemon, isChoosePokemon, setIsChoosePokemon } =
-    useCurrentPokemonContext();
+  const {
+    currentPokemon,
+    setCurrentPokemon,
+    isChoosePokemon,
+    setIsChoosePokemon,
+  } = useCurrentPokemonContext();
   const { isBattleStarted, setIsBattleStarted } = useBattleContext();
-  const {setLoggedUser} = useLoggedUsersContext()
+  const { setLoggedUser } = useLoggedUsersContext();
 
+  const [isLaunchPokemon, setIsLaunchPokemon] = useState(false);
   const [sequence, setSequence] = useState({});
   const [winner, setWinner] = useState();
   const [isGameOver, setGameOver] = useState(false);
   const [isPlayerWinner, setIsPlayerWinner] = useState(false);
 
   const onBattleClick = () => {
-    setIsBattleStarted(true);
+    (async () => {
+      setIsBattleStarted(true);
+      setIsLaunchPokemon(true);
+      await waitFunction(1500);
+      setIsLaunchPokemon(false);
+      //make your pokemon appear only then
+    })();
   };
 
   const choosePokemonClick = () => {
@@ -55,16 +67,20 @@ const BattlePage = () => {
 
   const aiChoice = useAIOpponent(turn);
 
-
-  useEffect(()=> {
-    setCurrentLocation(JSON.parse(localStorage.getItem("currentLocation")))
-    setCurrentPokemon(JSON.parse(localStorage.getItem("currentPokemon")))
-    setCurrentEnemy(JSON.parse(localStorage.getItem("currentEnemy")))
-    setLoggedUser(JSON.parse(localStorage.getItem("loggedUser")))
+  useEffect(() => {
+    setCurrentLocation(JSON.parse(localStorage.getItem("currentLocation")));
+    setCurrentPokemon(JSON.parse(localStorage.getItem("currentPokemon")));
+    setCurrentEnemy(JSON.parse(localStorage.getItem("currentEnemy")));
+    setLoggedUser(JSON.parse(localStorage.getItem("loggedUser")));
     setIsBattleStarted(false);
     setIsChoosePokemon(false);
-
-  },[setCurrentLocation, setCurrentPokemon, setCurrentEnemy, setIsBattleStarted, setIsChoosePokemon])
+  }, [
+    setCurrentLocation,
+    setCurrentPokemon,
+    setCurrentEnemy,
+    setIsBattleStarted,
+    setIsChoosePokemon,
+  ]);
 
   useEffect(() => {
     if (aiChoice && turn === 1 && !inSequence) {
@@ -87,7 +103,6 @@ const BattlePage = () => {
     }
   }, [winner, setIsPlayerWinner]);
 
-
   if (!isPlayerWinner && !isGameOver) {
     return (
       <>
@@ -98,7 +113,9 @@ const BattlePage = () => {
               background: `url(${currentLocation.imageUrl}) no-repeat center center/cover`,
             }}
           >
-            {isChoosePokemon && <UserPokemonsCarouselBattle />}
+            {isChoosePokemon && (
+              <UserPokemonsCarouselBattle onBtnClick={onBattleClick} />
+            )}
             <Pokedex />
             <h1>{currentEnemy.name} has appeared!</h1>
 
@@ -152,6 +169,9 @@ const BattlePage = () => {
                 announcerMessage || `What should ${currentPokemon.name} do?`
               }
             />
+            {isLaunchPokemon && (
+              <Pokeball className={classes.pokeballStartFight} />
+            )}
             <PlayerFighter
               className={classes[playerAnimation]}
               imageUrl={currentPokemon.imageUrl}
@@ -168,6 +188,7 @@ const BattlePage = () => {
               maxValue={currentEnemy.maxHealth}
               level={currentEnemy.level}
             />
+
             <footer className={classes.footer}>
               <Button
                 text={`Use ${currentPokemon.attacks.attack1}`}

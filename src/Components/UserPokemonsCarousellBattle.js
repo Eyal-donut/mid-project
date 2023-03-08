@@ -4,7 +4,7 @@ import PokemonCard from "./PokemonCard";
 import classes from "./UserPokemonsCarousell.module.css";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 
-const UserPokemonsCarouselBattle = ({ header }) => {
+const UserPokemonsCarouselBattle = ({ header, onBtnClick }) => {
   const [currentDisplayed, setCurrentDisplayed] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const { setIsChoosePokemon, setCurrentPokemon } = useCurrentPokemonContext();
@@ -29,6 +29,7 @@ const UserPokemonsCarouselBattle = ({ header }) => {
   const HandleChoosePokemon = () => {
     setIsChoosePokemon(false);
     setCurrentPokemon(currentDisplayed);
+    onBtnClick()
   };
 
   useEffect(() => {

@@ -147,7 +147,17 @@
   display: none;
 }
 
-.pokeball {
+.pokeballCatch {
+  background: url("../assets/pokeball.png") no-repeat center center/cover;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  bottom: -10vh;
+  right: 30vw;
+  animation: spin 1s linear forwards;
+}
+
+.pokeballStartFight {
   background: url("../assets/pokeball.png") no-repeat center center/cover;
   position: absolute;
   width: 5rem;

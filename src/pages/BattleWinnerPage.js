@@ -2,7 +2,7 @@ import { useLocationContext } from "../context/CurrentLocationContext";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 import { useEnemiesContext } from "../context/EnemiesContext ";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import classes from "./BattlePage.module.css";
 import BattleAnnouncer from "../Components/BattleAnnouncer";
 import EnemyFighter from "../Components/EnemyFighter";
 import Button from "../Components/Button";
-import PokeballCatch from "../Components/PokeballCatch";
+import Pokeball from "../Components/Pokeball";
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
 import { useCatchPokemonAndUpdateUser } from "../hooks/useCatchPokemon";
 
@@ -53,7 +53,7 @@ const BattleWinnerPage = () => {
         <h1>{currentPokemon.name} won!</h1>
 
         <BattleAnnouncer
-          message={`Thats's your chance to catch ${currentEnemy.name}`}
+          message={`${currentEnemy.name} has fainted, thats's your chance to catch him!`}
         />
         {isEnemyDisplay && (
           <EnemyFighter
@@ -82,7 +82,7 @@ const BattleWinnerPage = () => {
             </Link>
           </div>
         </footer>
-        {isCatchPokemon && <PokeballCatch />}
+        {isCatchPokemon && <Pokeball className={classes.pokeballCatch}/>}
       </main>
     </>
   );
