@@ -8,29 +8,33 @@ import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./BattlePage.module.css";
 
-import BattleAnnouncer from "../Components/BattleAnnouncer";
+import Announcer from "../Components/Announcer";
 import EnemyFighter from "../Components/EnemyFighter";
 import Button from "../Components/Button";
 import Pokeball from "../Components/Pokeball";
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
-import { useCatchPokemonAndUpdateUser } from "../hooks/useCatchPokemon";
+import { useCatchPokemon } from "../hooks/useCatchPokemon";
+import { usePokedexContext } from "../context/PokedexContext";
 
 const BattleWinnerPage = () => {
   const { removePokemonFromEnemies, updateUserPokemons } =
-    useCatchPokemonAndUpdateUser();
+    useCatchPokemon();
 
   const { currentLocation } = useLocationContext();
   const { currentEnemy } = useEnemiesContext();
   const { currentPokemon } = useCurrentPokemonContext();
+  const {setPokedexUpdated} = usePokedexContext()
   const [enemyAnimation, setEnemyAnimation] = useState("enemyStatic");
   const [isCatchPokemon, setIsCatchPokemon] = useState(false);
   const [isEnemyDisplay, setIsEnemyDisplay] = useState(true);
+
 
   const navigate = useNavigate();
 
   const onCatchClick = () => {
     (async () => {
       updateUserPokemons();
+      setPokedexUpdated(true)
       removePokemonFromEnemies();
       setIsCatchPokemon(true);
       await waitFunction(500);
@@ -52,7 +56,7 @@ const BattleWinnerPage = () => {
       >
         <h1>{currentPokemon.name} won!</h1>
 
-        <BattleAnnouncer
+        <Announcer
           message={`${currentEnemy.name} has fainted, thats's your chance to catch him!`}
         />
         {isEnemyDisplay && (

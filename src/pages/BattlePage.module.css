@@ -80,20 +80,7 @@
   box-shadow: 8px 20px 20px rgb(0, 0, 0, 0.4);
 }
 
-.announcer {
-  width: 74rem;
-  max-width: 70vw;
-  height: 11vh;
-  background: rgb(196, 191, 191, 0.5);
-  margin: 0 0.2rem;
-  border-radius: 5px;
-  border: 2px solid #151414;
-  font-size: 2rem;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .playerStatic {
   transform: scaleX(-1) translateX(0px);

@@ -1,6 +1,6 @@
 import NestedWindow from "./utils/NestedWindow";
 import classes from '../pages/HomePage.module.css'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 const StartWindow = ({onBtnClick}) => {
@@ -27,11 +27,12 @@ const StartWindow = ({onBtnClick}) => {
           >
             Create user
           </button>
-          <Link to="/map">
-            <button id="play-btn" className={classes.button}>
+          {/* <Link to="/map"> */}
+            <button id="play-btn" className={classes.button}
+            onClick={clickHandler}>
               Play without login
             </button>
-          </Link>
+          {/* </Link> */}
         </div>
         <p>Create a user or login to automatically save your game progress!</p>
       </NestedWindow>

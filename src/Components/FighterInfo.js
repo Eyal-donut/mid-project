@@ -6,8 +6,8 @@ const FighterInfo = ({ name, infoClassName, value, maxValue, level }) => {
     <>
       <div className={`${classes.infoWrapper} ${infoClassName}`}>
         <div className={classes.nameWrapper}>
-          <div>{name}</div>
-          <div>Lvl: {level}</div>
+          <div className={classes.name}>{name}</div>
+          <div>Lvl:{level}</div>
         </div>
         <Bar label="HP" value={value} maxValue={maxValue} />
       </div>

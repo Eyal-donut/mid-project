@@ -1,12 +1,12 @@
 .main {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
-/* .enemy {
-    width: 20rem;
-    height: 20rem;
-    background: url(../assets/enemies/0.png);
-} */
+
 .one {
     position: absolute;
     top: 10vh;

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 import classes from "./BattlePage.module.css";
 
-import BattleAnnouncer from "../Components/BattleAnnouncer";
+import Announcer from "../Components/Announcer";
 import PlayerFighter from "../Components/PlayerFighter";
 
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
@@ -36,7 +36,7 @@ const BattleLooserPage = () => {
       >
         <h1>{currentEnemy.name} won!</h1>
 
-        <BattleAnnouncer message={`${currentEnemy.name} has escaped!`} />
+        <Announcer message={`${currentEnemy.name} has escaped!`} />
         <PlayerFighter
           className={classes.playerStatic}
           imageUrl={currentPokemon.imageUrl}

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { setLocalStoragePokemonsData } from "../helpers/LocalStorageManagement";
 import { locationsArray } from "../Data/LocationsData";
 import Pokedex from "../Components/Pokedex";
+import Announcer from '../Components/Announcer'
 
 
 const GameMapPage = () => {
@@ -45,6 +46,7 @@ const GameMapPage = () => {
             <button>Home</button>
           </Link>
         </div>
+        <Announcer className={classes.mapAnnouncer} message="Explore the Pokémon world and look for Pokémons to catch!"/>
       </main>
     </>
   );

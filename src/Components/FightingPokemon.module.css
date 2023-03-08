@@ -27,9 +27,13 @@
   justify-content: center;
   align-items: center;
 }
+.pokemonAndInfoWrap *{
+  font-size: 1.1rem;
+  font-weight: 550;
+}
 
 .infoWrapper {
-  width: 17rem;
+  width: max-content;
   height: 5rem;
   background: rgb(196, 191, 191, .6);
   box-shadow: 0 8px 20px rgb(0, 0, 0, 0.4);
@@ -39,7 +43,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  padding: .5rem 0;
+  padding: .1rem .2rem;
   font-weight: 550;
 }
 
@@ -47,8 +51,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 .5rem;
   width: 100%;
+}
+
+.name{
+  margin-right: 1.5rem;
 }
 
 .playerInfo {

@@ -8,7 +8,7 @@ import PlayerFighter from "../Components/PlayerFighter";
 import EnemyFighter from "../Components/EnemyFighter";
 import Button from "../Components/Button";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
-import BattleAnnouncer from "../Components/BattleAnnouncer";
+import Announcer from "../Components/Announcer";
 import { useBattleSequence } from "../hooks/useBattleSequence";
 import { useAIOpponent } from "../hooks/useAIOpponent";
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
@@ -35,7 +35,6 @@ const BattlePage = () => {
   const [sequence, setSequence] = useState({});
   const [winner, setWinner] = useState();
   const [isGameOver, setGameOver] = useState(false);
-  // const [isPlayerWinner, setIsPlayerWinner] = useState(false);
 
   const onBattleClick = () => {
     (async () => {
@@ -78,7 +77,6 @@ const BattlePage = () => {
     return () => {
       setWinner()
       setGameOver(false)
-      // setIsPlayerWinner(false)
     };
 
   }, [
@@ -89,7 +87,6 @@ const BattlePage = () => {
     setIsChoosePokemon,
     setWinner,
     setGameOver,
-    // setIsPlayerWinner
   ]);
 
   useEffect(() => {
@@ -107,11 +104,6 @@ const BattlePage = () => {
     }
   }, [playerHealth, enemyHealth, onGameEnd]);
 
-  // useEffect(() => {
-  //   if (winner === currentPokemon) {
-  //     setIsPlayerWinner(true);
-  //   }
-  // }, [winner, setIsPlayerWinner]);
 
   if (!isGameOver) {
     return (
@@ -129,7 +121,7 @@ const BattlePage = () => {
             <Pokedex />
             <h1>{currentEnemy.name} has appeared!</h1>
 
-            <BattleAnnouncer message={`Choose a Pokémon and fight!`} />
+            <Announcer message={`Choose a Pokémon and fight!`} />
             <EnemyFighter
               imageUrl={currentEnemy.imageUrl}
               name={currentEnemy.name}
@@ -177,7 +169,7 @@ const BattlePage = () => {
             {isLaunchPokemon && (
               <Pokeball className={classes.pokeballStartFight} />
             )}
-            <BattleAnnouncer
+            <Announcer
               message={
                 announcerMessage || `What should ${currentPokemon.name} do?`
               }
@@ -205,18 +197,23 @@ const BattlePage = () => {
                 id="attack-one"
                 onBtnClick={() => setSequence({ turn, mode: "attack" })}
                 className={classes.attackActive}
+                disabled={inSequence ? true : false}
               />
               <Button
                 text={`Use Special Move - ${currentPokemon.attacks?.attackTwo}`}
                 id="special-attack"
                 onBtnClick={() => setSequence({ turn, mode: "specialAttack" })}
                 className={classes.attackActive}
+                disabled={inSequence ? true : false}
+
               />
               <Button
                 text="Heal"
                 id="heal"
                 onBtnClick={() => setSequence({ turn, mode: "heal" })}
                 className={classes.attackActive}
+                disabled={inSequence ? true : false}
+
               />
               <div className={classes.btnWrapper}>
                 <Link to=".." relative="path">

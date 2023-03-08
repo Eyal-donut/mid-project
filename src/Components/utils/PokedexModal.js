@@ -14,7 +14,7 @@ const PokedexModal = ({children}) => {
       setIsChoosePokemon(false)
     }
   }
-
+  
   return (
     <>
       <div id='screen-cover' className={classes.screenCover} onClick={clickHandler}>

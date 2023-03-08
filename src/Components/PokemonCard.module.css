@@ -12,3 +12,7 @@
     padding-top: 4rem;
     padding-right: 3rem;
 }
+
+.wrapper *{
+    font-size: 1.3rem;
+}

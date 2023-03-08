@@ -5,10 +5,10 @@ import { locationsArray } from "../Data/LocationsData";
 import { useLocationContext } from "../context/CurrentLocationContext";
 import classes from "./LocationPage.module.css";
 import Pokedex from "../Components/Pokedex";
-import { useEnemiesContext } from "../context/EnemiesContext ";
 import useEnemiesArray from "../hooks/useEnemiesArray";
 import EnemyEventPointer from "../Components/EnemyEventPointe";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
+import Announcer from "../Components/Announcer";
 
 const LocationPage = () => {
   const params = useParams();
@@ -55,9 +55,9 @@ const LocationPage = () => {
       >
         <h1>{currentLocation.name}</h1>
         <Link to=".." relative="path">
-          <button>game map</button>
+          <button>Map</button>
         </Link>
-        <p>{currentLocation.description}</p>
+        <Announcer message={currentLocation.description}/>
 
         {enemiesArray.map((enemy, index) => (
           <EnemyEventPointer

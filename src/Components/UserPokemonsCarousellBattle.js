@@ -13,8 +13,6 @@ const UserPokemonsCarouselBattle = ({ header, onBtnClick }) => {
   const userPokemonsArray = Object.values(localStorageLoggedUser.pokemons);
   const lastIndex = userPokemonsArray.length - 1;
 
-  console.log(userPokemonsArray)
-
   const clickHandler = (e) => {
     if (e.target.id === "right") {
       if (currentIndex < lastIndex) {
@@ -31,13 +29,12 @@ const UserPokemonsCarouselBattle = ({ header, onBtnClick }) => {
   const HandleChoosePokemon = () => {
     setIsChoosePokemon(false);
     setCurrentPokemon(currentDisplayed);
-    onBtnClick()
+    onBtnClick();
   };
 
   useEffect(() => {
     setCurrentDisplayed(userPokemonsArray[currentIndex]);
   }, [currentIndex, setCurrentDisplayed]);
-
 
   return (
     <>
@@ -63,14 +60,11 @@ const UserPokemonsCarouselBattle = ({ header, onBtnClick }) => {
           onClick={clickHandler}
         ></div>
         <div className={classes.buttonsWrapper}>
-          <button
-            className={classes.button}
-            onClick={HandleChoosePokemon}
-          >
-            {currentDisplayed.name}, I choose you!
+          <button className={classes.button} onClick={HandleChoosePokemon}>
+            I choose you!
           </button>
           <button
-          className={classes.button}
+            className={classes.button}
             onClick={() => {
               setIsChoosePokemon(false);
             }}

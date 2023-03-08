@@ -3,7 +3,7 @@ import { useEnemiesContext } from "../context/EnemiesContext ";
 import { useLoggedUsersContext } from "../context/LoggedUserContext";
 import UsersDataBaseAPI from "../Data/API";
 
-export const useCatchPokemonAndUpdateUser = () => {
+export const useCatchPokemon = () => {
   const { currentEnemy } = useEnemiesContext();
   const { loggedUser, setLoggedUser, loggedUserKey } = useLoggedUsersContext();
 

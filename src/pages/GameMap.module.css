@@ -39,12 +39,18 @@
     cursor: pointer;
   }
 
-
   .one {
     position: absolute;
     top: 10vh;
     left: 15vw;
   }
+
+  .two {
+    position: absolute;
+    top: 5vh;
+    left: 55vw;
+  }
+  
   .three {
     position: absolute;
     top: 55vh;
@@ -55,11 +61,7 @@
     top: 70vh;
     left: 55vw;
   }
-  .two {
-    position: absolute;
-    top: 5vh;
-    left: 55vw;
-  }
+  
 
   .h2 {
     font-family: 'pokemon';
@@ -78,6 +80,14 @@
     color: var(--pokemon-yellow);
     text-shadow: -1px -1px 0 var(--pokemon-blue), 1px -1px 0 var(--pokemon-blue), -1px 1px 0 var(--pokemon-blue), 1px 1px 0 var(--pokemon-blue);
     margin-top: 18rem;
+  }
+
+  .mapAnnouncer {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 50vw;
+    transform: translateX(-50%);
+    max-width: 63vw;
   }
 
   @keyframes upDown {

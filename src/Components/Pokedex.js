@@ -1,6 +1,4 @@
 import classes from "./Pokedex.module.css";
-import { useState } from "react";
-import PokedexModal from "./utils/PokedexModal";
 import { usePokedexContext } from "../context/PokedexContext";
 import UserPokemonsCarousel from "./UserPokemonsCarousell";
 

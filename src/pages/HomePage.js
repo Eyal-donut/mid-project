@@ -11,7 +11,6 @@ import { pokemonsData } from "../Data/PokemonsData";
 import { useLoggedUsersContext } from "../context/LoggedUserContext";
 import { useNavigate } from "react-router-dom";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
-import { setLocalStoragePokemonsData } from "../helpers/LocalStorageManagement";
 
 const PLAYER_POKEMON_HEALTH = 50;
 const PLAYER_POKEMON_MAX_HEALTH = 50;
@@ -92,11 +91,6 @@ const HomePage = () => {
   const logoutClickHandler = () => {
     setUserStartWindowDisplay(false);
     setStartWindowDisplay(true);
-    // localStorage.removeItem("loggedUserKey");
-    // localStorage.removeItem("loggedUser");
-    // localStorage.removeItem("currentPokemon");
-    // localStorage.removeItem("pokemonsData");
-    // localStorage.removeItem("currentEnemy");
     localStorage.clear()
     setLoggedUserKey("");
     setLoggedUser({});
@@ -108,6 +102,9 @@ const HomePage = () => {
     if (btnID === "login-btn") setLoginWindowDisplay(true);
     if (btnID === "create-user-btn") {
       setCreateUserWindowDisplay(true);
+    }
+    if (btnID === "play-btn"){
+      createUserClickHandler("play-btn", "dummyUser", "0")
     }
   };
 
