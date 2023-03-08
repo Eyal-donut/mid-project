@@ -4,16 +4,12 @@ import PokemonCard from "./PokemonCard";
 import classes from "./UserPokemonsCarousell.module.css";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 
-const UserPokemonsCarouselBattle = ({header}) => {
+const UserPokemonsCarouselBattle = ({ header }) => {
   const [currentDisplayed, setCurrentDisplayed] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
-  const {
-    setIsChoosePokemon,
-    setCurrentPokemon,
-  } = useCurrentPokemonContext();
+  const { setIsChoosePokemon, setCurrentPokemon } = useCurrentPokemonContext();
 
-  const localStorageLoggedUser = JSON.parse(localStorage.getItem("loggedUser")
-)
+  const localStorageLoggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   const userPokemonsArray = Object.values(localStorageLoggedUser.pokemons);
   const lastIndex = userPokemonsArray.length - 1;
 
@@ -32,7 +28,7 @@ const UserPokemonsCarouselBattle = ({header}) => {
 
   const HandleChoosePokemon = () => {
     setIsChoosePokemon(false);
-    setCurrentPokemon(currentDisplayed)
+    setCurrentPokemon(currentDisplayed);
   };
 
   useEffect(() => {
@@ -62,9 +58,21 @@ const UserPokemonsCarouselBattle = ({header}) => {
           id="left"
           onClick={clickHandler}
         ></div>
-        <button className={classes.chooseButton} onClick={HandleChoosePokemon}>
-          {currentDisplayed.name}, I choose you!
-        </button>
+        <div className={classes.buttonsWrapper}>
+          <button
+            className={classes.chooseButton}
+            onClick={HandleChoosePokemon}
+          >
+            {currentDisplayed.name}, I choose you!
+          </button>
+          <button
+            onClick={() => {
+              setIsChoosePokemon(false);
+            }}
+          >
+            Back
+          </button>
+        </div>
       </PokedexModal>
     </>
   );

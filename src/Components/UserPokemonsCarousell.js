@@ -3,15 +3,17 @@ import Modal from "./utils/Modal";
 import PokedexModal from "./utils/PokedexModal";
 import PokemonCard from "./PokemonCard";
 import classes from "./UserPokemonsCarousell.module.css";
-import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
+import { usePokedexContext } from "../context/PokedexContext";
 
 const UserPokemonsCarousel = ({header, children}) => {
   const [currentDisplayed, setCurrentDisplayed] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
-  const {
-    setIsChoosePokemon,
-    setCurrentPokemon,
-  } = useCurrentPokemonContext();
+
+  const {setPokedexDisplay} = usePokedexContext()
+  // const {
+  //   setIsChoosePokemon,
+  //   setCurrentPokemon,
+  // } = useCurrentPokemonContext();
 
   const localStorageLoggedUser = JSON.parse(localStorage.getItem("loggedUser")
 )
@@ -31,10 +33,10 @@ const UserPokemonsCarousel = ({header, children}) => {
     }
   };
 
-  const HandleChoosePokemon = () => {
-    setIsChoosePokemon(false);
-    setCurrentPokemon(currentDisplayed)
-  };
+  // const HandleChoosePokemon = () => {
+  //   setIsChoosePokemon(false);
+  //   setCurrentPokemon(currentDisplayed)
+  // };
 
   useEffect(() => {
     setCurrentDisplayed(userPokemonsArray[currentIndex]);
@@ -64,6 +66,8 @@ const UserPokemonsCarousel = ({header, children}) => {
           onClick={clickHandler}
         ></div>
         {children}
+        <button onClick={(()=>{setPokedexDisplay(false)})}>Back</button>
+
       </PokedexModal>
     </>
   );

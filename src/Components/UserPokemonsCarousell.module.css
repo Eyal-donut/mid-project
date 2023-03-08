@@ -20,6 +20,6 @@
 }
 
 .chooseButton {
-  width: 20rem;
-  height: 3.5rem;
+  min-width: 17rem;
+  height: 3rem;
 }

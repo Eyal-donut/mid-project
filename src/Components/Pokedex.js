@@ -20,9 +20,7 @@ const Pokedex = () => {
   return (
     <>
       {isPokedexDisplay && (
-        <UserPokemonsCarousel>
-          <button onClick={(()=>{setPokedexDisplay(false)})}>Back</button>
-        </UserPokemonsCarousel>
+        <UserPokemonsCarousel/>
       )}
       {!isPokedexDisplay && (
         <div className={classes.pokedexLogoWrapper} onClick={clickHandler}>
