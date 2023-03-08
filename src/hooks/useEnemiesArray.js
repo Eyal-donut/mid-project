@@ -31,8 +31,8 @@ const useEnemiesArray = (user, locationID) => {
         health: ENEMY_HEALTH,
         maxHealth: ENEMY_MAX_HEALTH,
         attacks: {
-          attack1: enemy.attacks[0],
-          attack2: enemy.attacks[1],
+          attackOne: enemy.attacks[0],
+          attackTwo: enemy.attacks[1],
         },
         strength: RandomLowerOrHigher(user.strength),
         defense: RandomLowerOrHigher(user.defense),

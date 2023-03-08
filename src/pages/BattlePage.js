@@ -42,7 +42,6 @@ const BattlePage = () => {
       setIsLaunchPokemon(true);
       await waitFunction(1500);
       setIsLaunchPokemon(false);
-      //make your pokemon appear only then
     })();
   };
 
@@ -129,12 +128,12 @@ const BattlePage = () => {
             />
             <footer className={classes.preFightFooter}>
               {/* <div className={classes.btnWrapper}> */}
-              <Button
+              {/* <Button
                 text="Battle!"
                 id="battle"
                 onBtnClick={onBattleClick}
                 className={classes.attackInactive}
-              ></Button>
+              ></Button> */}
               <Button
                 text="Choose your Pokémon!"
                 id="choose-pokemon"
@@ -146,6 +145,7 @@ const BattlePage = () => {
                   text="Leave"
                   id="leave-fight"
                   className={classes.attackInactive}
+                  onBtnClick={()=>{}}
                 ></Button>
               </Link>
               {/* </div> */}
@@ -163,17 +163,16 @@ const BattlePage = () => {
             <h1>
               {currentPokemon.name} VS {currentEnemy.name}
             </h1>
-
+            {isLaunchPokemon && (
+              <Pokeball className={classes.pokeballStartFight} />
+            )}
             <BattleAnnouncer
               message={
                 announcerMessage || `What should ${currentPokemon.name} do?`
               }
             />
-            {isLaunchPokemon && (
-              <Pokeball className={classes.pokeballStartFight} />
-            )}
             <PlayerFighter
-              className={classes[playerAnimation]}
+              className={isLaunchPokemon ? classes.hide : classes[playerAnimation]}
               imageUrl={currentPokemon.imageUrl}
               name={currentPokemon.name}
               value={playerHealth}
@@ -191,13 +190,13 @@ const BattlePage = () => {
 
             <footer className={classes.footer}>
               <Button
-                text={`Use ${currentPokemon.attacks.attack1}`}
+                text={`Use ${currentPokemon.attacks?.attackOne}`}
                 id="attack-one"
                 onBtnClick={() => setSequence({ turn, mode: "attack" })}
                 className={classes.attackActive}
               />
               <Button
-                text={`Use Special Move - ${currentPokemon.attacks.attack2}`}
+                text={`Use Special Move - ${currentPokemon.attacks?.attackTwo}`}
                 id="special-attack"
                 onBtnClick={() => setSequence({ turn, mode: "specialAttack" })}
                 className={classes.attackActive}
@@ -214,6 +213,7 @@ const BattlePage = () => {
                     text="Leave fight"
                     id="leave-fight"
                     className={classes.utilActive}
+                    onBtnClick={()=>{}}
                   ></Button>
                 </Link>
               </div>

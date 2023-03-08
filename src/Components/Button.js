@@ -1,7 +1,7 @@
-const Button = ({text, id, onBtnClick, className}) => {
+const Button = ({text, id, className, onBtnClick}) => {
     
-    const clickHandler = (e) => {
-        onBtnClick(e.target.id)
+    const clickHandler = () => {
+        onBtnClick()
     }
 
     return <button onClick={clickHandler} id={id} className={className}>{text}</button>

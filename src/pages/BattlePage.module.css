@@ -142,6 +142,11 @@
   opacity: 1;
   animation: flash 0.3s 0.3s infinite;
 }
+.hide {
+  transform: scaleX(-1);
+  visibility: hidden;
+  transition: 0.5s;
+}
 
 .caught {
   display: none;
@@ -163,7 +168,7 @@
   width: 5rem;
   height: 5rem;
   bottom: -10vh;
-  right: 30vw;
+  left: 10vw;
   animation: spin 1s linear forwards;
 }
 

@@ -147,8 +147,8 @@ const HomePage = () => {
         name: chosenPokemon.name,
         imageUrl: chosenPokemon.imageUrl,
         attacks: {
-          attack1: chosenPokemon.attacks[0],
-          attack2: chosenPokemon.attacks[1],
+          attackOne: chosenPokemon.attacks[0],
+          attackTwo: chosenPokemon.attacks[1],
         },
         strength: 50,
         defense: 30,

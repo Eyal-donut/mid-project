@@ -13,6 +13,8 @@ const UserPokemonsCarouselBattle = ({ header, onBtnClick }) => {
   const userPokemonsArray = Object.values(localStorageLoggedUser.pokemons);
   const lastIndex = userPokemonsArray.length - 1;
 
+  console.log(userPokemonsArray)
+
   const clickHandler = (e) => {
     if (e.target.id === "right") {
       if (currentIndex < lastIndex) {
@@ -36,6 +38,7 @@ const UserPokemonsCarouselBattle = ({ header, onBtnClick }) => {
     setCurrentDisplayed(userPokemonsArray[currentIndex]);
   }, [currentIndex, setCurrentDisplayed]);
 
+
   return (
     <>
       <PokedexModal>
@@ -46,8 +49,8 @@ const UserPokemonsCarouselBattle = ({ header, onBtnClick }) => {
           strength={currentDisplayed.strength}
           defense={currentDisplayed.defense}
           imageUrl={currentDisplayed.imageUrl}
-          //! attack1={currentDisplayed.attacks.attack1}
-          //! attack2={currentDisplayed.attacks.attack2}
+          attackOne={currentDisplayed.attacks?.attackOne}
+          attackTwo={currentDisplayed.attacks?.attackTwo}
         />
         <div
           className={classes.arrowRight}
@@ -61,12 +64,13 @@ const UserPokemonsCarouselBattle = ({ header, onBtnClick }) => {
         ></div>
         <div className={classes.buttonsWrapper}>
           <button
-            className={classes.chooseButton}
+            className={classes.button}
             onClick={HandleChoosePokemon}
           >
             {currentDisplayed.name}, I choose you!
           </button>
           <button
+          className={classes.button}
             onClick={() => {
               setIsChoosePokemon(false);
             }}

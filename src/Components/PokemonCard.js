@@ -1,6 +1,6 @@
 import classes from "./PokemonCard.module.css";
 
-const PokemonCard = ({ imageUrl, name, level, strength, defense, attack1, attack2 }) => {
+const PokemonCard = ({ imageUrl, name, level, strength, defense, attackOne, attackTwo }) => {
   return (
     <div className={classes.wrapper}>
       <div
@@ -12,7 +12,7 @@ const PokemonCard = ({ imageUrl, name, level, strength, defense, attack1, attack
         <li>Level: {level}</li>
         <li>Strength: {strength}</li>
         <li>Defense: {defense}</li>
-        <li>Attacks: {`${attack1}, ${attack2}`}</li>
+        <li>Attacks: {`${attackOne}, ${attackTwo}`}</li>
       </ul>
     </div>
   );

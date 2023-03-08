@@ -5,18 +5,17 @@ import PokemonCard from "./PokemonCard";
 import classes from "./UserPokemonsCarousell.module.css";
 import { usePokedexContext } from "../context/PokedexContext";
 
-const UserPokemonsCarousel = ({header, children}) => {
+const UserPokemonsCarousel = ({ header, children }) => {
   const [currentDisplayed, setCurrentDisplayed] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const {setPokedexDisplay} = usePokedexContext()
+  const { setPokedexDisplay } = usePokedexContext();
   // const {
   //   setIsChoosePokemon,
   //   setCurrentPokemon,
   // } = useCurrentPokemonContext();
 
-  const localStorageLoggedUser = JSON.parse(localStorage.getItem("loggedUser")
-)
+  const localStorageLoggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   const userPokemonsArray = Object.values(localStorageLoggedUser.pokemons);
   const lastIndex = userPokemonsArray.length - 1;
 
@@ -33,11 +32,6 @@ const UserPokemonsCarousel = ({header, children}) => {
     }
   };
 
-  // const HandleChoosePokemon = () => {
-  //   setIsChoosePokemon(false);
-  //   setCurrentPokemon(currentDisplayed)
-  // };
-
   useEffect(() => {
     setCurrentDisplayed(userPokemonsArray[currentIndex]);
   }, [currentIndex, setCurrentDisplayed]);
@@ -52,8 +46,8 @@ const UserPokemonsCarousel = ({header, children}) => {
           strength={currentDisplayed.strength}
           defense={currentDisplayed.defense}
           imageUrl={currentDisplayed.imageUrl}
-          //! attack1={currentDisplayed.attacks.attack1}
-          //! attack2={currentDisplayed.attacks.attack2}
+          attackOne={currentDisplayed.attacks?.attackOne}
+          attackTwo={currentDisplayed.attacks?.attackTwo}
         />
         <div
           className={classes.arrowRight}
@@ -66,8 +60,13 @@ const UserPokemonsCarousel = ({header, children}) => {
           onClick={clickHandler}
         ></div>
         {children}
-        <button onClick={(()=>{setPokedexDisplay(false)})}>Back</button>
-
+        <button
+          onClick={() => {
+            setPokedexDisplay(false);
+          }}
+        >
+          Back
+        </button>
       </PokedexModal>
     </>
   );

@@ -19,7 +19,15 @@
   cursor: pointer;
 }
 
-.chooseButton {
-  min-width: 17rem;
+.button {
+  width: fit-content;
+  padding: 0 1rem;
   height: 3rem;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1.5rem;
 }
