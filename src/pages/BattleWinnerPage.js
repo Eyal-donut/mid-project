@@ -78,6 +78,7 @@ const BattleWinnerPage = () => {
                 text="Leave"
                 id="leave-fight"
                 className={classes.utilActive}
+                onBtnClick={()=>{}}
               ></Button>
             </Link>
           </div>

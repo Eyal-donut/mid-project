@@ -118,7 +118,7 @@ const BattlePage = () => {
             <Pokedex />
             <h1>{currentEnemy.name} has appeared!</h1>
 
-            <BattleAnnouncer message={`Check out your Pokédex for details!`} />
+            <BattleAnnouncer message={`Choose a Pokémon and fight!`} />
             <EnemyFighter
               imageUrl={currentEnemy.imageUrl}
               name={currentEnemy.name}
@@ -135,7 +135,7 @@ const BattlePage = () => {
                 className={classes.attackInactive}
               ></Button> */}
               <Button
-                text="Choose your Pokémon!"
+                text="Choose Pokémon"
                 id="choose-pokemon"
                 onBtnClick={choosePokemonClick}
                 className={classes.attackInactive}
