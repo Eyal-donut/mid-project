@@ -15,13 +15,15 @@ import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
 import BattleWinnerPage from "./BattleWinnerPage";
 import { useBattleContext } from "../context/BattleContext";
 import UserPokemonsCarouselBattle from "../Components/UserPokemonsCarousellBattle";
+import { useLoggedUsersContext } from "../context/LoggedUserContext";
 
 const BattlePage = () => {
-  const { currentLocation } = useLocationContext();
-  const { currentEnemy } = useEnemiesContext();
-  const { currentPokemon, isChoosePokemon, setIsChoosePokemon } =
+  const { currentLocation, setCurrentLocation } = useLocationContext();
+  const { currentEnemy, setCurrentEnemy } = useEnemiesContext();
+  const { currentPokemon, setCurrentPokemon, isChoosePokemon, setIsChoosePokemon } =
     useCurrentPokemonContext();
   const { isBattleStarted, setIsBattleStarted } = useBattleContext();
+  const {setLoggedUser} = useLoggedUsersContext()
 
   const [sequence, setSequence] = useState({});
   const [winner, setWinner] = useState();
@@ -53,13 +55,16 @@ const BattlePage = () => {
 
   const aiChoice = useAIOpponent(turn);
 
-  useEffect(() => {
-    localStorage.setItem("currentEnemy", JSON.stringify(currentEnemy));
-  }, [currentEnemy]);
 
-  useEffect(() => {
+  useEffect(()=> {
+    setCurrentLocation(JSON.parse(localStorage.getItem("currentLocation")))
+    setCurrentPokemon(JSON.parse(localStorage.getItem("currentPokemon")))
+    setCurrentEnemy(JSON.parse(localStorage.getItem("currentEnemy")))
+    setLoggedUser(JSON.parse(localStorage.getItem("loggedUser")))
+    setIsBattleStarted(false);
     setIsChoosePokemon(false);
-  }, []);
+
+  },[setCurrentLocation, setCurrentPokemon, setCurrentEnemy, setIsBattleStarted, setIsChoosePokemon])
 
   useEffect(() => {
     if (aiChoice && turn === 1 && !inSequence) {
@@ -82,9 +87,6 @@ const BattlePage = () => {
     }
   }, [winner, setIsPlayerWinner]);
 
-  useEffect(() => {
-    setIsBattleStarted(false);
-  }, [setIsBattleStarted]);
 
   if (!isPlayerWinner && !isGameOver) {
     return (

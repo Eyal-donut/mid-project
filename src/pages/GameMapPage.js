@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
 import classes from "./GameMap.module.css";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { setLocalStoragePokemonsData } from "../helpers/LocalStorageManagement";
 import { locationsArray } from "../Data/LocationsData";
 import Pokedex from "../Components/Pokedex";
 
@@ -11,6 +13,11 @@ const GameMapPage = () => {
   const clickHandler = (e) => {
     navigate(`/map/${e.target.id}`);
   };
+
+  useEffect(()=> {
+    setLocalStoragePokemonsData()
+
+  },[setLocalStoragePokemonsData])
 
   return (
     <>

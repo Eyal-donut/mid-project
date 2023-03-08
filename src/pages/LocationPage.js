@@ -11,18 +11,13 @@ import EnemyEventPointer from "../Components/EnemyEventPointe";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 
 const LocationPage = () => {
-  const currentPokemonFromLocalStorage = JSON.parse(
-    localStorage.getItem("currentPokemon")
-  );
-
   const params = useParams();
   const { currentLocation, setCurrentLocation } = useLocationContext();
-  const { setCurrentEnemy } = useEnemiesContext();
   const { currentPokemon, setCurrentPokemon } = useCurrentPokemonContext();
 
   useEffect(() => {
-    setCurrentPokemon(currentPokemonFromLocalStorage);
-  }, [setCurrentPokemon, currentPokemonFromLocalStorage]);
+    setCurrentPokemon(JSON.parse(localStorage.getItem("currentPokemon")));
+  }, [setCurrentPokemon]);
 
   const { enemiesArray, setEnemiesArrayByLocationID } = useEnemiesArray(
     currentPokemon,
@@ -36,13 +31,16 @@ const LocationPage = () => {
       (location) => location.id === params.locationID
     );
     setCurrentLocation(locationByID);
+    localStorage.setItem("currentLocation", JSON.stringify(locationByID));
     setEnemiesArrayByLocationID();
-  }, [setCurrentLocation, setEnemiesArrayByLocationID]);
+  }, [setCurrentLocation]);
 
   const clickHandler = (clickedID) => {
-    setCurrentEnemy(
-      enemiesArray.find((enemy) => enemy.id === Number(clickedID))
+    const tempCurrentEnemy = enemiesArray.find(
+      (enemy) => enemy.id === Number(clickedID)
     );
+
+    localStorage.setItem("currentEnemy", JSON.stringify(tempCurrentEnemy));
     navigate(`${clickedID}`);
   };
 

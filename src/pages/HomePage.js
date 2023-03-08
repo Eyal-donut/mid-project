@@ -37,27 +37,29 @@ const HomePage = () => {
     const keys = UsersDataBaseAPI.getKeys(fetchedUsers);
     setKeys(keys);
 
-    const localStorageLoggedUserKey = JSON.parse(
-      localStorage.getItem("loggedUserKey")
-    );
-    console.log(localStorageLoggedUserKey);
+    const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey");
 
-    const foundKey = Object.keys(fetchedUsers).find(
-      (key) => key === localStorageLoggedUserKey
-    );
+    if (localStorageLoggedUserKey) {
+      const foundKey = Object.keys(fetchedUsers).find(
+        (key) => key === JSON.parse(localStorageLoggedUserKey)
+      );
 
-    setLoggedUserKey(foundKey);
-    setLoggedUser(fetchedUsers[foundKey]);
-    setCurrentPokemon(fetchedUsers[foundKey].pokemons.first);
-    localStorage.setItem("loggedUserKey", JSON.stringify(foundKey));
-    localStorage.setItem("loggedUser", JSON.stringify(fetchedUsers[foundKey]));
-    localStorage.setItem(
-      "currentPokemon",
-      JSON.stringify(fetchedUsers[foundKey].pokemons.first)
-    );
-    console.log(
-      "restarted local storage and set states: loggedUserKey, loggedUser, currentPokemon"
-    );
+      setLoggedUserKey(foundKey);
+      setLoggedUser(fetchedUsers[foundKey]);
+      setCurrentPokemon(fetchedUsers[foundKey].pokemons.first);
+      localStorage.setItem("loggedUserKey", JSON.stringify(foundKey));
+      localStorage.setItem(
+        "loggedUser",
+        JSON.stringify(fetchedUsers[foundKey])
+      );
+      localStorage.setItem(
+        "currentPokemon",
+        JSON.stringify(fetchedUsers[foundKey].pokemons.first)
+      );
+      console.log(
+        "restarted local storage and set states: loggedUserKey, loggedUser, currentPokemon"
+      );
+    }
   };
 
   const addUserAndUpdateKeysContext = async (userName, password) => {
@@ -76,8 +78,7 @@ const HomePage = () => {
 
   useEffect(() => {
     getAllUsersAndSetUsersContext();
-    setLocalStoragePokemonsData();
-  }, [setLocalStoragePokemonsData, getAllUsersAndSetUsersContext]);
+  }, []);
 
   useEffect(() => {
     const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey");
@@ -91,11 +92,12 @@ const HomePage = () => {
   const logoutClickHandler = () => {
     setUserStartWindowDisplay(false);
     setStartWindowDisplay(true);
-    localStorage.removeItem("loggedUserKey");
-    localStorage.removeItem("loggedUser");
-    localStorage.removeItem("currentPokemon");
-    localStorage.removeItem("pokemonsData");
-    localStorage.removeItem("currentEnemy")
+    // localStorage.removeItem("loggedUserKey");
+    // localStorage.removeItem("loggedUser");
+    // localStorage.removeItem("currentPokemon");
+    // localStorage.removeItem("pokemonsData");
+    // localStorage.removeItem("currentEnemy");
+    localStorage.clear()
     setLoggedUserKey("");
     setLoggedUser({});
     setCurrentPokemon({});

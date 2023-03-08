@@ -9,7 +9,7 @@ const LoginWindow = ({ onBtnClick }) => {
   const [isLoginFailed, setLoginFailed] = useState(false);
 
   const { users } = useUsersContext();
-  const { loggedUserKEy ,setLoggedUserKey, setLoggedUser } = useLoggedUsersContext();
+  const { setLoggedUserKey, setLoggedUser } = useLoggedUsersContext();
   const {setCurrentPokemon} = useCurrentPokemonContext()
 
   const userNameRef = useRef(null);
