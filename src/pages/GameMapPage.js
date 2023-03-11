@@ -5,23 +5,33 @@ import { useEffect } from "react";
 import { setLocalStoragePokemonsData } from "../helpers/LocalStorageManagement";
 import { locationsArray } from "../Data/LocationsData";
 import Pokedex from "../Components/Pokedex";
-import Announcer from '../Components/Announcer'
-
+import Announcer from "../Components/Announcer";
+import { audio } from "../Audio/AudioData";
+import SoundButton from "../Components/utils/SoundButton";
 
 const GameMapPage = () => {
+  // const [playSound, { stop }] = useSound(audio.inGameSounds, {
+  //   sprite: {
+  //     bulbasaur: [4, 779],
+  //     squirtle: [1853, 2543],
+  //     pikachu: [850, 1004],
+  //   },
+  //   volume: 0.3,
+  // });
+
   const navigate = useNavigate();
 
   const clickHandler = (e) => {
     navigate(`/map/${e.target.id}`);
   };
 
-  useEffect(()=> {
-    setLocalStoragePokemonsData()
-
-  },[setLocalStoragePokemonsData])
+  useEffect(() => {
+    setLocalStoragePokemonsData();
+  }, [setLocalStoragePokemonsData]);
 
   return (
     <>
+      <SoundButton/>
       <Pokedex />
       <main className={classes.main}>
         <div className={classes.cover}>
@@ -46,7 +56,10 @@ const GameMapPage = () => {
             <button>Home</button>
           </Link>
         </div>
-        <Announcer className={classes.mapAnnouncer} message="Explore the Pokémon world and look for Pokémons to catch!"/>
+        <Announcer
+          className={classes.mapAnnouncer}
+          message="Explore the Pokémon world and look for Pokémons to catch!"
+        />
       </main>
     </>
   );

@@ -1,4 +1,7 @@
 .button {
-    width: 2rem;
-    height: 2rem;
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
 }
