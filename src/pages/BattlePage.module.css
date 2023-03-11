@@ -31,14 +31,14 @@
 
 .btnWrapper {
   width: 12rem;
-  height: 9rem;
+  height: 13rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .battleBtn {
-  width: 11rem;
+  width: 11.3rem;
   height: 13vh;
   border: 2px solid var(--pokemon-blue);
   cursor: pointer;

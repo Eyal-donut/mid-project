@@ -32,7 +32,7 @@ export const useBattleSequence = (sequence) => {
 
             (async () => {
               setInSequence(true);
-              setAnnouncerMessage(`${attacker.name} has chosen to attack!`);
+              setAnnouncerMessage(`${attacker.name} is attacking with ${attacker.attacks?.attackOne}!`);
 
               await waitFunction(1000);
 
@@ -81,7 +81,7 @@ export const useBattleSequence = (sequence) => {
             (async () => {
               setInSequence(true);
               setAnnouncerMessage(
-                `${attacker.name} has chosen a special attack!`
+                `Powerful move! ${attacker.name} is attacking with ${attacker.attacks?.attackTwo}!`
               );
 
               await waitFunction(1000);

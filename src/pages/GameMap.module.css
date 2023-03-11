@@ -88,6 +88,8 @@
     left: 50vw;
     transform: translateX(-50%);
     max-width: 63vw;
+    background: rgba(240, 236, 236, 0.75);
+
   }
 
   @keyframes upDown {

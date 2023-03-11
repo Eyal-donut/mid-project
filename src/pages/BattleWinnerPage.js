@@ -70,12 +70,12 @@ const BattleWinnerPage = () => {
           />
         )}
         <footer className={classes.preFightFooter}>
-          <div className={classes.btnWrapper}>
             <Button
               text="Catch Pokémon!"
               id="catch-pokemon"
               onBtnClick={onCatchClick}
               className={classes.utilBtn}
+              disabled={isCatchPokemon ? true : false}
             ></Button>
             <Link to=".." relative="path">
               <Button
@@ -85,7 +85,6 @@ const BattleWinnerPage = () => {
                 onBtnClick={()=>{}}
               ></Button>
             </Link>
-          </div>
         </footer>
         {isCatchPokemon && <Pokeball className={classes.pokeballCatch}/>}
       </main>

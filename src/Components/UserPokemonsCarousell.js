@@ -10,10 +10,6 @@ const UserPokemonsCarousel = ({ header, children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const { setPokedexDisplay } = usePokedexContext();
-  // const {
-  //   setIsChoosePokemon,
-  //   setCurrentPokemon,
-  // } = useCurrentPokemonContext();
 
   const localStorageLoggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   const userPokemonsArray = Object.values(localStorageLoggedUser.pokemons);
