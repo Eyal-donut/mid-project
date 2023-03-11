@@ -141,13 +141,13 @@ const BattlePage = () => {
                 text="Choose Pokémon"
                 id="choose-pokemon"
                 onBtnClick={choosePokemonClick}
-                className={classes.attackInactive}
+                className={classes.utilBtn}
               ></Button>
               <Link to=".." relative="path">
                 <Button
                   text="Leave"
                   id="leave-fight"
-                  className={classes.attackInactive}
+                  className={classes.utilBtn}
                   onBtnClick={()=>{}}
                 ></Button>
               </Link>
@@ -196,14 +196,14 @@ const BattlePage = () => {
                 text={`Use ${currentPokemon.attacks?.attackOne}`}
                 id="attack-one"
                 onBtnClick={() => setSequence({ turn, mode: "attack" })}
-                className={classes.attackActive}
+                className={classes.battleBtn}
                 disabled={inSequence ? true : false}
               />
               <Button
                 text={`Use Special Move - ${currentPokemon.attacks?.attackTwo}`}
                 id="special-attack"
                 onBtnClick={() => setSequence({ turn, mode: "specialAttack" })}
-                className={classes.attackActive}
+                className={classes.battleBtn}
                 disabled={inSequence ? true : false}
 
               />
@@ -211,7 +211,7 @@ const BattlePage = () => {
                 text="Heal"
                 id="heal"
                 onBtnClick={() => setSequence({ turn, mode: "heal" })}
-                className={classes.attackActive}
+                className={classes.battleBtn}
                 disabled={inSequence ? true : false}
 
               />
@@ -220,7 +220,7 @@ const BattlePage = () => {
                   <Button
                     text="Leave fight"
                     id="leave-fight"
-                    className={classes.utilActive}
+                    className={classes.utilBtn}
                     onBtnClick={()=>{}}
                   ></Button>
                 </Link>

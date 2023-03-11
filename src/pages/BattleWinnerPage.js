@@ -75,13 +75,13 @@ const BattleWinnerPage = () => {
               text="Catch Pokémon!"
               id="catch-pokemon"
               onBtnClick={onCatchClick}
-              className={classes.utilInactive}
+              className={classes.utilBtn}
             ></Button>
             <Link to=".." relative="path">
               <Button
                 text="Leave"
                 id="leave-fight"
-                className={classes.utilActive}
+                className={classes.utilBtn}
                 onBtnClick={()=>{}}
               ></Button>
             </Link>

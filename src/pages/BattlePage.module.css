@@ -29,25 +29,6 @@
   padding: 1rem;
 }
 
-.attackActive {
-  width: 11rem;
-  height: 11vh;
-  border: 2px solid #151414;
-  cursor: pointer;
-  background: var(--active-green);
-  margin: 0.1rem;
-  box-shadow: 0 8px 8px rgb(0, 0, 0, 0.4);
-  margin: 0.5rem 0.1rem;
-}
-.attackInactive {
-  width: 11rem;
-  height: 11vh;
-  border: 2px solid #151414;
-  cursor: pointer;
-  background:  var(--btn-bgr-opacity);
-  margin: 0.5rem 0.1rem;
-}
-
 .btnWrapper {
   width: 12rem;
   height: 9rem;
@@ -56,31 +37,33 @@
   justify-content: center;
   align-items: center;
 }
-
-.utilActive {
-  width: 12rem;
-  height: 5.3vh;
+.battleBtn {
+  width: 11rem;
+  height: 13vh;
+  border: 2px solid var(--pokemon-blue);
+  cursor: pointer;
+  background: var(--pokemon-yellow);
   margin: 0.1rem;
-  background: var(--active-green);
-  border: 2px solid #151414;
+  box-shadow: 0 8px 8px rgb(0, 0, 0, 0.4);
+  margin: 0.5rem 0.1rem;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.utilBtn {
+  width: 12rem;
+  height: 6vh;
+  margin: 0.1rem;
+  background: var(--pokemon-yellow);
+  border: 2px solid var(--pokemon-blue);
   box-shadow: 0 8px 20px rgb(0, 0, 0, 0.4);
-}
-.utilInactive {
-  width: 12rem;
-  height: 5.3vh;
-  margin: 0.1rem;
-  background: var(--btn-bgr-opacity);
-  border: 2px solid #151414;
+  line-height: 1.4;
 }
 
-.attackActive:hover,
-.attackInactive:hover,
-.utilInactive:hover,
-.utilActive:hover {
+.battleBtn:hover,
+.utilBtn:hover {
   box-shadow: 8px 20px 20px rgb(0, 0, 0, 0.4);
 }
-
-
 
 .playerStatic {
   transform: scaleX(-1) translateX(0px);
@@ -159,7 +142,6 @@
   animation: spin 1s linear forwards;
 }
 
-
 @keyframes spin {
   0% {
     transform: translate(1, 0) rotate(0deg);
@@ -177,7 +159,6 @@
     transform: translate(5rem, -30rem) rotate(1420deg);
   }
 }
-
 
 @keyframes playerShake {
   0% {

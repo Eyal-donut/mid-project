@@ -59,12 +59,12 @@ const LocationPage = () => {
         </Link>
         <Announcer message={currentLocation.description}/>
 
-        {enemiesArray.map((enemy, index) => (
+        {enemiesArray.map((enemy) => (
           <EnemyEventPointer
             key={`${enemy.name} ${enemy.id}`}
             id={enemy.id}
             identifier={enemy.id}
-            className={`enemy${index}`}
+            className={`enemy${enemy.eventNumber}`}
             onBtnClick={clickHandler}
           />
         ))}

@@ -27,6 +27,7 @@ const useEnemiesArray = (user, locationID) => {
       (enemy = {
         id: enemy.id,
         name: enemy.name,
+        eventNumber: enemy.eventNumber,
         imageUrl: enemy.imageUrl,
         health: ENEMY_HEALTH,
         maxHealth: ENEMY_MAX_HEALTH,
