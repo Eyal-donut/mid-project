@@ -1,11 +1,11 @@
 import NestedWindow from "../Components/utils/NestedWindow";
 import classes from "../pages/HomePage.module.css";
 import useSound from "use-sound";
-import choosePokemonSounds from "../assets/Audio/choosePokemonSounds.mp3";
+import { audio } from "../Audio/AudioData";
 
 const ChoosePokemonWindow = ({ onPokemonClick }) => {
 
-  const [playSound, { stop }] = useSound(choosePokemonSounds, {
+  const [playSound, { stop }] = useSound(audio.choosePokemonSounds, {
     sprite: {
       bulbasaur: [4, 779],
       squirtle: [1853, 2543],
