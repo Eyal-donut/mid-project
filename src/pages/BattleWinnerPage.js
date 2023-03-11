@@ -10,7 +10,7 @@ import classes from "./BattlePage.module.css";
 
 import Announcer from "../Components/Announcer";
 import EnemyFighter from "../Components/EnemyFighter";
-import Button from "../Components/Button";
+import Button from "../Components/utils/Button";
 import Pokeball from "../Components/Pokeball";
 import { waitFunction } from "../hooks/useTypedMessage/waitFunction";
 import { useCatchPokemon } from "../hooks/useCatchPokemon";

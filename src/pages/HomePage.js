@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import classes from "./HomePage.module.css";
-import StartWindow from "../Components/StartWindow";
-import LoginWindow from "../Components/LoginWindow";
-import UserStartWindow from "../Components/UserStartWindow";
-import CreateUserWindow from "../Components/CreateUserWindow";
-import ChoosePokemonWindow from "../Components/ChoosePokemonWindow";
+import StartWindow from "../windows/StartWindow";
+import LoginWindow from "../windows/LoginWindow";
+import UserStartWindow from "../windows/UserStartWindow";
+import CreateUserWindow from "../windows/CreateUserWindow";
+import ChoosePokemonWindow from "../windows/ChoosePokemonWindow";
 import UsersDataBaseAPI from "../Data/API";
 import { useUsersContext } from "../context/UsersContext";
 import { pokemonsData } from "../Data/PokemonsData";
@@ -12,8 +12,8 @@ import { useLoggedUsersContext } from "../context/LoggedUserContext";
 import { useNavigate } from "react-router-dom";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 
-const PLAYER_POKEMON_HEALTH = 50;
-const PLAYER_POKEMON_MAX_HEALTH = 50;
+const PLAYER_POKEMON_HEALTH = 100;
+const PLAYER_POKEMON_MAX_HEALTH = 100;
 
 const HomePage = () => {
   const { setUsers, setKeys } = useUsersContext();

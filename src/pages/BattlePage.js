@@ -6,7 +6,7 @@ import { useLocationContext } from "../context/CurrentLocationContext";
 import { useEnemiesContext } from "../context/EnemiesContext ";
 import PlayerFighter from "../Components/PlayerFighter";
 import EnemyFighter from "../Components/EnemyFighter";
-import Button from "../Components/Button";
+import Button from "../Components/utils/Button";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 import Announcer from "../Components/Announcer";
 import { useBattleSequence } from "../hooks/useBattleSequence";

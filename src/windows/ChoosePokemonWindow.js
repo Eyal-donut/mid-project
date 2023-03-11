@@ -1,4 +1,4 @@
-import NestedWindow from "./utils/NestedWindow";
+import NestedWindow from "../Components/utils/NestedWindow";
 import classes from "../pages/HomePage.module.css";
 import useSound from "use-sound";
 import choosePokemonSounds from "../assets/Audio/choosePokemonSounds.mp3";
