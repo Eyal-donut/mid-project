@@ -10,24 +10,19 @@ import { audio } from "../Audio/AudioData";
 import SoundButton from "../Components/utils/SoundButton";
 import useSound from "use-sound";
 
-
 const GameMapPage = () => {
-  // const [isPlaying, setIsPlaying] = useState(false)
 
-  const [playSound, { stop }] = useSound(audio.inGameSounds, {
-    sprite: {
-      gameMap: [451, 4801],
-    },
-    volume: 0.3,
-  });
+   const [playSound, { stop }] = useSound(audio.inGameSounds, {
+     sprite: {
+       gameMap: [158253, 232972],
+     },
+     volume: 0.5,
+   });
 
    const soundHandler = () => {
-  //   // setIsPlaying(true)
-  //   // if (isPlaying) {
-       playSound({ id: "gameMap" })
-  //   // }
-     console.log('hi')
-   }
+     playSound({ id: "gameMap" });
+     console.log("hi");
+   };
 
   const navigate = useNavigate();
 
@@ -41,7 +36,10 @@ const GameMapPage = () => {
 
   return (
     <>
-      <SoundButton imageUrl='https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/sound.png' onBtnClick={soundHandler}/>
+      <SoundButton
+        imageUrl="https://raw.githubusercontent.com/Eyal-donut/mid-project/main/src/assets/sound.png"
+        onBtnClick={soundHandler}
+      />
       <Pokedex />
       <main className={classes.main}>
         <div className={classes.cover}>
