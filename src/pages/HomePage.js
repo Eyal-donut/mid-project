@@ -16,7 +16,7 @@ const PLAYER_POKEMON_HEALTH = 100;
 const PLAYER_POKEMON_MAX_HEALTH = 100;
 
 const HomePage = () => {
-  const { setUsers, setKeys } = useUsersContext();
+  const { users, setUsers, setKeys } = useUsersContext();
   const { loggedUserKey, setLoggedUserKey, loggedUser, setLoggedUser } =
     useLoggedUsersContext();
   const { setCurrentPokemon } = useCurrentPokemonContext();
@@ -61,6 +61,14 @@ const HomePage = () => {
     }
   };
 
+  const deleteDummyUsers = () => {
+    for (const key in users) {
+      if (users[key].password === "0") {
+        UsersDataBaseAPI.removeUser(key);
+      }
+    }
+  };
+
   const addUserAndUpdateKeysContext = async (userName, password) => {
     try {
       const response = await UsersDataBaseAPI.users.post(".json", {
@@ -89,9 +97,10 @@ const HomePage = () => {
   }, []);
 
   const logoutClickHandler = () => {
+    deleteDummyUsers()
     setUserStartWindowDisplay(false);
     setStartWindowDisplay(true);
-    localStorage.clear()
+    localStorage.clear();
     setLoggedUserKey("");
     setLoggedUser({});
     setCurrentPokemon({});
@@ -103,8 +112,8 @@ const HomePage = () => {
     if (btnID === "create-user-btn") {
       setCreateUserWindowDisplay(true);
     }
-    if (btnID === "play-btn"){
-      createUserClickHandler("play-btn", "dummyUser", "0")
+    if (btnID === "play-btn") {
+      createUserClickHandler("play-btn", "dummyUser", "0");
     }
   };
 

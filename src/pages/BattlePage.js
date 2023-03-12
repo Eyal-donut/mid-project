@@ -20,6 +20,7 @@ import Pokeball from "../Components/Pokeball";
 import BattleLooserPage from "./BattleLooserPage";
 
 const BattlePage = () => {
+
   const { currentLocation, setCurrentLocation } = useLocationContext();
   const { currentEnemy, setCurrentEnemy } = useEnemiesContext();
   const {
@@ -130,13 +131,6 @@ const BattlePage = () => {
               level={currentEnemy.level}
             />
             <footer className={classes.preFightFooter}>
-              {/* <div className={classes.btnWrapper}> */}
-              {/* <Button
-                text="Battle!"
-                id="battle"
-                onBtnClick={onBattleClick}
-                className={classes.attackInactive}
-              ></Button> */}
               <Button
                 text="Choose Pokémon"
                 id="choose-pokemon"

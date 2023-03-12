@@ -14,20 +14,20 @@ import { PokedexProvider } from "./context/PokedexContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <PokedexProvider>
-      <BattleProvider>
-        <CurrentPokemonProvider>
-          <LoggedUserProvider>
-            <UsersProvider>
-              <EnemiesProvider>
-                <LocationProvider>
-                  <App />
-                </LocationProvider>
-              </EnemiesProvider>
-            </UsersProvider>
-          </LoggedUserProvider>
-        </CurrentPokemonProvider>
-      </BattleProvider>
-    </PokedexProvider>
+      <PokedexProvider>
+        <BattleProvider>
+          <CurrentPokemonProvider>
+            <LoggedUserProvider>
+              <UsersProvider>
+                <EnemiesProvider>
+                  <LocationProvider>
+                    <App />
+                  </LocationProvider>
+                </EnemiesProvider>
+              </UsersProvider>
+            </LoggedUserProvider>
+          </CurrentPokemonProvider>
+        </BattleProvider>
+      </PokedexProvider>
   </React.StrictMode>
 );

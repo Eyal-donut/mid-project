@@ -6,11 +6,11 @@ const UsersDataBaseAPI = {
       "https://pokemon-game-9babb-default-rtdb.europe-west1.firebasedatabase.app/users",
   }),
 
-  async removeUser(id) {
+  async removeUser(key) {
     this.users
-      .delete(`/${id}.json`)
+      .delete(`/${key}.json`)
       .then((response) => {
-        console.log(`user id ${id} was deleted seccesfully`);
+        console.log(`user id ${key} was deleted seccesfully`);
         return "User Was Deleted!";
       })
       .catch((error) => {

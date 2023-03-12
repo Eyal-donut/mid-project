@@ -1,18 +1,7 @@
 import NestedWindow from "../Components/utils/NestedWindow";
 import classes from "../pages/HomePage.module.css";
-import useSound from "use-sound";
-import { audio } from "../Audio/AudioData";
 
 const ChoosePokemonWindow = ({ onPokemonClick }) => {
-
-  const [playSound, { stop }] = useSound(audio.choosePokemonSounds, {
-    sprite: {
-      bulbasaur: [4, 779],
-      squirtle: [1853, 2543],
-      pikachu: [850, 1004],
-    },
-    volume: 0.3,
-  });
 
   const clickHandler = (e) => {
     onPokemonClick(e.target.id);
@@ -20,20 +9,9 @@ const ChoosePokemonWindow = ({ onPokemonClick }) => {
 
   const handleMouseEnter = (e) => {
     e.target.classList.add("scaleAvatar");
-
-    if (e.target.id === "pikachu") {
-      playSound({ id: "pikachu" });
-    }
-    if (e.target.id === "bulbasaur") {
-      playSound({ id: "bulbasaur" });
-    }
-    if (e.target.id === "squirtle") {
-      playSound({ id: "squirtle" });
-    }
   };
 
   const handleMouseLeave = (e) => {
-    stop();
     e.target.classList.remove("scaleAvatar");
   };
 
