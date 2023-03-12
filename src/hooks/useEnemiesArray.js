@@ -2,8 +2,8 @@ import { useEnemiesContext } from "../context/EnemiesContext ";
 
 const useEnemiesArray = (user, locationID) => {
   const ENEMY_DIFF_FROM_PLAYER = 6;
-  const ENEMY_HEALTH = 130;
-  const ENEMY_MAX_HEALTH = 130;
+  const ENEMY_HEALTH = 100;
+  const ENEMY_MAX_HEALTH = 100;
 
   const { enemiesArray, setEnemiesArray } = useEnemiesContext();
 

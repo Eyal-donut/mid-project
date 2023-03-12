@@ -13,10 +13,11 @@ import { useNavigate } from "react-router-dom";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
 import { useAllUsers } from "../hooks/useAllUsers";
 
-const PLAYER_POKEMON_HEALTH = 130;
-const PLAYER_POKEMON_MAX_HEALTH = 130;
 
 const HomePage = () => {
+  const PLAYER_POKEMON_HEALTH = 100;
+  const PLAYER_POKEMON_MAX_HEALTH = 100;
+  
   const { users, setKeys } = useUsersContext();
   const { loggedUserKey, setLoggedUserKey, loggedUser, setLoggedUser } =
     useLoggedUsersContext();
