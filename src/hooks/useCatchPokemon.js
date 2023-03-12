@@ -1,4 +1,3 @@
-//this hook will update the user, the enemies array in local storage, and the loggedUserState
 import { useEnemiesContext } from "../context/EnemiesContext ";
 import { useLoggedUsersContext } from "../context/LoggedUserContext";
 import UsersDataBaseAPI from "../Data/API";

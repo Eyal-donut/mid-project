@@ -20,7 +20,6 @@ import Pokeball from "../Components/Pokeball";
 import BattleLooserPage from "./BattleLooserPage";
 
 const BattlePage = () => {
-
   const { currentLocation, setCurrentLocation } = useLocationContext();
   const { currentEnemy, setCurrentEnemy } = useEnemiesContext();
   const {
@@ -50,10 +49,7 @@ const BattlePage = () => {
     setIsChoosePokemon(true);
   };
 
-  const onGameEnd = (winner) => {
-    setWinner(winner);
-    setGameOver(true);
-  };
+
 
   const {
     turn,
@@ -76,16 +72,16 @@ const BattlePage = () => {
     setIsChoosePokemon(false);
 
     return () => {
-      setWinner()
-      setGameOver(false)
+      setWinner();
+      setGameOver(false);
     };
-
   }, [
     setCurrentLocation,
     setCurrentPokemon,
     setCurrentEnemy,
     setIsBattleStarted,
     setIsChoosePokemon,
+    setLoggedUser,
     setWinner,
     setGameOver,
   ]);
@@ -97,14 +93,18 @@ const BattlePage = () => {
   }, [turn, aiChoice, inSequence]);
 
   useEffect(() => {
+    const onGameEnd = (winner) => {
+      setWinner(winner);
+      setGameOver(true);
+    };
+
     if (playerHealth === 0 || enemyHealth === 0) {
       (async () => {
         await waitFunction(1000);
         onGameEnd(playerHealth === 0 ? currentEnemy : currentPokemon);
       })();
     }
-  }, [playerHealth, enemyHealth, onGameEnd]);
-
+  }, [playerHealth, enemyHealth, currentEnemy, currentPokemon]);
 
   if (!isGameOver) {
     return (
@@ -142,7 +142,7 @@ const BattlePage = () => {
                   text="Leave"
                   id="leave-fight"
                   className={classes.utilBtn}
-                  onBtnClick={()=>{}}
+                  onBtnClick={() => {}}
                 ></Button>
               </Link>
               {/* </div> */}
@@ -169,7 +169,9 @@ const BattlePage = () => {
               }
             />
             <PlayerFighter
-              className={isLaunchPokemon ? classes.hide : classes[playerAnimation]}
+              className={
+                isLaunchPokemon ? classes.hide : classes[playerAnimation]
+              }
               imageUrl={currentPokemon.imageUrl}
               name={currentPokemon.name}
               value={playerHealth}
@@ -199,7 +201,6 @@ const BattlePage = () => {
                 onBtnClick={() => setSequence({ turn, mode: "specialAttack" })}
                 className={classes.battleBtn}
                 disabled={inSequence ? true : false}
-
               />
               <Button
                 text="Heal"
@@ -207,7 +208,6 @@ const BattlePage = () => {
                 onBtnClick={() => setSequence({ turn, mode: "heal" })}
                 className={classes.battleBtn}
                 disabled={inSequence ? true : false}
-
               />
               <div className={classes.btnWrapper}>
                 <Link to=".." relative="path">
@@ -215,7 +215,7 @@ const BattlePage = () => {
                     text="Leave fight"
                     id="leave-fight"
                     className={classes.utilBtn}
-                    onBtnClick={()=>{}}
+                    onBtnClick={() => {}}
                   ></Button>
                 </Link>
               </div>
@@ -229,7 +229,7 @@ const BattlePage = () => {
     return <BattleWinnerPage />;
   }
   if (isGameOver && winner === currentEnemy) {
-    return <BattleLooserPage/>;
+    return <BattleLooserPage />;
   }
 };
 

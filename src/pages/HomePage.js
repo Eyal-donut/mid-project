@@ -11,12 +11,13 @@ import { pokemonsData } from "../Data/PokemonsData";
 import { useLoggedUsersContext } from "../context/LoggedUserContext";
 import { useNavigate } from "react-router-dom";
 import { useCurrentPokemonContext } from "../context/CurrentPokemonContext";
+import { useAllUsers } from "../hooks/useAllUsers";
 
-const PLAYER_POKEMON_HEALTH = 100;
-const PLAYER_POKEMON_MAX_HEALTH = 100;
+const PLAYER_POKEMON_HEALTH = 130;
+const PLAYER_POKEMON_MAX_HEALTH = 130;
 
 const HomePage = () => {
-  const { users, setUsers, setKeys } = useUsersContext();
+  const { users, setKeys } = useUsersContext();
   const { loggedUserKey, setLoggedUserKey, loggedUser, setLoggedUser } =
     useLoggedUsersContext();
   const { setCurrentPokemon } = useCurrentPokemonContext();
@@ -28,40 +29,11 @@ const HomePage = () => {
     useState(false);
   const [isChoosePokemonDisplay, setChoosePokemonDisplay] = useState(false);
 
+  const {fetchUsersAndSetUsersKeysLoggedUserLoggedKeyCurrentPokemon} = useAllUsers()
+
   const navigate = useNavigate();
 
-  const getAllUsersAndSetUsersContext = async () => {
-    const fetchedUsers = await UsersDataBaseAPI.getAllUsers();
-    setUsers(fetchedUsers);
-    const keys = UsersDataBaseAPI.getKeys(fetchedUsers);
-    setKeys(keys);
-
-    const localStorageLoggedUserKey = localStorage.getItem("loggedUserKey");
-
-    if (localStorageLoggedUserKey) {
-      const foundKey = Object.keys(fetchedUsers).find(
-        (key) => key === JSON.parse(localStorageLoggedUserKey)
-      );
-
-      setLoggedUserKey(foundKey);
-      setLoggedUser(fetchedUsers[foundKey]);
-      setCurrentPokemon(fetchedUsers[foundKey].pokemons.first);
-      localStorage.setItem("loggedUserKey", JSON.stringify(foundKey));
-      localStorage.setItem(
-        "loggedUser",
-        JSON.stringify(fetchedUsers[foundKey])
-      );
-      localStorage.setItem(
-        "currentPokemon",
-        JSON.stringify(fetchedUsers[foundKey].pokemons.first)
-      );
-      console.log(
-        "restarted local storage and set states: loggedUserKey, loggedUser, currentPokemon"
-      );
-    }
-  };
-
-  const deleteDummyUsers = () => {
+   const deleteDummyUsers = () => {
     for (const key in users) {
       if (users[key].password === "0") {
         UsersDataBaseAPI.removeUser(key);
@@ -84,7 +56,8 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    getAllUsersAndSetUsersContext();
+    fetchUsersAndSetUsersKeysLoggedUserLoggedKeyCurrentPokemon();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -94,7 +67,7 @@ const HomePage = () => {
       setStartWindowDisplay(false);
       setUserStartWindowDisplay(true);
     }
-  }, []);
+  },[setLoggedUserKey, setStartWindowDisplay, setUserStartWindowDisplay]);
 
   const logoutClickHandler = () => {
     deleteDummyUsers()
