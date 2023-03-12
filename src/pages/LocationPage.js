@@ -33,6 +33,7 @@ const LocationPage = () => {
     setCurrentLocation(locationByID);
     localStorage.setItem("currentLocation", JSON.stringify(locationByID));
     setEnemiesArrayByLocationID();
+    // eslint-disable-next-line
   }, [setCurrentLocation]);
 
   const clickHandler = (clickedID) => {

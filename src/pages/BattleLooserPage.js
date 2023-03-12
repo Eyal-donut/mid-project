@@ -24,7 +24,7 @@ const BattleLooserPage = () => {
       await waitFunction(2000);
       navigate(`/map/${currentLocation.id}`);
     })();
-  },[waitFunction, navigate]);
+  },[navigate, currentLocation.id]);
 
   return (
     <>

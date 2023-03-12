@@ -34,6 +34,7 @@ const UserPokemonsCarouselBattle = ({ header, onBtnClick }) => {
 
   useEffect(() => {
     setCurrentDisplayed(userPokemonsArray[currentIndex]);
+    // eslint-disable-next-line 
   }, [currentIndex, setCurrentDisplayed]);
 
   return (

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Modal from "./utils/Modal";
 import PokedexModal from "./utils/PokedexModal";
 import PokemonCard from "./PokemonCard";
 import classes from "./UserPokemonsCarousell.module.css";
@@ -30,6 +29,7 @@ const UserPokemonsCarousel = ({ header, children }) => {
 
   useEffect(() => {
     setCurrentDisplayed(userPokemonsArray[currentIndex]);
+    // eslint-disable-next-line
   }, [currentIndex, setCurrentDisplayed]);
 
   return (
