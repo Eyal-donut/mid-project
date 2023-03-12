@@ -9,6 +9,11 @@
   overflow-y: hidden;
 }
 
+.pokemonAppearH1 {
+  font-size: 6rem;
+
+}
+
 .footer {
   width: 100vw;
   position: absolute;

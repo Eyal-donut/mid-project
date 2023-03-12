@@ -43,6 +43,8 @@ ul {
 }
 
 input {
+  height: max-content;
+  padding: .3rem;
   width: 15rem;
   border-radius: 3px;
   background: rgb(255, 255, 255, 0.7);
@@ -53,23 +55,6 @@ h1 {
   line-height: 100%;
   margin-top: 2rem
 
-}
-
-.spinner {
-  height: 6rem;
-  width: 6rem;
-  border-radius: 50px;
-  border-top: .5rem solid var(--btn-bgr);
-  border-right: .5rem solid var(--btn-bgr);
-  animation: spin 1s linear infinite;
-  margin: 2rem;
-  margin-bottom: 4rem;
-}
-
-
-@keyframes spin {
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(360deg);}
 }
 
 @media(max-width:500px){
@@ -88,7 +73,6 @@ h2 {
   font-size: 4rem;
   letter-spacing: .2rem;
   line-height: 1.2;
-  /* text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff; */
 }
 
 h1 {

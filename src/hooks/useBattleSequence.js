@@ -83,7 +83,7 @@ export const useBattleSequence = (sequence) => {
             (async () => {
               setInSequence(true);
               setAnnouncerMessage(
-                `Powerful move! ${attacker.name} is attacking with ${attacker.attacks?.attackTwo}!`
+                `${attacker.name} is attacking with ${attacker.attacks?.attackTwo}! Powerful move!`
               );
 
               await waitFunction(1000);
@@ -145,7 +145,7 @@ export const useBattleSequence = (sequence) => {
                 : setEnemyAnimation("enemyStatic");
               await waitFunction(500);
 
-              setAnnouncerMessage(`${attacker.name} has recovered health`);
+              setAnnouncerMessage(`${attacker.name} has recovered health.`);
 
               turn === 0
                 ? setPlayerHealth((hp) =>

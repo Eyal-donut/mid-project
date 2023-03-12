@@ -72,8 +72,9 @@ const CreateUserWindow = ({ onBtnClick }) => {
                 onChange={inputHandler}
               />
             </li>
-            {isInvalidUserName && <li>Invalid username</li>}
-            {isInvalidPassword && <li>Invalid password</li>}
+            {isInvalidUserName && !isInvalidPassword && <li className={classes.errorText}>Username required.</li>}
+            {isInvalidPassword && !isInvalidUserName && <li className={classes.errorText}>Invalid password! Password must be longer than six characters.</li>}
+            {isInvalidUserName && isInvalidPassword && <li className={classes.errorText}>Username required.<br/>Invalid password! Password must be longer than six characters.</li>}
           </ul>
         </form>
         <div className={classes.buttonsWrap}>

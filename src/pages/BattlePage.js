@@ -120,7 +120,7 @@ const BattlePage = () => {
               <UserPokemonsCarouselBattle onBtnClick={onBattleClick} />
             )}
             <Pokedex />
-            <h1>{currentEnemy.name} has appeared!</h1>
+            <h1 className={classes.pokemonAppearH1}>A wild {currentEnemy.name} has appeared!</h1>
 
             <Announcer message={`Choose a Pokémon and fight!`} />
             <EnemyFighter
