@@ -34,9 +34,9 @@ const HomePage = () => {
 
   const navigate = useNavigate();
 
-   const deleteDummyUsers = () => {
+   const deleteDummyUser = () => {
     for (const key in users) {
-      if (users[key].password === "0") {
+      if (users[key].password === "0" && key === loggedUserKey) {
         UsersDataBaseAPI.removeUser(key);
       }
     }
@@ -71,7 +71,7 @@ const HomePage = () => {
   },[setLoggedUserKey, setStartWindowDisplay, setUserStartWindowDisplay]);
 
   const logoutClickHandler = () => {
-    deleteDummyUsers()
+    deleteDummyUser()
     setUserStartWindowDisplay(false);
     setStartWindowDisplay(true);
     localStorage.clear();
