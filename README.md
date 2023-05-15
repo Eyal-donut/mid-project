@@ -1,71 +1,68 @@
-# Getting Started with Create React App
+# Pokémon Readme File
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my Pokémon game! 
+This is a React based, fun rpg (role-playing game), inspired from the iconic TV series from the 90's that millions around the world grew up with. This game allows you to tour through the Pokémon world, explore a variety of maps and fight many different pokémons. And of course, to try and catch 'em all!
 
-## Available Scripts
+The game uses sophisticated logics that allows users to play with the pokémons they catch, and fight dynamically generated opponents that are adapted to the users' level. To add a bit of a challenge, the game's difficulty increases as the game progresses.
+My app is powered by cutting-edge technologies such as React and Firebase Realtime Database, and I have integrated several features to make your experience seamless.
 
-In the project directory, you can run:
+## How to Run the Game
 
-### `npm start`
+Simply visit the following link from a computer or any mobile device:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://mid-project-pokemon.netlify.app/map
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## How to play
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The game incorporates an easy to follow user experience, which simply explains what to do in every step of the way, and is inspired by the original TV series and the Gameboy Pokémon games from the 90's. 
 
-### `npm run build`
+In short the game flow takes the users through these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Open the app on your device.
+2. Choose a map in the Pokémon world that you would like to explore.
+3. Choose an area in this map. In each area there are pokémons to battle.
+4. Choose a pokémon that you would like to fight with. 
+5. Battle and try to catch 'em all!
+6. Your pokémons are always shown in your Pokédex - a "device" that is updated with every pokémon you catch, easily accessible from the corner of the screen.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The game comes with the following features:
 
-### `npm run eject`
+- An interactive map, consisting of different areas, and different opponents to fight.
+- Dynamically updated map - after a user caught a pokémon, it will not appear again.
+- Create a user to automatically save your progress.
+- Dynamically generated opponents - adjusted to the users' level.
+- Play with the pokémons you catch.
+- Pokédex showing the users' pokémons, which is synced with the users' data on Firebase Realtime Database.
+- Responsive UI.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Technologies Used
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The game was developed using the following technologies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- React
+- Firebase Realtime Database
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Deployment Services Used
 
-## Learn More
+- Netlify
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Planned Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We are continually improving the app and have several planned features in the pipeline. The following features are planned for:
 
-### Code Splitting
+- Connect the game to PokéAPI, in order to randomly generate opponents from hundreds of pokémons, so users can always fight different opponents (currently there are 27 different pokémons in the game).
+- Create a MongoDB database to support the game backend.
+- User authentication with JWT.
+- Adding sound to the game.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Challenges
 
-### Analyzing the Bundle Size
+The development of the game presented several challenges, including:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Dynamically creating opponents that are adapted to the users' level.
+- The battle logic: The battle is the core of the rpg game, and it was important for me that it will have a seamless flow and readable code. For this I developed a custom hook, which controls who's turn it is, the health of the players and the animations that accompany each stage of the battle sequence.  
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# mid-project
+### Thank you for checking out my Pokémon game, have fun playing!
