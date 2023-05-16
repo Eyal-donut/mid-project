@@ -33,11 +33,13 @@ The game comes with the following features:
 
 - An interactive Pokémon world, consisting of several maps and many different opponents to fight.
 - Dynamically updated maps - after a user caught a Pokémon, it will not appear again.
-- Create a user to automatically save your progress.
+- Role playing battle with multiple action possibilities and animations.
+- Responsive UI, adapted to use from any device.
 - Dynamically generated opponents - adjusted to the users' level.
+- Create a user or login to automatically save your progress.
+- Play without login, for a direct and easy access to the game.
 - Pokédex showing the users' Pokémons, which is synced with the users' data on Firebase Realtime Database.
 - Play with the Pokémons you catch. The user is being updated in the Database and in the front-end as the game progresses, with zero loading time.
-- Responsive UI, adapted to use from any device.
 - Announcer - a messages typing component that accompanies the user throughout the game, for a seamless user experience and a retro 90's design. 
 ## Technologies Used
 
@@ -54,7 +56,7 @@ The game was developed using the following technologies:
 
 We are continually improving the app and have several planned features in the pipeline. The following features are planned for:
 
-- Connect the game to PokéAPI, in order to randomly generate opponents from hundreds of Pokémons, so users can always fight different opponents (currently there are 27 different Pokémons in the game).
+- Connect the game to PokéAPI, to randomly generate opponents from hundreds of Pokémons, so users can always fight different opponents (currently there are 27 different Pokémons in the game).
 - Create a MongoDB database to support the game backend.
 - User authentication with JWT.
 - Adding sound to the game.
