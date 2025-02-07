@@ -43,7 +43,8 @@
   align-items: center;
 }
 .battleBtn {
-  width: 11.3rem;
+  width: 22%;
+  max-width: 11.3rem;
   height: 13vh;
   border: 2px solid var(--pokemon-blue);
   cursor: pointer;
