@@ -21,7 +21,7 @@ export const useBattleSequence = (sequence) => {
   useEffect(() => {
     const { mode, turn } = sequence;
 
-    if (mode) {
+    if (mode && !inSequence) {
       const attacker = turn === 0 ? currentPokemon : currentEnemy;
       const receiver = turn === 0 ? currentEnemy : currentPokemon;
 
